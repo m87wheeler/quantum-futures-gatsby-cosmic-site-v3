@@ -7,9 +7,12 @@ export const DisplayToggleWrapper = styled.div`
   left: 0;
   /* display: flex;
   justify-content: space-between; */
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 3rem;
+  /* display: grid;
+  grid-template-columns: 1fr auto auto; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 1rem;
   background: transparent;
   z-index: 99;

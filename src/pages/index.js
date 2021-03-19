@@ -10,7 +10,6 @@ import { mediaFormat } from "../assets/functions/mediaFormat";
 
 // *** components
 import Layout from "../style/Layout";
-import IndexNewsFeed from "../components/views/IndexNewsfeed/IndexNewsfeed";
 
 // *** styled components
 import {
@@ -51,7 +50,12 @@ const Index = ({ data }) => {
           classNames={classes.hero}
           appear
         >
-          <Title element="h2" variant="h1" color="white" align="center">
+          <Title
+            element="h2"
+            variant="h1"
+            color={text_color === "dark" ? "black" : "white"}
+            align="center"
+          >
             {title}
           </Title>
         </CSSTransition>

@@ -78,9 +78,9 @@ const NewsfeedPage = ({ data }) => {
   return (
     <Layout>
       <DisplayToggleWrapper>
-        <Typography element="h3" variant="h4" gradient color="primary">
+        {/* <Typography element="h3" variant="h5" gradient color="primary">
           Newsfeed
-        </Typography>
+        </Typography> */}
         <FilterPosts
           cats={catTypes}
           selected={catSelected}
