@@ -3,7 +3,11 @@ import TypeCard from "../../single/TypeCard/TypeCard";
 
 export const Wrapper = styled.div`
   position: relative;
-  padding-right: 4rem;
+  justify-self: flex-end;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    padding-right: 4rem;
+  }
 `;
 
 export const StyledTypeCard = styled(TypeCard)`
