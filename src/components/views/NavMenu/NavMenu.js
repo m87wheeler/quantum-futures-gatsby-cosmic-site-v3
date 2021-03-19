@@ -53,7 +53,7 @@ const NavMenu = ({ active, ...props }) => {
           onClick={() => toggleSub("partnerships")}
         >
           <Icon icon={faChevronLeft} />
-          Partnerships
+          Ecosystem
           <Collapse>
             <ListItem onClick={() => toggleSub()}>
               <NavLink to="/partnerships/business">
@@ -61,7 +61,7 @@ const NavMenu = ({ active, ...props }) => {
               </NavLink>
             </ListItem>
             <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/partnerships/client">Client Partnerships</NavLink>
+              <NavLink to="/partnerships/client">Community</NavLink>
             </ListItem>
           </Collapse>
         </ListItem>
