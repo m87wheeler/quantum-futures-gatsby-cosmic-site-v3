@@ -1,0 +1,43 @@
+import * as React from "react";
+import styled from "styled-components";
+// import PropTypes from 'prop-types'
+
+// *** data, hooks & context
+import { useBrowserResize } from "../../../hooks/useBrowserResize";
+
+// *** components
+import Section from "../../single/Section/Section";
+import Typography from "../../single/Typography/Typography";
+import NewsfeedList from "../NewsfeedList/NewsfeedList";
+
+// *** styled components
+
+const IndexNewsFeed = ({ background, posts, ...props }) => {
+  const [width] = useBrowserResize();
+
+  return (
+    <Section background="white" {...props}>
+      <Typography
+        element="h3"
+        variant="h3"
+        align="center"
+        gradient
+        color="primary"
+      >
+        Latest Stories
+      </Typography>
+      <Typography align="center">Lorem ipsum intro</Typography>
+      <NewsfeedList
+        posts={posts}
+        layout={width > 800 ? "grid" : "list"}
+        prefix="newsfeed"
+      />
+    </Section>
+  );
+};
+
+// IndexNewsFeed.defaultProps = {}
+
+// IndexNewsFeed.propTypes = {}
+
+export default IndexNewsFeed;
