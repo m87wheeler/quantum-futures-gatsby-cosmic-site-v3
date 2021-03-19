@@ -6,7 +6,6 @@ import { useState, useRef } from "react";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 
 // *** components
-import Typography from "../../single/Typography/Typography";
 import Button from "../../single/Button/Button";
 
 // *** styled components
@@ -34,15 +33,9 @@ const FilterPosts = ({ cats, selected = [], onChange, onClick, ...props }) => {
 
   return (
     <Wrapper ref={ref} {...props}>
-      <Typography
-        weight={600}
-        gradient
-        color="primary"
-        style={{ cursor: "pointer" }}
-        onClick={toggleSelect}
-      >
+      <Button onClick={toggleSelect} color="secondary" variant="text">
         Filter
-      </Typography>
+      </Button>
       <Dropdown tabIndex="100" active={selectOpen}>
         <ul>
           {categories.map((cat) => (

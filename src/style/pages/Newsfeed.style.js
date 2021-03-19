@@ -5,13 +5,10 @@ export const DisplayToggleWrapper = styled.div`
   position: sticky;
   top: 4.5rem;
   left: 0;
-  /* display: flex;
-  justify-content: space-between; */
-  /* display: grid;
-  grid-template-columns: 1fr auto auto; */
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   padding: 1rem;
   background: transparent;

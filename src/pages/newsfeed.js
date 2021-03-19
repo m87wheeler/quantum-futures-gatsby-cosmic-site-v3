@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 
 // *** components
 import Layout from "../style/Layout";
-import Typography from "../components/single/Typography/Typography";
 import ListDisplayToggle from "../components/single/ListDisplayToggle/ListDisplayToggle";
 import FilterPosts from "../components/composite/FilterPosts/FilterPosts";
 
@@ -78,9 +77,6 @@ const NewsfeedPage = ({ data }) => {
   return (
     <Layout>
       <DisplayToggleWrapper>
-        {/* <Typography element="h3" variant="h5" gradient color="primary">
-          Newsfeed
-        </Typography> */}
         <FilterPosts
           cats={catTypes}
           selected={catSelected}
