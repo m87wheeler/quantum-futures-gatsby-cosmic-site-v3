@@ -16,8 +16,16 @@ exports.createPages = async ({ graphql, actions }) => {
               cover_image {
                 imgix_url
               }
+              metadata_description
+              metadata_keywords
             }
           }
+        }
+      }
+      cosmicjsSiteMetadata {
+        metadata {
+          title_prefix
+          canonical
         }
       }
     }
@@ -35,6 +43,12 @@ exports.createPages = async ({ graphql, actions }) => {
         created: node.created,
         post_type: node.metadata.post_type,
         cover_image: node.metadata.cover_image.imgix_url,
+        metadata: {
+          title_prefix: result.data.cosmicjsSiteMetadata.metadata.title_prefix,
+          canonical: result.data.cosmicjsSiteMetadata.metadata.canonical,
+          description: node.metadata.metadata_description,
+          keywords: node.metadata.metadata_keywords,
+        },
       },
     });
   });

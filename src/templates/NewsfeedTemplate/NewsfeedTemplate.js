@@ -1,6 +1,8 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
 import { useScroll } from "../../hooks/useScroll";
+import { Helmet } from "react-helmet";
+import { capitalizeString } from "../../assets/functions/capitalizeString";
 import Layout from "../../style/Layout";
 import Typography from "../../components/single/Typography/Typography";
 
@@ -17,39 +19,55 @@ import {
 } from "./NewsfeedTemplate.style";
 
 const NewsfeedTemplate = ({ pageContext, data }) => {
-  const { title, cover_image, post_type, created } = pageContext;
+  const {
+    title,
+    cover_image,
+    post_type,
+    created,
+    metadata: { title_prefix, canonical, description, keywords },
+  } = pageContext;
   const { scrollDirection } = useScroll();
 
+  console.log(pageContext);
+
   return (
-    <Layout>
-      {/** TODO change grid styling in Layout */}
-      <CoverImageContainer>
-        <CoverImage img={cover_image} />
-      </CoverImageContainer>
-      <Title element="h2" variant="h4" color="white">
-        {title}
-      </Title>
-      <PostDetails>
-        <StyledTypeCard type={post_type} />
-        <Typography size="xs" color="white" align="right">
-          {created}
-        </Typography>
-        <Typography size="xs" color="white" align="right">
-          Quantum Futures
-        </Typography>
-      </PostDetails>
-      <StyledInnerHTML html={data.cosmicjsBlogPosts.content} />
-      <Link to="/newsfeed">
-        <BackButton color="primary" shadow direction={scrollDirection}>
-          Go Back
-        </BackButton>
-      </Link>
-      <DummyAside>
-        <Typography gradient color="primary" weight="900" size="xl">
-          Dummy Aside Content For Screens &gt;1280px wide
-        </Typography>
-      </DummyAside>
-    </Layout>
+    <>
+      <Helmet
+        title={`${title_prefix} | ${capitalizeString(title)}`}
+        canonical={canonical}
+        description={description}
+        keywords={keywords}
+      />
+      <Layout>
+        {/** TODO change grid styling in Layout */}
+        <CoverImageContainer>
+          <CoverImage img={cover_image} />
+        </CoverImageContainer>
+        <Title element="h2" variant="h4" color="white">
+          {title}
+        </Title>
+        <PostDetails>
+          <StyledTypeCard type={post_type} />
+          <Typography size="xs" color="white" align="right">
+            {created}
+          </Typography>
+          <Typography size="xs" color="white" align="right">
+            Quantum Futures
+          </Typography>
+        </PostDetails>
+        <StyledInnerHTML html={data.cosmicjsBlogPosts.content} />
+        <Link to="/newsfeed">
+          <BackButton color="primary" shadow direction={scrollDirection}>
+            Go Back
+          </BackButton>
+        </Link>
+        <DummyAside>
+          <Typography gradient color="primary" weight="900" size="xl">
+            Dummy Aside Content For Screens &gt;1280px wide
+          </Typography>
+        </DummyAside>
+      </Layout>
+    </>
   );
 };
 

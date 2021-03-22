@@ -38,18 +38,20 @@ const Index = ({ data }) => {
     metadata: { hero_media, text_color },
   } = data.cosmicjsLandingPage;
 
-  // *** destructure metadata
+  // *** destructure page metadata
   const {
     page_title,
-    canonical,
     description,
     keywords,
   } = data.cosmicjsPageMetadata.metadata;
 
+  // *** destructure site metadata
+  const { title_prefix, canonical } = data.cosmicjsSiteMetadata.metadata;
+
   return (
     <>
       <Helmet
-        title={page_title}
+        title={`${title_prefix} | ${page_title}`}
         canonical={canonical}
         description={description}
         keywords={keywords}
@@ -127,6 +129,12 @@ export const query = graphql`
         canonical
         description
         keywords
+      }
+    }
+    cosmicjsSiteMetadata {
+      metadata {
+        title_prefix
+        canonical
       }
     }
   }
