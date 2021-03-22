@@ -50,6 +50,7 @@ module.exports = {
           `newsfeed-categories`,
           `page-metadata`,
           `site-metadata`,
+          `contact-form-configuration`,
         ],
         apiAccess: {
           read_key: cosmicConfig.key,
