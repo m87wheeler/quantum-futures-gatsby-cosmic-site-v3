@@ -42,8 +42,6 @@ export const VideoWrapper = styled.div`
   }
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    background: green;
-
     video,
     img {
       max-height: none;
