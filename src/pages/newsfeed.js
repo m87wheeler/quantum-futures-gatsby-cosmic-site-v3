@@ -12,6 +12,7 @@ import {
   DisplayToggleWrapper,
   StyledNewsfeedList,
 } from "../style/pages/Newsfeed.style";
+import Helmet from "../components/single/Helmet/Helmet";
 
 const NewsfeedPage = ({ data }) => {
   // *** toggle between grid and list view
@@ -74,23 +75,39 @@ const NewsfeedPage = ({ data }) => {
   // ? handle filter clear
   const handleClear = () => setCatSelected([]);
 
+  // *** destructure metadata
+  const {
+    page_title,
+    canonical,
+    description,
+    keywords,
+  } = data.cosmicjsPageMetadata.metadata;
+
   return (
-    <Layout>
-      <DisplayToggleWrapper>
-        <FilterPosts
-          cats={catTypes}
-          selected={catSelected}
-          onChange={handleChange}
-          onClick={handleClear}
-        />
-        <ListDisplayToggle onClick={handleLayout} />
-      </DisplayToggleWrapper>
-      <StyledNewsfeedList
-        posts={filteredPosts.length ? filteredPosts : posts}
-        layout={layout}
-        style={{ padding: "0 1rem" }}
+    <>
+      <Helmet
+        title={page_title}
+        canonical={canonical}
+        description={description}
+        keywords={keywords}
       />
-    </Layout>
+      <Layout>
+        <DisplayToggleWrapper>
+          <FilterPosts
+            cats={catTypes}
+            selected={catSelected}
+            onChange={handleChange}
+            onClick={handleClear}
+          />
+          <ListDisplayToggle onClick={handleLayout} />
+        </DisplayToggleWrapper>
+        <StyledNewsfeedList
+          posts={filteredPosts.length ? filteredPosts : posts}
+          layout={layout}
+          style={{ padding: "0 1rem" }}
+        />
+      </Layout>
+    </>
   );
 };
 
@@ -114,6 +131,14 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    cosmicjsPageMetadata(title: { eq: "Newsfeed" }) {
+      metadata {
+        page_title
+        canonical
+        description
+        keywords
       }
     }
   }

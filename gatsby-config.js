@@ -48,6 +48,7 @@ module.exports = {
           `blog-posts`,
           `testimonials`,
           `newsfeed-categories`,
+          `page-metadata`,
         ],
         apiAccess: {
           read_key: cosmicConfig.key,

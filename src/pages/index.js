@@ -10,6 +10,7 @@ import { mediaFormat } from "../assets/functions/mediaFormat";
 
 // *** components
 import Layout from "../style/Layout";
+import Helmet from "../components/single/Helmet/Helmet";
 
 // *** styled components
 import {
@@ -31,41 +32,58 @@ const Index = ({ data }) => {
     if (typeof window !== undefined) setPageReady(true);
   }, []);
 
+  // *** destructure landing data
   const {
     title,
     metadata: { hero_media, text_color },
   } = data.cosmicjsLandingPage;
 
+  // *** destructure metadata
+  const {
+    page_title,
+    canonical,
+    description,
+    keywords,
+  } = data.cosmicjsPageMetadata.metadata;
+
   return (
-    <Layout>
-      {/** Background Media */}
-      <Background>
-        <VideoWrapper>{mediaFormat(hero_media.imgix_url)}</VideoWrapper>
-      </Background>
-      {/** Title Section */}
-      <LandingSection>
-        <CSSTransition
-          in={pageReady}
-          timeout={appearDuration}
-          classNames={classes.hero}
-          appear
-        >
-          <Title
-            element="h2"
-            variant="h1"
-            color={text_color === "dark" ? "black" : "white"}
-            align="center"
-          >
-            {title}
-          </Title>
-        </CSSTransition>
-      </LandingSection>
-      {/** Newsfeed Section */}
-      <StyledNewsfeed
-        posts={data.allCosmicjsBlogPosts.edges}
-        background="black"
+    <>
+      <Helmet
+        title={page_title}
+        canonical={canonical}
+        description={description}
+        keywords={keywords}
       />
-    </Layout>
+      <Layout>
+        {/** Background Media */}
+        <Background>
+          <VideoWrapper>{mediaFormat(hero_media.imgix_url)}</VideoWrapper>
+        </Background>
+        {/** Title Section */}
+        <LandingSection>
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
+          >
+            <Title
+              element="h2"
+              variant="h1"
+              color={text_color === "dark" ? "black" : "white"}
+              align="center"
+            >
+              {title}
+            </Title>
+          </CSSTransition>
+        </LandingSection>
+        {/** Newsfeed Section */}
+        <StyledNewsfeed
+          posts={data.allCosmicjsBlogPosts.edges}
+          background="black"
+        />
+      </Layout>
+    </>
   );
 };
 
@@ -101,6 +119,14 @@ export const query = graphql`
           imgix_url
         }
         text_colour
+      }
+    }
+    cosmicjsPageMetadata(title: { eq: "Homepage" }) {
+      metadata {
+        page_title
+        canonical
+        description
+        keywords
       }
     }
   }
