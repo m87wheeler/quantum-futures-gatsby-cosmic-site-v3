@@ -45,6 +45,7 @@ module.exports = {
         objectTypes: [
           `landing-page`,
           `testimonial-page`,
+          `contact-page`,
           `blog-posts`,
           `testimonials`,
           `newsfeed-categories`,

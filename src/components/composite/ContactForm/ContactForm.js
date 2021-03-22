@@ -9,9 +9,9 @@ import styled from "styled-components";
 import Input from "../../single/Input/Input";
 import Button from "../../single/Button/Button";
 import Typography from "../../single/Typography/Typography";
+import FlexStack from "../../single/FlexStack/FlexStack";
 
 // *** styled components
-const Wrapper = styled.div``;
 
 const ContactForm = ({ endpoint, ...props }) => {
   const initialState = {
@@ -59,7 +59,7 @@ const ContactForm = ({ endpoint, ...props }) => {
   };
 
   return (
-    <Wrapper {...props}>
+    <FlexStack gap={2} {...props}>
       <Input
         label="Name"
         color="primary"
@@ -90,7 +90,7 @@ const ContactForm = ({ endpoint, ...props }) => {
         {formStatus.success && !formStatus.error ? "Message sent!" : ""}
         {formStatus.error[0] ? formStatus.error[1] : ""}
       </Typography>
-    </Wrapper>
+    </FlexStack>
   );
 };
 

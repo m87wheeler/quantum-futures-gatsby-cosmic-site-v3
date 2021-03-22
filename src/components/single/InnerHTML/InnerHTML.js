@@ -12,6 +12,7 @@ const Wrapper = styled.div`
       : p.font === "mono"
       ? "monospace"
       : p.theme.font.family.sans};
+  color: ${(p) => `rgb(${p.theme.common[p.color]})`};
 
   p {
     margin-bottom: 1.5rem;
@@ -25,12 +26,20 @@ const Wrapper = styled.div`
   }
 `;
 
-const InnerHTML = ({ html, align, lineHeight, font, ...props }) => {
+const InnerHTML = ({
+  html,
+  align,
+  lineHeight,
+  font,
+  color = "black",
+  ...props
+}) => {
   return (
     <Wrapper
       align={align}
       lineHeight={lineHeight}
       font={font}
+      color={color}
       {...props}
       dangerouslySetInnerHTML={{ __html: html }}
     />
