@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        output: `/some-other-sitemap.xml`,
+        output: `/sitemap.xml`,
       },
     },
     `gatsby-plugin-image`,
