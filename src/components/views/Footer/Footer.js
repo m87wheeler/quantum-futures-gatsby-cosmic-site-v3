@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { Link } from "gatsby";
 // import PropTypes from 'prop-types'
 
 // *** data, hooks & context
@@ -25,6 +26,11 @@ const Footer = ({ ...props }) => {
   return (
     <Wrapper {...props}>
       <p style={{ gridColumn: "2 / 4" }}>&copy; 2021</p>
+      <ul>
+        <li>
+          <Link to="/sitemap.xml">Sitemap</Link>
+        </li>
+      </ul>
     </Wrapper>
   );
 };

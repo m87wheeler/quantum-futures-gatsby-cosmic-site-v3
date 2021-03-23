@@ -8,8 +8,15 @@ const cosmicConfig = {
 module.exports = {
   siteMetadata: {
     title: "quantum-futures-responsive-tests",
+    siteUrl: `https://gracious-agnesi-690230.netlify.app`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/some-other-sitemap.xml`,
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
