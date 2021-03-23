@@ -59,6 +59,7 @@ module.exports = {
           `page-metadata`,
           `site-metadata`,
           `contact-form-configuration`,
+          `social-media`,
         ],
         apiAccess: {
           read_key: cosmicConfig.key,

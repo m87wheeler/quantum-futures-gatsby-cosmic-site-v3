@@ -6,14 +6,25 @@ import { Link } from "gatsby";
 // *** data, hooks & context
 
 // *** components
+import Typography from "../../../components/single/Typography/Typography";
+import SocialMediaIcons from "../../composite/SocialMediaIcons/SocialMediaIcons";
 
 // *** styled components
 const Wrapper = styled.footer`
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1rem;
   width: 100%;
-  min-height: 40vh;
   padding: 1rem 0;
   background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
   color: ${(p) => `rgb(${p.theme.common.white})`};
+
+  ul {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    list-style: none;
+  }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: grid;
@@ -25,10 +36,25 @@ const Wrapper = styled.footer`
 const Footer = ({ ...props }) => {
   return (
     <Wrapper {...props}>
-      <p style={{ gridColumn: "2 / 4" }}>&copy; 2021</p>
+      <SocialMediaIcons />
       <ul>
         <li>
-          <Link to="/sitemap.xml">Sitemap</Link>
+          <Typography size="sm">
+            <Link to="/sitemap.xml">Sitemap</Link>
+          </Typography>
+        </li>
+        <li>
+          <Typography color="white" size="sm">
+            &copy; 2021 Quantum Futures
+          </Typography>
+        </li>
+        <li>
+          <Typography color="white" size="sm">
+            Designed and built by{" "}
+            <Link to="https://martinwheelerweb.com" target="_blank">
+              MWWDD
+            </Link>
+          </Typography>
         </li>
       </ul>
     </Wrapper>
