@@ -11,7 +11,7 @@ const Wrapper = styled.footer`
   width: 100%;
   min-height: 40vh;
   padding: 1rem 0;
-  background: ${(p) => `rgb(${p.theme.common.black})`};
+  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
   color: ${(p) => `rgb(${p.theme.common.white})`};
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {

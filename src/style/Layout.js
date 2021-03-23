@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-// import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 // *** data, hooks & context
 import { GlobalStyle } from "./GlobalStyle";
@@ -35,21 +35,25 @@ const StyledFooter = styled(Footer)`
   z-index: 9999;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ background, children }) => {
   return (
     <Theme>
       <GlobalStyle />
       <StyledHeader />
       <LayoutContainer>
-        <StyledMain>{children}</StyledMain>
+        <StyledMain background={background}>{children}</StyledMain>
         <StyledFooter />
       </LayoutContainer>
     </Theme>
   );
 };
 
-// Layout.defaultProps = {}
+Layout.defaultProps = {
+  background: "white",
+};
 
-// Layout.propTypes = {}
+Layout.propTypes = {
+  background: PropTypes.oneOf(["white", "black"]),
+};
 
 export default Layout;

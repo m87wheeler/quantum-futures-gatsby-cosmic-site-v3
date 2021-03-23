@@ -10,15 +10,38 @@ import Layout from "../style/Layout";
 import ContactForm from "../components/composite/ContactForm/ContactForm";
 import Typography from "../components/single/Typography/Typography";
 import InnerHTML from "../components/single/InnerHTML/InnerHTML";
-import FlexStack from "../components/single/FlexStack/FlexStack";
 
 // *** styled components
-const StyledFlexStack = styled(FlexStack)`
+const Title = styled(Typography)`
+  padding-top: 1rem;
+`;
+const Text = styled(InnerHTML)``;
+const StyledContactForm = styled(ContactForm)``;
+
+const FlexGrid = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  padding: 1rem;
+  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    ${Title}, ${Text}, ${StyledContactForm} {
+      grid-column: 2 / 12;
+    }
+  }
+
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 1 / 13;
   }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    grid-column: 2 / 12;
+
+  @media (min-width: ${(p) => p.theme.media.lg.min}) {
+    ${Title}, ${Text}, ${StyledContactForm} {
+      grid-column: 4 / 10;
+    }
   }
 `;
 
@@ -28,8 +51,8 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout>
-      <StyledFlexStack padding={4} gap={2} color="black">
-        <Typography
+      <FlexGrid>
+        <Title
           element="h2"
           variant="h3"
           gradient
@@ -37,12 +60,10 @@ const ContactPage = ({ data }) => {
           align="center"
         >
           {title}
-        </Typography>
-        {content ? (
-          <InnerHTML html={content} color="white" align="center" />
-        ) : null}
-        <ContactForm endpoint={endpoint} />
-      </StyledFlexStack>
+        </Title>
+        {content ? <Text html={content} color="white" align="center" /> : null}
+        <StyledContactForm endpoint={endpoint} />
+      </FlexGrid>
     </Layout>
   );
 };

@@ -7,6 +7,10 @@ const sharedStyles = css`
   color: ${(p) =>
     typeof p.color === "number"
       ? `rgb(${p.theme.common.grey[p.color]})`
+      : p.color === "danger"
+      ? `#CD594A`
+      : p.color === "confirm"
+      ? `#A3B86C`
       : p.color === "primary" || p.color === "secondary"
       ? `rgb(${p.theme[p.color].main})`
       : p.color === "primary-contrast" || p.color === "secondary-contrast"
@@ -257,6 +261,8 @@ Typography.propTypes = {
     "secondary",
     "primary-contrast",
     "secondary-contrast",
+    "danger",
+    "confirm",
     50,
     100,
     200,

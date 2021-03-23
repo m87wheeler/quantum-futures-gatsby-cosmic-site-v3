@@ -36,7 +36,7 @@ const FilterPosts = ({ cats, selected = [], onChange, onClick, ...props }) => {
       <Button onClick={toggleSelect} color="secondary" variant="text">
         Filter
       </Button>
-      <Dropdown tabIndex="100" active={selectOpen}>
+      <Dropdown active={selectOpen}>
         <ul>
           {categories.map((cat) => (
             <CatWrapper key={cat}>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 // import PropTypes from 'prop-types'
 
@@ -10,21 +10,36 @@ import Input from "../../single/Input/Input";
 import Button from "../../single/Button/Button";
 import Typography from "../../single/Typography/Typography";
 import FlexStack from "../../single/FlexStack/FlexStack";
+import { validateEmail } from "../../../assets/functions/validateEmail";
 
 // *** styled components
+const FormFeedback = styled(Typography)`
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  min-height: 2rem;
+`;
 
 const ContactForm = ({ endpoint, ...props }) => {
-  const initialState = {
+  const initialFormState = {
     name: "",
     email: "",
     message: "",
   };
-  const [formState, setFormState] = useState(initialState);
-  const [formStatus, setFormStatus] = useState({
+  const initialFormStatus = {
     loading: false,
     success: false,
     error: [false, ""],
-  });
+  };
+  const [formState, setFormState] = useState(initialFormState);
+  const [formStatus, setFormStatus] = useState(initialFormStatus);
+
+  // ? reset state after interval
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setFormStatus(initialFormStatus);
+    }
+  }, [formState]);
 
   // ?
   const handleInput = (e) =>
@@ -41,21 +56,32 @@ const ContactForm = ({ endpoint, ...props }) => {
         error: [true, "Please complete all fields"],
       }));
     }
-    setFormStatus((formStatus) => ({ ...formStatus, loading: true }));
-    const req = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formState),
-    });
-    if (req.ok) {
-      setFormState(initialState);
-      setFormStatus((formStatus) => ({ ...formStatus, success: true }));
-    } else {
-      setFormStatus((formStatus) => ({ ...formStatus, success: false }));
+    if (!validateEmail(formState.email)) {
+      return setFormStatus((formStatus) => ({
+        ...formStatus,
+        error: [true, "Invalid email address"],
+      }));
     }
-    setFormStatus((formStatus) => ({ ...formStatus, loading: false }));
+    setFormStatus((formStatus) => ({ ...formStatus, loading: true }));
+    try {
+      const req = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+      if (req.status === 200) {
+        setFormState(initialFormState);
+        setFormStatus((formStatus) => ({ ...formStatus, loading: false }));
+        setFormStatus((formStatus) => ({ ...formStatus, success: true }));
+      } else {
+        setFormStatus((formStatus) => ({ ...formStatus, loading: false }));
+        setFormStatus((formStatus) => ({ ...formStatus, success: false }));
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -85,11 +111,23 @@ const ContactForm = ({ endpoint, ...props }) => {
         onInput={handleInput}
       />
       <Button onClick={handleSubmit}>Submit</Button>
-      <Typography color="white">
-        {formStatus.loading ? "Sending your message..." : ""}
-        {formStatus.success && !formStatus.error ? "Message sent!" : ""}
-        {formStatus.error[0] ? formStatus.error[1] : ""}
-      </Typography>
+      <FormFeedback
+        color={
+          formStatus.error[0]
+            ? "danger"
+            : formStatus.success
+            ? "confirm"
+            : "white"
+        }
+      >
+        {formStatus.loading
+          ? "Sending your message..."
+          : formStatus.success
+          ? "Message sent!"
+          : formStatus.error[0]
+          ? formStatus.error[1]
+          : ""}
+      </FormFeedback>
     </FlexStack>
   );
 };

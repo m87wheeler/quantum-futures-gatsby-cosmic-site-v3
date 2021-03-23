@@ -23,5 +23,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: inherit;
     color: ${(p) => `rgb(${p.theme.primary.main})`};
     font-weight: 700;
+
+    &:target {
+      outline:  ${(p) => `.1rem solid rgb(${p.theme.primary.main})`}; 
+    }
   }
 `;

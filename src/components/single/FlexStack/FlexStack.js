@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   flex-flow: column nowrap;
   gap: ${(p) => (p.gap ? `${p.gap * 0.25}rem` : 0)};
   padding: ${(p) => (p.padding ? `${p.padding * 0.25}rem` : 0)};
-  background: ${(p) => `rgb(${p.theme.common[p.color]})`};
 `;
 
 const FlexStack = ({ children, ...props }) => {

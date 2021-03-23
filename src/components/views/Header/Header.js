@@ -29,8 +29,8 @@ const Header = ({ ...props }) => {
           </Typography>
         </Link>
       </Logo>
-      <StyledNavMenu active={navOpen} />
       <StyledHamburger active={navOpen} onClick={toggleNav} />
+      <StyledNavMenu active={navOpen} />
     </Wrapper>
   );
 };
