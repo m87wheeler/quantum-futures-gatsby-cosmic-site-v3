@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: grid;
   grid-template-rows: repeat(2, auto);
+  row-gap: 0.5rem;
   gap: 0.5rem;
   width: 100%;
   max-width: 6rem;

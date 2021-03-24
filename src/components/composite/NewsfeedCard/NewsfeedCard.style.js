@@ -46,6 +46,8 @@ export const ImageContainer = styled.div`
 // ***
 export const TypeDateContainer = styled.div`
   display: flex;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
   gap: 0.5rem;
   align-items: center;
 
@@ -86,6 +88,7 @@ export const DetailsContainer = styled.div`
         "details"
         "author"
         "title";
+      row-gap: 0.5rem;
       gap: 0.5rem;
 
       ${TypeDateContainer} {

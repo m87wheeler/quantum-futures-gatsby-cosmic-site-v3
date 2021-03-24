@@ -10,6 +10,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  column-gap: ${(p) => (p.gap ? `${p.gap * 0.25}rem` : 0)};
   gap: ${(p) => (p.gap ? `${p.gap * 0.25}rem` : 0)};
   padding: ${(p) => (p.padding ? `${p.padding * 0.25}rem` : 0)};
 `;

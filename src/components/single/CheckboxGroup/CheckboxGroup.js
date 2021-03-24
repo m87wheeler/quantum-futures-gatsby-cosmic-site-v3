@@ -10,6 +10,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  row-gap: 1rem;
   gap: 1rem;
   justify-content: center;
 `;

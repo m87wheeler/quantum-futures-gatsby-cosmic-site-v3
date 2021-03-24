@@ -5,6 +5,7 @@ export const List = styled.ul``;
 export const Wrapper = styled.footer`
   display: grid;
   grid-template-rows: auto auto;
+  row-gap: 1rem;
   gap: 1rem;
   width: 100%;
   padding: 3rem 1rem;
@@ -24,6 +25,7 @@ export const Wrapper = styled.footer`
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    column-gap: 1rem;
     gap: 1rem;
 
     li {

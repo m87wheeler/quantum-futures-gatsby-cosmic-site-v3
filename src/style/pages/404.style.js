@@ -32,6 +32,7 @@ export const ButtonLink = styled((props) => <Link {...props} />)`
 export const FlexGrid = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  column-gap: 3rem;
   gap: 3rem;
   padding: 1rem;
   background: ${(p) => `rgba(${p.theme.common.black}, .9)`};

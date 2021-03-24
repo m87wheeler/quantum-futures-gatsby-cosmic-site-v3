@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 0.5rem;
   gap: 0.5rem;
 `;
 
@@ -41,6 +42,7 @@ const Option = styled.label`
 
 const CardOption = styled(Option)`
   flex-flow: row wrap;
+  row-gap: 0.125rem;
   gap: 0.125rem;
 
   span {

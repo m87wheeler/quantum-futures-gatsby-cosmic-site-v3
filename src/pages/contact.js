@@ -21,6 +21,7 @@ const StyledContactForm = styled(ContactForm)``;
 const FlexGrid = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  column-gap: 1rem;
   gap: 1rem;
   padding: 1rem;
   background: ${(p) => `rgba(${p.theme.common.black}, .9)`};

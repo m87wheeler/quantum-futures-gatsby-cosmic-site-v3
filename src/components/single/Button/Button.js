@@ -23,6 +23,7 @@ const colorOption = css`
 const Element = styled.button`
   display: grid;
   grid-template-columns: ${(p) => (p.icon ? "auto auto" : "auto")};
+  column-gap: ${(p) => (p.icon ? ".5rem" : "0")};
   gap: ${(p) => (p.icon ? ".5rem" : "0")};
   align-items: center;
   justify-items: center;

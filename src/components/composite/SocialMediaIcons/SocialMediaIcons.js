@@ -14,6 +14,7 @@ const Wrapper = styled.ul`
   justify-self: center;
   display: flex;
   flex-flow: row nowrap !important;
+  row-gap: 1rem;
   gap: 1rem;
 
   li {

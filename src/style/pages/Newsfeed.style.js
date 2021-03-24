@@ -9,6 +9,7 @@ export const DisplayToggleWrapper = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  row-gap: 1rem;
   gap: 1rem;
   padding: 1rem;
   background: transparent;

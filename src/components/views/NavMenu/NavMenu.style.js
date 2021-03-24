@@ -14,6 +14,7 @@ export const List = styled.ul`
   left: 0;
   display: flex;
   flex-flow: column nowrap;
+  column-gap: 1rem;
   gap: 1rem;
   list-style: none;
   text-align: right;

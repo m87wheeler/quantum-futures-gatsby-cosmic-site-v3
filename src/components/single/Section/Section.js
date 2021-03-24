@@ -9,6 +9,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  column-gap: 1rem;
   gap: 1rem;
   padding: 3rem 1rem;
   background: ${(p) =>

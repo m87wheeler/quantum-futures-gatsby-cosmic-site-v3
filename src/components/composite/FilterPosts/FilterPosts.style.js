@@ -43,6 +43,7 @@ export const Dropdown = styled.div`
     max-height: ${(p) => (p.active ? "50vh" : "0")};
     display: flex;
     flex-flow: column nowrap;
+    column-gap: 0.25rem;
     gap: 0.25rem;
     padding: ${(p) => (p.active ? ".75rem" : "0 .75rem")};
     opacity: ${(p) => (p.active ? 1 : 0)};

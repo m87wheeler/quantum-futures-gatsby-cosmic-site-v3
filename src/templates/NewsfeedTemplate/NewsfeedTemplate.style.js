@@ -119,6 +119,7 @@ export const DummyAside = styled.aside`
   @media (min-width: ${(p) => p.theme.media.xl.min}) {
     display: flex;
     flex-flow: column nowrap;
+    column-gap: 1rem;
     gap: 1rem;
     grid-column: 9 / 12;
     width: 100%;

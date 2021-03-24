@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  column-gap: 1rem;
   gap: 1rem;
   padding: 3rem;
   max-width: 50%;

@@ -15,6 +15,7 @@ const Wrapper = styled.main`
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    column-gap: 1rem;
     gap: 1rem;
   }
 `;
