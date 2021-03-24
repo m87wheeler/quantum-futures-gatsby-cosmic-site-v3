@@ -20,7 +20,7 @@ const Wrapper = styled.ul`
     width: 2rem;
     height: 2rem;
     padding: 0.375rem;
-    background: ${(p) => `rgba(${p.theme.primary.main}, .45)`};
+    background: ${(p) => `rgba(${p.theme.primary.main}, .75)`};
     border-radius: 0.25rem;
     transition: background 0.2s ease-in-out;
 
@@ -34,7 +34,7 @@ const Wrapper = styled.ul`
 
         g,
         path {
-          fill: rgb(40, 40, 40);
+          fill: ${(p) => `rgb(${p.theme.common.grey[800]})`};
           transition: fill 0.2s ease-in-out;
         }
       }

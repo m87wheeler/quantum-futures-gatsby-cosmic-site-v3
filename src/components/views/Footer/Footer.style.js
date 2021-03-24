@@ -8,7 +8,7 @@ export const Wrapper = styled.footer`
   gap: 1rem;
   width: 100%;
   padding: 3rem 1rem;
-  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
+  background: ${(p) => `rgb(${p.theme.common.grey[800]})`};
   color: ${(p) => `rgb(${p.theme.common.white})`};
 
   li {

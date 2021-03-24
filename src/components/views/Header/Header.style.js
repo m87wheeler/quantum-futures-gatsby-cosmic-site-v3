@@ -36,6 +36,7 @@ export const StyledNavMenu = styled(NavMenu)`
   width: 100%;
   height: calc(100vh - 4.5rem);
   transition: right 0.3s ease-in-out;
+  z-index: 9999;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 3 / 13;

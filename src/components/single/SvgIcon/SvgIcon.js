@@ -1,19 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const SVG = styled.svg`
-  /* g,
-  path {
-    fill: rgb(40, 40, 40);
-    transition: fill 0.2s ease-in-out;
-  }
-
-  &:hover {
-    path {
-      fill: ${(p) => `rgb(${p.theme.primary.main})`};
-    }
-  } */
-`;
+const SVG = styled.svg``;
 
 const SvgIcon = ({
   width = 512,
