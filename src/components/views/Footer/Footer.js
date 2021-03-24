@@ -28,7 +28,11 @@ const Footer = ({ ...props }) => {
         <li>
           <Typography color="white" size="sm">
             Designed and built by{" "}
-            <Link to="https://martinwheelerweb.com" target="_blank">
+            <Link
+              to="https://martinwheelerweb.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               MWWDD
             </Link>
           </Typography>

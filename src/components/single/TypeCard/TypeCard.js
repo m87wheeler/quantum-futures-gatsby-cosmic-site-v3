@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 const colorOption = css`
   ${(p) =>
     p.type === "science" || p.type === "technology"
-      ? "rgb(233,22,255)"
-      : "rgb(0,163,163)"}
+      ? `rgb(${p.theme.primary.dark})`
+      : `rgb(${p.theme.secondary.main})`}
 `;
 
 const Element = styled.div`

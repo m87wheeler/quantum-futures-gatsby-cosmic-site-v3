@@ -7,14 +7,39 @@ const cosmicConfig = {
 
 module.exports = {
   siteMetadata: {
-    title: "quantum-futures-responsive-tests",
-    siteUrl: `https://gracious-agnesi-690230.netlify.app`,
+    title: "Quantum Futures",
+    siteUrl: `https://quantumfuturesgatsbycosmi81003.gatsbyjs.io`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://quantumfuturesgatsbycosmi81003.gatsbyjs.io",
+        sitemap:
+          "https://quantumfuturesgatsbycosmi81003.gatsbyjs.io/sitemap.xml",
+        policy: [
+          {
+            userAgent: "Googlebot",
+            allow: "/",
+            crawlDelay: 2,
+          },
+          {
+            userAgent: "OtherBot",
+            allow: "/",
+            crawlDelay: 2,
+          },
+          {
+            userAgent: "*",
+            allow: "/",
+            crawlDelay: 2,
+          },
+        ],
       },
     },
     `gatsby-plugin-image`,
