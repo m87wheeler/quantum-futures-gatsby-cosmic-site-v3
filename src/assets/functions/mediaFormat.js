@@ -18,7 +18,7 @@ const imageExtensions = ["jpeg", "jpg", "png", "gif", "svg"];
 
 // ? get media type and extention / format
 const identifyFormat = (str) => {
-  str = str.toString();
+  str = str.toString().toLowerCase();
   let re = /(?:\.([^.]+))?$/;
   let format = re.exec(str)[1];
   let type;
@@ -32,21 +32,20 @@ const identifyFormat = (str) => {
 
 // ? return correct html element based on media type
 export const mediaFormat = (url, poster, compress = true) => {
-  return identifyFormat(url).type === "video" ? (
-    <video
-      autoPlay
-      loop
-      muted
-      poster={poster ? `${poster}&auto=format,compress` : ""}
-    >
-      <source src={url} type={`video/${identifyFormat(url).format}`} />
-    </video>
-  ) : identifyFormat(url).type === "image" ? (
-    <img
-      src={`${compress ? `${url}&auto=format,compress` : url}`}
-      alt="Hero Content"
-    />
-  ) : (
-    <p>Not Supported</p>
-  );
+  if (!url && !poster) return <p>No media provided</p>;
+  if (identifyFormat(url).type === "video") {
+    return (
+      <video autoPlay loop muted poster={poster}>
+        <source
+          src={url ? url : ""}
+          type={`video/${identifyFormat(url).format}`}
+        />
+      </video>
+    );
+  } else if (identifyFormat(url).type === "image") {
+    return <img src={url} alt="Hero Content" />;
+  } else if (identifyFormat(poster).type === "image") {
+    return <img src={poster} alt="Hero Content" />;
+  }
+  return <p>Unsupported media type</p>;
 };
