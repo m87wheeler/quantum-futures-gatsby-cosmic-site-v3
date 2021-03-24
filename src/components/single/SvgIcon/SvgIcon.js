@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 
 const SVG = styled.svg`
-  g,
+  /* g,
   path {
-    fill: #fff;
+    fill: rgb(40, 40, 40);
     transition: fill 0.2s ease-in-out;
   }
 
@@ -12,7 +12,7 @@ const SVG = styled.svg`
     path {
       fill: ${(p) => `rgb(${p.theme.primary.main})`};
     }
-  }
+  } */
 `;
 
 const SvgIcon = ({

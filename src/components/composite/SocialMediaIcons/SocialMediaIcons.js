@@ -17,16 +17,36 @@ const Wrapper = styled.ul`
   gap: 1rem;
 
   li {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.375rem;
+    background: ${(p) => `rgba(${p.theme.primary.main}, .45)`};
+    border-radius: 0.25rem;
+    transition: background 0.2s ease-in-out;
 
     ${LinkWrapper} {
-      width: inherit;
-      height: inherit;
+      width: 1.25rem;
+      height: 1.25rem;
 
       svg {
         width: inherit;
         height: inherit;
+
+        g,
+        path {
+          fill: rgb(40, 40, 40);
+          transition: fill 0.2s ease-in-out;
+        }
+      }
+    }
+
+    &:hover {
+      background: ${(p) => `rgba(${p.theme.primary.main}, 0)`};
+
+      svg {
+        path {
+          fill: ${(p) => `rgb(${p.theme.primary.main})`};
+        }
       }
     }
   }
@@ -35,7 +55,7 @@ const Wrapper = styled.ul`
 const SocialMediaIcons = ({ ...props }) => {
   const result = useStaticQuery(graphql`
     query {
-      allCosmicjsSocialMedia {
+      allCosmicjsSocialMedia(sort: { fields: title }) {
         edges {
           node {
             id
@@ -106,7 +126,7 @@ const SocialMediaIcons = ({ ...props }) => {
               </LinkWrapper>
             </li>
           );
-        }
+        } else return null;
       })}
     </Wrapper>
   );

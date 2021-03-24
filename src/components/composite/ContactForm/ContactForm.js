@@ -36,9 +36,11 @@ const ContactForm = ({ endpoint, ...props }) => {
 
   // ? reset state after interval
   useEffect(() => {
-    if (typeof window !== undefined) {
-      setFormStatus(initialFormStatus);
-    }
+    setFormStatus((initialFormStatus) => ({
+      ...initialFormStatus,
+      succeess: false,
+      error: [false, ""],
+    }));
   }, [formState]);
 
   // ?
