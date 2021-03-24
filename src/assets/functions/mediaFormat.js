@@ -31,9 +31,14 @@ const identifyFormat = (str) => {
 };
 
 // ? return correct html element based on media type
-export const mediaFormat = (url, compress = true) => {
+export const mediaFormat = (url, poster, compress = true) => {
   return identifyFormat(url).type === "video" ? (
-    <video autoPlay loop muted>
+    <video
+      autoPlay
+      loop
+      muted
+      poster={poster ? `${poster}&auto=format,compress` : ""}
+    >
       <source src={url} type={`video/${identifyFormat(url).format}`} />
     </video>
   ) : identifyFormat(url).type === "image" ? (

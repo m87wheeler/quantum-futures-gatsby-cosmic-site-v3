@@ -35,7 +35,7 @@ const Index = ({ data }) => {
   // *** destructure landing data
   const {
     title,
-    metadata: { hero_media, text_color },
+    metadata: { hero_media, backup_media, text_color },
   } = data.cosmicjsLandingPage;
 
   // *** destructure page metadata
@@ -59,7 +59,9 @@ const Index = ({ data }) => {
       <Layout>
         {/** Background Media */}
         <Background>
-          <VideoWrapper>{mediaFormat(hero_media.imgix_url)}</VideoWrapper>
+          <VideoWrapper>
+            {mediaFormat(hero_media.imgix_url, backup_media.imgix_url)}
+          </VideoWrapper>
         </Background>
         {/** Title Section */}
         <LandingSection>
@@ -118,6 +120,9 @@ export const query = graphql`
       title
       metadata {
         hero_media {
+          imgix_url
+        }
+        backup_media {
           imgix_url
         }
         text_colour
