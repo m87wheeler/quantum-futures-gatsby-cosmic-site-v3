@@ -27,6 +27,21 @@ export const Wrapper = styled.div`
     position: relative;
     z-index: 1;
   }
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    padding-left: calc(100vw / 12);
+    padding-right: calc(100vw / 12);
+  }
+
+  @media (min-width: ${(p) => p.theme.media.lg.min}) {
+    padding-left: calc((100vw / 12) * 2);
+    padding-right: calc((100vw / 12) * 2);
+  }
+
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    padding-left: calc((100vw / 12) * 3);
+    padding-right: calc((100vw / 12) * 3);
+  }
 `;
 
 export const Icon = styled.img`
@@ -53,9 +68,33 @@ export const Icon = styled.img`
     transition: top ${appearDuration}ms ease-out,
       opacity ${appearDuration}ms ease-out;
   }
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    top: calc(50% + 3rem);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 20rem;
+
+    &.${classes.card}-appear {
+      top: calc(50% + 3rem);
+    }
+
+    &.${classes.card}-enter {
+      top: calc(50% + 3rem);
+    }
+
+    &.${classes.card}-enter-done {
+      top: 50%;
+    }
+  }
 `;
 
 export const Subtitle = styled(Typography)`
   padding: 0 10%;
   font-weight: 700;
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    align-self: center;
+    max-width: 75vw;
+  }
 `;

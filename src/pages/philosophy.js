@@ -1,13 +1,18 @@
 import * as React from "react";
-import { useEffect } from "react";
-import styled from "styled-components";
 import { graphql } from "gatsby";
 
 // *** components
 import Layout from "../style/Layout";
 import Helmet from "../components/single/Helmet/Helmet";
-import InnerHTML from "../components/single/InnerHTML/InnerHTML";
 import PhilosophyPrinciple from "../components/views/PhilosophyPrinciple/PhilosophyPrinciple";
+import Typography from "../components/single/Typography/Typography";
+
+// *** styled components
+import {
+  Wrapper,
+  LandingWrapper,
+  Introduction,
+} from "../style/pages/Philosophy.style";
 
 const PhilosophyPage = ({ data }) => {
   // *** destructure philosophy data
@@ -24,11 +29,6 @@ const PhilosophyPage = ({ data }) => {
   // *** destructure site metadata
   const { title_prefix, canonical } = data.cosmicjsSiteMetadata.metadata;
 
-  // ?
-  useEffect(() => {
-    console.log(philosophies);
-  }, [philosophies]);
-
   return (
     <>
       <Helmet
@@ -38,9 +38,19 @@ const PhilosophyPage = ({ data }) => {
         keywords={keywords}
       />
       <Layout>
-        <h1>{title}</h1>
-        <InnerHTML html={content} />
-        <div>
+        <LandingWrapper>
+          <Typography
+            element="h2"
+            variant="h1"
+            gradient
+            color="primary"
+            align="center"
+          >
+            {title}
+          </Typography>
+          <Introduction html={content} align="justify" />
+        </LandingWrapper>
+        <Wrapper>
           {philosophies.map(({ node }, i) => (
             <PhilosophyPrinciple
               key={node.id}
@@ -51,7 +61,7 @@ const PhilosophyPage = ({ data }) => {
               content={node.content}
             />
           ))}
-        </div>
+        </Wrapper>
       </Layout>
     </>
   );
