@@ -28,8 +28,6 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
   } = pageContext;
   const { scrollDirection } = useScroll();
 
-  console.log(pageContext);
-
   return (
     <>
       <Helmet
