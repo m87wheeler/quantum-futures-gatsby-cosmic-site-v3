@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://quantumfuturesgatsbycosmi81003.gatsbyjs.io`,
   },
   plugins: [
+    `gatsby-plugin-gatsby-cloud`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
