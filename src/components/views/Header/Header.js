@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import { useState } from "react";
-import Typography from "../../single/Typography/Typography";
+// import Typography from "../../single/Typography/Typography";
 // import PropTypes from 'prop-types'
 
 // *** data, hooks & context
@@ -9,7 +9,12 @@ import Typography from "../../single/Typography/Typography";
 // *** components
 
 // *** styled components
-import { Logo, StyledHamburger, StyledNavMenu, Wrapper } from "./Header.style";
+import {
+  StyledMainLogo,
+  StyledHamburger,
+  StyledNavMenu,
+  Wrapper,
+} from "./Header.style";
 
 const Header = ({ ...props }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -19,16 +24,9 @@ const Header = ({ ...props }) => {
 
   return (
     <Wrapper {...props}>
-      <Logo>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography element="span" variant="h4" color="white">
-            Quantum
-          </Typography>
-          <Typography element="span" variant="h4" color="white">
-            Futures
-          </Typography>
-        </Link>
-      </Logo>
+      {/* <Link to="/" style={{ textDecoration: "none" }}> */}
+      <StyledMainLogo />
+      {/* </Link> */}
       <StyledHamburger active={navOpen} onClick={toggleNav} />
       <StyledNavMenu active={navOpen} />
     </Wrapper>

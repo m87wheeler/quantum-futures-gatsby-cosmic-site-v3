@@ -10,13 +10,13 @@ import {
 const colorOption = css`
   ${(p) =>
     p.color === "secondary"
-      ? "rgb(233,22,255)"
+      ? `rgb(${p.theme.secondary.main})`
       : p.color === "danger"
-      ? "rgb(220,20,60)"
+      ? `rgb(${p.theme.common.danger})`
       : p.color === "confirm"
-      ? "rgb(46,139,87)"
+      ? `rgb(${p.theme.common.confirm})`
       : p.color === "primary"
-      ? "rgb(0,163,163)"
+      ? `rgb(${p.theme.primary.main})`
       : p.color}
 `;
 
@@ -67,13 +67,13 @@ const Element = styled.button`
       &:hover {
         background: ${(p) =>
           p.color === "secondary"
-            ? "rgba(255,105,180, .1)"
+            ? `rgba(${p.theme.secondary.main}, .1)`
             : p.color === "danger"
-            ? "rgba(220,20,60, .1)"
+            ? `rgba(${p.theme.common.danger}, .1)`
             : p.color === "confirm"
-            ? "rgba(46,139,87, .1)"
+            ? `rgba(${p.theme.common.confirm}, .1)`
             : p.color === "primary"
-            ? "rgba(32,178,170, .1)"
+            ? `rgba(${p.theme.primary.main}, .1)`
             : p.color};
       }
     `}

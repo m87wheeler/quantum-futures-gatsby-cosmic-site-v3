@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Location = styled.p`
-  color: rgb(233, 22, 255);
+  color: ${(p) => `rgb(${p.theme.primary.main})`};
 `;
 
 const Wrapper = styled.div`

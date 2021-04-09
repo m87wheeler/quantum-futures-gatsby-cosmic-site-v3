@@ -3,14 +3,14 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   primary: {
-    main: "225, 81, 198",
+    main: "0, 121, 181",
     contrast: "255, 255, 255",
-    dark: "162, 40, 97",
+    dark: "0, 101, 161",
   },
   secondary: {
-    main: "59, 125, 134",
+    main: "0, 121, 181",
     contrast: "255, 255, 255",
-    dark: "30, 62, 67",
+    dark: "0, 101, 161",
   },
   common: {
     black: "17, 17, 17",
