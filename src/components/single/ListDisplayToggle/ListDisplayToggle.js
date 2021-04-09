@@ -20,16 +20,24 @@ const Option = styled.label`
   span {
     background: ${(p) =>
       p.active
-        ? `${p.color === "secondary" ? "rgb(233,22,255)" : "rgb(0,163,163)"}`
-        : "rgb(200, 200, 200)"};
+        ? `${
+            p.color === "secondary"
+              ? `rgb(${p.theme.secondary.main})`
+              : `rgb(${p.theme.primary.main})`
+          }`
+        : `rgb(${p.theme.common.grey[300]})`};
     transition: background 0.3s ease-in-out;
 
     &:before,
     &:after {
       background: ${(p) =>
         p.active
-          ? `${p.color === "secondary" ? "rgb(233,22,255)" : "rgb(0,163,163)"}`
-          : "rgb(200, 200, 200)"};
+          ? `${
+              p.color === "secondary"
+                ? `rgb(${p.theme.secondary.main})`
+                : `rgb(${p.theme.primary.main})`
+            }`
+          : `rgb(${p.theme.common.grey[300]})`};
       transition: background 0.3s ease-in-out;
     }
   }
