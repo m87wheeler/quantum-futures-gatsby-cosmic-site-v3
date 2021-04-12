@@ -6,13 +6,14 @@ import { graphql } from "gatsby";
 import Layout from "../style/Layout";
 import ListDisplayToggle from "../components/single/ListDisplayToggle/ListDisplayToggle";
 import FilterPosts from "../components/composite/FilterPosts/FilterPosts";
+import Helmet from "../components/single/Helmet/Helmet";
 
 // *** styled components
 import {
   DisplayToggleWrapper,
   StyledNewsfeedList,
+  Title,
 } from "../style/pages/Newsfeed.style";
-import Helmet from "../components/single/Helmet/Helmet";
 
 const NewsfeedPage = ({ data }) => {
   // *** toggle between grid and list view
@@ -100,8 +101,21 @@ const NewsfeedPage = ({ data }) => {
             selected={catSelected}
             onChange={handleChange}
             onClick={handleClear}
+            style={{ gridArea: "filter", justifySelf: "flex-start" }}
           />
-          <ListDisplayToggle onClick={handleLayout} />
+          <Title
+            element="h2"
+            variant="h3"
+            gradient
+            color="primary"
+            align="center"
+          >
+            Newsfeed
+          </Title>
+          <ListDisplayToggle
+            onClick={handleLayout}
+            style={{ gridArea: "toggle", justifySelf: "flex-end" }}
+          />
         </DisplayToggleWrapper>
         <StyledNewsfeedList
           posts={filteredPosts.length ? filteredPosts : posts}
