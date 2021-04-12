@@ -10,7 +10,7 @@ import styled from "styled-components";
 const Wrapper = styled.main`
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
+  /* height: 100%; */
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: grid;
