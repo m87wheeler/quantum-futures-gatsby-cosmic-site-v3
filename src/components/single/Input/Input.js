@@ -26,6 +26,9 @@ const InputElement = styled.input`
   ${sharedStyle}
 `;
 const TextArea = styled.textarea`
+  font-family: ${(p) => p.theme.font.family.sans};
+  resize: none;
+
   ${sharedStyle}
   min-height: 8rem;
 `;
