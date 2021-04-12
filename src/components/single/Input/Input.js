@@ -10,10 +10,17 @@ import Typography from "../Typography/Typography";
 // *** styled components
 const sharedStyle = css`
   width: 100%;
-  border: none;
+  border: 0.125rem solid transparent;
+  border-bottom: ${(p) => `.125rem solid rgb(${p.theme.common.grey[500]})`};
   border-radius: 0;
   padding: 0.5rem 0.75rem;
   font-size: ${(p) => p.theme.font.size.md};
+  transition: border 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border: ${(p) => `.125rem solid rgb(${p.theme.primary.main})`};
+  }
 `;
 const InputElement = styled.input`
   ${sharedStyle}

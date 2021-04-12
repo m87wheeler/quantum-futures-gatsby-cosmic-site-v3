@@ -7,6 +7,19 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+// const colorOption = css`
+//   ${(p) =>
+//     p.color === "secondary"
+//       ? `rgb(${p.theme.secondary.main})`
+//       : p.color === "danger"
+//       ? `rgb(${p.theme.common.danger})`
+//       : p.color === "confirm"
+//       ? `rgb(${p.theme.common.confirm})`
+//       : p.color === "primary"
+//       ? `rgb(${p.theme.primary.main})`
+//       : p.color}
+// `;
+
 const colorOption = css`
   ${(p) =>
     p.color === "secondary"
@@ -17,7 +30,16 @@ const colorOption = css`
       ? `rgb(${p.theme.common.confirm})`
       : p.color === "primary"
       ? `rgb(${p.theme.primary.main})`
-      : p.color}
+      : p.color}/* ${(p) =>
+    p.gradient &&
+    css`
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      ${(p) =>
+        p.color === "secondary"
+          ? p.theme.secondary.gradient
+          : p.theme.primary.gradient}
+    `} */
 `;
 
 const Element = styled.button`
@@ -32,7 +54,7 @@ const Element = styled.button`
   color: white;
   border: 0.1rem solid ${colorOption};
   border-radius: 0;
-  box-shadow: ${(p) => (p.shadow ? p.theme.shadow.main : null)};
+  box-shadow: ${(p) => (p.flat ? null : p.theme.shadow.main)};
   font-family: "Lato", sans-serif;
   font-size: 1rem;
   text-transform: capitalize;
@@ -98,7 +120,8 @@ const Button = ({
   icon,
   iconRight,
   value,
-  shadow,
+  flat,
+  gradient,
   children,
   ...props
 }) => {
@@ -121,7 +144,8 @@ const Button = ({
       icon={icon}
       iconRight={iconRight}
       value={value}
-      shadow={shadow}
+      flat={flat}
+      gradient={gradient}
       {...props}
     >
       {!iconRight && icon && <FontAwesomeIcon icon={chooseIcon()} />}
@@ -136,7 +160,8 @@ Button.defaultProps = {
   variant: "contained",
   size: "md",
   iconRight: false,
-  shadow: false,
+  flat: false,
+  // gradient: true,
 };
 
 Button.propTypes = {
@@ -148,7 +173,8 @@ Button.propTypes = {
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   icon: PropTypes.oneOf(["chevronLeft", "chevronRight"]),
   iconRight: PropTypes.bool,
-  shadow: PropTypes.bool,
+  flat: PropTypes.bool,
+  gradient: PropTypes.bool,
   children: PropTypes.node,
 };
 

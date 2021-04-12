@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
 import { CSSTransition } from "react-transition-group";
 // import PropTypes from 'prop-types'
 

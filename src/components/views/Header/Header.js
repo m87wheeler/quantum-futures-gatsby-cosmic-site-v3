@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import * as React from "react";
 import { useState } from "react";
 // import Typography from "../../single/Typography/Typography";
@@ -11,6 +10,7 @@ import { useState } from "react";
 // *** styled components
 import {
   StyledMainLogo,
+  LogoLink,
   StyledHamburger,
   StyledNavMenu,
   Wrapper,
@@ -24,9 +24,9 @@ const Header = ({ ...props }) => {
 
   return (
     <Wrapper {...props}>
-      {/* <Link to="/" style={{ textDecoration: "none" }}> */}
-      <StyledMainLogo />
-      {/* </Link> */}
+      <LogoLink to="/" style={{ textDecoration: "none" }}>
+        <StyledMainLogo />
+      </LogoLink>
       <StyledHamburger active={navOpen} onClick={toggleNav} />
       <StyledNavMenu active={navOpen} />
     </Wrapper>
