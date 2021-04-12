@@ -52,6 +52,29 @@ export const VideoWrapper = styled.div`
   }
 `;
 
+export const LandingContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: 1px;
+  perspective-origin: 0 0;
+`;
+
+export const TitleSection = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  transform-origin: 0 0;
+  transform: translateZ(-2px) scale(3);
+`;
+
 export const LandingSection = styled(Section)`
   height: calc(100vh - 4.5rem);
   background: transparent;

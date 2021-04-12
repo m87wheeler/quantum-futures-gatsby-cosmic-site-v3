@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // *** data, hooks & context
+import { ParallaxProvider } from "react-scroll-parallax";
 import { GlobalStyle } from "./GlobalStyle";
 import { Theme } from "./Theme";
 
@@ -36,7 +37,9 @@ const Layout = ({ background, children }) => {
       <GlobalStyle />
       <StyledHeader />
       <LayoutContainer>
-        <Main background={background}>{children}</Main>
+        <Main background={background}>
+          <ParallaxProvider>{children}</ParallaxProvider>
+        </Main>
         <StyledFooter />
       </LayoutContainer>
     </Theme>

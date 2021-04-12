@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import { CSSTransition } from "react-transition-group";
@@ -19,19 +18,10 @@ import {
   classes,
   Background,
   VideoWrapper,
-  LandingContainer,
-  TitleSection,
   LandingSection,
   Title,
   StyledNewsfeed,
 } from "../style/pages/Index.style";
-
-// ***
-const Item = styled.div`
-  width: 100vw;
-  height: calc(100vh - 4.5rem);
-  background: red;
-`;
 
 const Index = ({ data }) => {
   // *** specify when page has loaded
@@ -67,13 +57,20 @@ const Index = ({ data }) => {
         keywords={keywords}
       />
       <Layout>
+        {/** Background Media */}
         <Background>
           <VideoWrapper>
             {mediaFormat(hero_media.imgix_url, backup_media.imgix_url)}
           </VideoWrapper>
         </Background>
-        <LandingContainer>
-          <TitleSection>
+        {/** Title Section */}
+        <LandingSection>
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
+          >
             <Title
               element="h2"
               variant="h1"
@@ -82,12 +79,13 @@ const Index = ({ data }) => {
             >
               {title}
             </Title>
-          </TitleSection>
-          <StyledNewsfeed
-            posts={data.allCosmicjsBlogPosts.edges}
-            background="black"
-          />
-        </LandingContainer>
+          </CSSTransition>
+        </LandingSection>
+        {/** Newsfeed Section */}
+        <StyledNewsfeed
+          posts={data.allCosmicjsBlogPosts.edges}
+          background="black"
+        />
       </Layout>
     </>
   );
