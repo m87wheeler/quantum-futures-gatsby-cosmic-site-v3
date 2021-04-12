@@ -16,7 +16,7 @@ const Element = styled.div`
   /* border: none; */
   /* border-radius: 0; */
   text-transform: uppercase;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: ${(p) => p.theme.font.family.header};
   font-size: ${(p) => p.theme.font.size.xs};
   font-weight: 600;
   line-height: 1;

@@ -20,18 +20,13 @@ export const List = styled.ul`
   text-align: right;
   opacity: 1;
 
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
+  // ! FOLLOWUP removed as per client feedback
+  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
     height: 100%;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-  }
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-  }
+  } */
 `;
 
 export const Collapse = styled(List)`
@@ -40,9 +35,8 @@ export const Collapse = styled(List)`
   overflow: hidden;
   transition: padding 0.2s ease-in-out, max-height 0.2s ease-in-out;
 
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
+  // ! FOLLOWUP removed as per client feedback
+  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
     position: absolute;
     top: 100%;
     left: auto;
@@ -55,11 +49,7 @@ export const Collapse = styled(List)`
     white-space: nowrap;
     overflow: hidden;
     background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
-  }
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-  }
+  } */
 `;
 
 export const ListItem = styled.li`
@@ -89,11 +79,8 @@ export const ListItem = styled.li`
         padding-top: 1rem;
         max-height: 100vh;
       }
-    `}
-
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    `}// ! FOLLOWUP removed as per client feedback
+  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -101,37 +88,32 @@ export const ListItem = styled.li`
     height: 100%;
 
     ${(p) =>
-      p.active &&
-      css`
-        ${Collapse} {
-          max-height: 100vh;
-          padding: 1rem 2rem;
-          overflow: visible;
-        }
-      `}
-  }
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    font-size: ${(p) => p.theme.font.size.lg};
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-  }
+    p.active &&
+    css`
+      ${Collapse} {
+        max-height: 100vh;
+        padding: 1rem 2rem;
+        overflow: visible;
+      }
+    `}
+  } */
 `;
 
 export const Wrapper = styled.nav`
   padding: 3rem 1.5rem;
   background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(2px);
   color: ${(p) => `rgb(${p.theme.common.white})`};
+  z-index: 9999;
 
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
+  // ! FOLLOWUP removed as per client feedback
+  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
     padding: 0;
     background: transparent;
     backdrop-filter: none;
-  }
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+  } */
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    clip-path: polygon(60% 0%, 100% 0, 100% 100%, 35% 100%);
   }
 `;

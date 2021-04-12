@@ -27,7 +27,7 @@ const StyledHeader = styled(Header)`
   z-index: 999;
 `;
 const StyledFooter = styled(Footer)`
-  z-index: 999;
+  z-index: 99;
 `;
 
 const Layout = ({ background, children }) => {
