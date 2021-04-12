@@ -79,7 +79,16 @@ export const ListItem = styled.li`
         padding-top: 1rem;
         max-height: 100vh;
       }
-    `}// ! FOLLOWUP removed as per client feedback
+    `}
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    font-size: ${(p) => p.theme.font.size.header.h3};
+  }
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    font-size: ${(p) => p.theme.font.size.header.h2};
+  }
+
+  // ! FOLLOWUP removed as per client feedback
   /* @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: flex;
     flex-flow: row nowrap;

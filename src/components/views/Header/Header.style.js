@@ -23,7 +23,6 @@ export const StyledMainLogo = styled(QFLogo)`
 `;
 
 export const StyledHamburger = styled(Hamburger)`
-  margin-right: 1rem;
   z-index: 999;
 
   // ! FOLLOWUP removed as per client feedback
@@ -70,12 +69,16 @@ export const Backdrop = styled.div`
 export const Wrapper = styled.header`
   height: 4.5rem;
   width: 100%;
-  padding: 0;
+  padding: 0 1rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   color: ${(p) => `rgb(${p.theme.common.white})`};
+
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    padding: 0 calc((100vh / 12) * 2);
+  }
 
   // ! FOLLOWUP removed as per client feedback
   /* @media (min-width: ${(p) => p.theme.media.md.min}) {
