@@ -1,17 +1,12 @@
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 import Hamburger from "../../single/Hamburger/Hamburger";
 import NavMenu from "../NavMenu/NavMenu";
 import QFLogo from "../../../assets/svg/QFLogo";
 
-export const Logo = styled.h1`
+export const LogoLink = styled(Link)`
   padding-left: 1rem;
-
-  span {
-    display: block;
-    font-size: ${(p) => p.theme.font.size.header.h4};
-    line-height: 1;
-  }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 1 / 3;
@@ -25,15 +20,6 @@ export const Logo = styled.h1`
 export const StyledMainLogo = styled(QFLogo)`
   height: 3rem;
   width: auto;
-  padding-left: 1rem;
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 1 / 3;
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    grid-column: 2 / 4;
-    padding: 0;
-  }
 `;
 
 export const StyledHamburger = styled(Hamburger)`

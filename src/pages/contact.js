@@ -24,7 +24,6 @@ const FlexGrid = styled.div`
   column-gap: 1rem;
   gap: 1rem;
   padding: 1rem;
-  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     display: grid;
@@ -62,7 +61,7 @@ const ContactPage = ({ data }) => {
         >
           {title}
         </Title>
-        {content ? <Text html={content} color="white" align="center" /> : null}
+        {content ? <Text html={content} align="center" /> : null}
         <StyledContactForm endpoint={endpoint} />
       </FlexGrid>
     </Layout>

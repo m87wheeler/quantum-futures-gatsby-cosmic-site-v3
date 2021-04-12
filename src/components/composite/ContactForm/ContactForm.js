@@ -7,18 +7,11 @@ import styled from "styled-components";
 
 // *** components
 import Input from "../../single/Input/Input";
-import Button from "../../single/Button/Button";
-import Typography from "../../single/Typography/Typography";
 import FlexStack from "../../single/FlexStack/FlexStack";
 import { validateEmail } from "../../../assets/functions/validateEmail";
 
 // *** styled components
-const FormFeedback = styled(Typography)`
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  min-height: 2rem;
-`;
+import { FormFeedback, SubmitButton } from "./ContactForm.style";
 
 const ContactForm = ({ endpoint, ...props }) => {
   const initialFormState = {
@@ -112,7 +105,7 @@ const ContactForm = ({ endpoint, ...props }) => {
         value={formState.message}
         onInput={handleInput}
       />
-      <Button onClick={handleSubmit}>Submit</Button>
+      <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
       <FormFeedback
         color={
           formStatus.error[0]

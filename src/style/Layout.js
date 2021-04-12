@@ -15,10 +15,11 @@ import Footer from "../components/views/Footer/Footer";
 const LayoutContainer = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
   width: 100%;
   height: 100vh;
+  min-height: 100vh;
 `;
 
 const StyledMain = styled(Main)`

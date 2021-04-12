@@ -92,8 +92,12 @@ export const PostDetails = styled.div`
 `;
 
 export const StyledInnerHTML = styled(InnerHTML)`
-  padding: 1rem;
+  padding: 2rem;
   text-align: justify;
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    text-align: left;
+  }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 2 / 12;

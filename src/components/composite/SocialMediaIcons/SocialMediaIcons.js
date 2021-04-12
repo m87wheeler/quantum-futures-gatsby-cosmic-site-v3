@@ -21,8 +21,9 @@ const Wrapper = styled.ul`
     width: 2rem;
     height: 2rem;
     padding: 0.375rem;
-    background: ${(p) => `rgba(${p.theme.primary.main}, .75)`};
-    border-radius: 0.25rem;
+    background: ${(p) => `rgba(${p.theme.primary.main}, 0)`};
+    /* border-radius: 0.25rem; */
+    border-radius: 100%;
     transition: background 0.2s ease-in-out;
 
     ${LinkWrapper} {
@@ -35,18 +36,18 @@ const Wrapper = styled.ul`
 
         g,
         path {
-          fill: ${(p) => `rgb(${p.theme.common.grey[800]})`};
+          fill: ${(p) => `rgb(${p.theme.primary.main})`};
           transition: fill 0.2s ease-in-out;
         }
       }
     }
 
     &:hover {
-      background: ${(p) => `rgba(${p.theme.primary.main}, 0)`};
+      background: ${(p) => `rgba(${p.theme.primary.main}, .75)`};
 
       svg {
         path {
-          fill: ${(p) => `rgb(${p.theme.primary.main})`};
+          fill: ${(p) => `rgb(${p.theme.common.grey[800]})`};
         }
       }
     }

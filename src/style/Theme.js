@@ -6,11 +6,21 @@ const theme = {
     main: "0, 121, 181",
     contrast: "255, 255, 255",
     dark: "0, 101, 161",
+    gradient: `-webkit-linear-gradient(
+        30deg,
+        rgb(0, 121, 181),
+        rgb(0, 101, 161)
+      )`,
   },
   secondary: {
     main: "0, 121, 181",
     contrast: "255, 255, 255",
     dark: "0, 101, 161",
+    gradient: `-webkit-linear-gradient(
+      30deg,
+      rgb(0, 121, 181),
+      rgb(0, 101, 161)
+    )`,
   },
   common: {
     black: "17, 17, 17",
@@ -31,7 +41,7 @@ const theme = {
     },
   },
   shadow: {
-    main: `0 1px 3px rgba(0, 0, 0, 0.52), 0 1px 2px rgba(0, 0, 0, 0.54)`,
+    main: `0 2px 5px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.45)`,
   },
   font: {
     size: {
