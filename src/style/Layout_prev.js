@@ -1,3 +1,9 @@
+// ! ***************
+// ! ***************
+// ! DO NOT DELETE *
+// ! ************* *
+// ! ***************
+
 import * as React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -14,10 +20,16 @@ import Footer from "../components/views/Footer/Footer";
 // *** styled components
 const LayoutContainer = styled.div`
   position: relative;
-  padding-top: 4.5rem;
   display: grid;
-  grid-template-rows: minmax(calc(100vh - 4.5rem), 1fr) auto;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+`;
+
+const StyledMain = styled(Main)`
+  padding-top: 4.5rem;
 `;
 
 const StyledHeader = styled(Header)`
@@ -27,7 +39,7 @@ const StyledHeader = styled(Header)`
   z-index: 999;
 `;
 const StyledFooter = styled(Footer)`
-  z-index: 99;
+  z-index: 999;
 `;
 
 const Layout = ({ background, children }) => {
@@ -36,7 +48,7 @@ const Layout = ({ background, children }) => {
       <GlobalStyle />
       <StyledHeader />
       <LayoutContainer>
-        <Main background={background}>{children}</Main>
+        <StyledMain background={background}>{children}</StyledMain>
         <StyledFooter />
       </LayoutContainer>
     </Theme>

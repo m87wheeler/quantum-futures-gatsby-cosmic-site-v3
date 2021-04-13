@@ -10,13 +10,14 @@ import styled from "styled-components";
 const Wrapper = styled.main`
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
+  /* height: 100%; */
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 1rem;
     gap: 1rem;
+    align-content: flex-start;
   }
 `;
 

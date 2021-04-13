@@ -5,7 +5,7 @@ const theme = {
   primary: {
     main: "0, 121, 181",
     contrast: "255, 255, 255",
-    dark: "0, 101, 161",
+    dark: "0, 81, 141",
     gradient: `-webkit-linear-gradient(
         30deg,
         rgb(0, 121, 181),
@@ -15,7 +15,7 @@ const theme = {
   secondary: {
     main: "0, 121, 181",
     contrast: "255, 255, 255",
-    dark: "0, 101, 161",
+    dark: "0, 81, 141",
     gradient: `-webkit-linear-gradient(
       30deg,
       rgb(0, 121, 181),
@@ -63,7 +63,8 @@ const theme = {
     },
     family: {
       sans: `'Lato', sans-serif`,
-      header: `'Josefin Sans', sans-serif`,
+      // header: `'Josefin Sans', sans-serif`,
+      header: `'Numans', sans-serif`,
       serif: "serif",
     },
   },

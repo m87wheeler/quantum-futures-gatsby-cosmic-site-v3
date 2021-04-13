@@ -33,7 +33,7 @@ const FilterPosts = ({ cats, selected = [], onChange, onClick, ...props }) => {
 
   return (
     <Wrapper ref={ref} {...props}>
-      <Button onClick={toggleSelect} color="secondary" variant="text">
+      <Button onClick={toggleSelect} color="secondary" variant="text" flat>
         Filter
       </Button>
       <Dropdown active={selectOpen}>

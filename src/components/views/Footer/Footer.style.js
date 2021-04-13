@@ -3,6 +3,7 @@ import SocialMediaIcons from "../../composite/SocialMediaIcons/SocialMediaIcons"
 
 export const List = styled.ul``;
 export const Wrapper = styled.footer`
+  position: relative;
   display: grid;
   grid-template-rows: auto auto;
   row-gap: 1rem;

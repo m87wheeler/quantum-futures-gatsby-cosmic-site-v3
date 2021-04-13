@@ -64,9 +64,13 @@ module.exports = {
               variants: [`400`, `400i`, `700`, `800`],
             },
             {
-              family: `Josefin Sans`,
+              family: `Numans`,
               variants: [`400`, `700`],
             },
+            // {
+            //   family: `Josefin Sans`,
+            //   variants: [`400`, `700`],
+            // },
           ],
         },
       },

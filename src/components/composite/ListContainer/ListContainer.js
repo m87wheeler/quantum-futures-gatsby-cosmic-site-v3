@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
   row-gap: 1rem;
 
   ${(p) =>
