@@ -36,7 +36,7 @@ const Index = ({ data }) => {
   // *** destructure landing data
   const {
     title,
-    metadata: { hero_media, backup_media, text_color },
+    metadata: { hero_media, text_color },
   } = data.cosmicjsLandingPage;
 
   // *** destructure page metadata
@@ -66,7 +66,8 @@ const Index = ({ data }) => {
         {/** Background Media */}
         <Background>
           <VideoWrapper>
-            {mediaFormat(hero_media.imgix_url, backup_media.imgix_url)}
+            {/* {mediaFormat(hero_media.imgix_url, backup_media.imgix_url)} */}
+            {mediaFormat(hero_media.imgix_url)}
           </VideoWrapper>
         </Background>
         {/** Title Section */}
