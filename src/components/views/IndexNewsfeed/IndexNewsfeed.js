@@ -26,7 +26,6 @@ const IndexNewsFeed = ({ background, posts, ...props }) => {
       >
         Latest Stories
       </Typography>
-      <Typography align="center">{/**/}</Typography>
       <NewsfeedList
         posts={posts}
         layout={width > 800 ? "grid" : "list"}

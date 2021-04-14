@@ -15,6 +15,7 @@ const Wrapper = styled.div`
       display: grid;
       gap: 1rem;
       grid-template-columns: 1fr;
+      align-content: flex-start;
 
       @media (min-width: ${(p) => p.theme.media.sm.min}) {
         grid-template-columns: repeat(2, 1fr);

@@ -125,9 +125,6 @@ export const query = graphql`
         hero_media {
           imgix_url
         }
-        backup_media {
-          imgix_url
-        }
         text_colour
       }
     }
@@ -147,3 +144,8 @@ export const query = graphql`
     }
   }
 `;
+
+// ! Removed from query
+// backup_media {
+//   imgix_url
+// }

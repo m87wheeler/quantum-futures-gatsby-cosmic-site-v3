@@ -14,14 +14,6 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    height: 75vh;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    height: 50vh;
-  }
 `;
 
 export const VideoWrapper = styled.div`
@@ -55,17 +47,15 @@ export const VideoWrapper = styled.div`
 export const LandingSection = styled(Section)`
   height: calc(100vh - 4.5rem);
   background: transparent;
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    height: calc(75vh - 4.5rem);
-  }
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    height: calc(50vh - 4.5rem);
-  }
 `;
 
 export const Title = styled(Typography)`
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    width: 75%;
+    margin-left: 12.5%;
+    font-size: 4.5rem !important;
+  }
+
   &.${classes.hero}-appear {
     opacity: 0;
     margin-top: 3rem;
@@ -86,6 +76,8 @@ export const Title = styled(Typography)`
 `;
 
 export const StyledNewsfeed = styled(IndexNewsfeed)`
+  min-height: calc(100vh - 4.5rem);
+
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 1 / 13;
     padding: 1rem calc(100vw / 12);

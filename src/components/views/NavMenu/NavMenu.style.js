@@ -19,14 +19,6 @@ export const List = styled.ul`
   list-style: none;
   text-align: right;
   opacity: 1;
-
-  // ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    height: 100%;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-  } */
 `;
 
 export const Collapse = styled(List)`
@@ -34,22 +26,6 @@ export const Collapse = styled(List)`
   max-height: 0;
   overflow: hidden;
   transition: padding 0.2s ease-in-out, max-height 0.2s ease-in-out;
-
-  // ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    position: absolute;
-    top: 100%;
-    left: auto;
-    right: 0;
-    flex-flow: column nowrap;
-    max-height: 0;
-    height: auto;
-    padding: 0 2rem;
-    text-align: right;
-    white-space: nowrap;
-    overflow: hidden;
-    background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
-  } */
 `;
 
 export const ListItem = styled.li`
@@ -87,25 +63,6 @@ export const ListItem = styled.li`
   @media (min-width: ${(p) => p.theme.media.xl.min}) {
     font-size: ${(p) => p.theme.font.size.header.h2};
   }
-
-  // ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    font-size: ${(p) => p.theme.font.size.md};
-    height: 100%;
-
-    ${(p) =>
-    p.active &&
-    css`
-      ${Collapse} {
-        max-height: 100vh;
-        padding: 1rem 2rem;
-        overflow: visible;
-      }
-    `}
-  } */
 `;
 
 export const Wrapper = styled.nav`
@@ -115,14 +72,8 @@ export const Wrapper = styled.nav`
   color: ${(p) => `rgb(${p.theme.common.white})`};
   z-index: 9999;
 
-  // ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    padding: 0;
-    background: transparent;
-    backdrop-filter: none;
-  } */
-
   @media (min-width: ${(p) => p.theme.media.md.min}) {
+    padding-right: calc(100vw / 12);
     clip-path: polygon(60% 0%, 100% 0, 100% 100%, 35% 100%);
   }
 `;
