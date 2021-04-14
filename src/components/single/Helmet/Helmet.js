@@ -3,7 +3,11 @@ import { Helmet as HelmetElement } from "react-helmet";
 
 const Helmet = ({ title, canonical, description, keywords }) => {
   return (
-    <HelmetElement>
+    <HelmetElement
+      htmlAttributes={{
+        lang: "en-GB",
+      }}
+    >
       <meta charSet="utf-8" />
       <title>{title}</title>
       <link rel="canonical" href={canonical} />
