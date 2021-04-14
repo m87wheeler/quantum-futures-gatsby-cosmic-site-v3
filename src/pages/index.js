@@ -26,10 +26,21 @@ import {
 const Index = ({ data }) => {
   // *** specify when page has loaded
   const [pageReady, setPageReady] = useState(false);
+  const [offsetY, setOffsetY] = useState(0);
+
+  // ?
+  const handleScrollOffset = () => setOffsetY(window.pageYOffset);
 
   // *** set page ready when page has loaded
   useEffect(() => {
     if (typeof window !== undefined) setPageReady(true);
+  }, []);
+
+  // *** set page Y offset for parallax
+  useEffect(() => {
+    if (typeof window !== undefined)
+      window.addEventListener("scroll", handleScrollOffset);
+    return () => window.removeEventListener("scroll", handleScrollOffset);
   }, []);
 
   // *** destructure landing data
@@ -76,6 +87,7 @@ const Index = ({ data }) => {
               variant="h1"
               color={text_color === "dark" ? "black" : "white"}
               align="center"
+              style={{ transform: `translateY(${offsetY * 0.5}px)` }}
             >
               {title}
             </Title>
