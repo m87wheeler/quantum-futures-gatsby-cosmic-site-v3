@@ -11,6 +11,7 @@ import { mediaFormat } from "../assets/functions/mediaFormat";
 // *** components
 import Layout from "../style/Layout";
 import Helmet from "../components/single/Helmet/Helmet";
+import Parallax from "../components/single/Parallax/Parallax";
 
 // *** styled components
 import {
@@ -26,21 +27,10 @@ import {
 const Index = ({ data }) => {
   // *** specify when page has loaded
   const [pageReady, setPageReady] = useState(false);
-  const [offsetY, setOffsetY] = useState(0);
-
-  // ?
-  const handleScrollOffset = () => setOffsetY(window.pageYOffset);
 
   // *** set page ready when page has loaded
   useEffect(() => {
     if (typeof window !== undefined) setPageReady(true);
-  }, []);
-
-  // *** set page Y offset for parallax
-  useEffect(() => {
-    if (typeof window !== undefined)
-      window.addEventListener("scroll", handleScrollOffset);
-    return () => window.removeEventListener("scroll", handleScrollOffset);
   }, []);
 
   // *** destructure landing data
@@ -76,22 +66,23 @@ const Index = ({ data }) => {
         </Background>
         {/** Title Section */}
         <LandingSection>
-          <CSSTransition
-            in={pageReady}
-            timeout={appearDuration}
-            classNames={classes.hero}
-            appear
-          >
-            <Title
-              element="h2"
-              variant="h1"
-              color={text_color === "dark" ? "black" : "white"}
-              align="center"
-              style={{ transform: `translateY(${offsetY * 0.5}px)` }}
+          <Parallax>
+            <CSSTransition
+              in={pageReady}
+              timeout={appearDuration}
+              classNames={classes.hero}
+              appear
             >
-              {title}
-            </Title>
-          </CSSTransition>
+              <Title
+                element="h2"
+                variant="h1"
+                color={text_color === "dark" ? "black" : "white"}
+                align="center"
+              >
+                {title}
+              </Title>
+            </CSSTransition>
+          </Parallax>
         </LandingSection>
         {/** Newsfeed Section */}
         <StyledNewsfeed
