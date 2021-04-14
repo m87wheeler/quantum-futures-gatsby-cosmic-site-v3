@@ -47,12 +47,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     "gatsby-plugin-styled-components",
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "12345",
-      },
-    },
     "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-plugin-webfonts`,
