@@ -49,6 +49,11 @@ const Index = ({ data }) => {
   // *** destructure site metadata
   const { title_prefix, canonical } = data.cosmicjsSiteMetadata.metadata;
 
+  // ! Removed from query
+  // backup_media {
+  //   imgix_url
+  // }
+
   return (
     <>
       <Helmet
@@ -144,8 +149,3 @@ export const query = graphql`
     }
   }
 `;
-
-// ! Removed from query
-// backup_media {
-//   imgix_url
-// }
