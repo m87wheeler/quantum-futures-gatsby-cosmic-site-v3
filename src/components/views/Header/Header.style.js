@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 
 import Hamburger from "../../single/Hamburger/Hamburger";
@@ -58,12 +58,13 @@ export const StyledNavMenu = styled(NavMenu)`
 
 export const Backdrop = styled.div`
   position: absolute;
-  top: 0;
+  top: -4.5rem;
   left: 0;
   width: 100%;
   height: 100%;
   background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
   backdrop-filter: blur(2px);
+  transition: top 0.3s ease-in-out;
 `;
 
 export const Wrapper = styled.header`
@@ -80,7 +81,13 @@ export const Wrapper = styled.header`
     padding: 0 calc((100vh / 12) * 2);
   }
 
-  // ! FOLLOWUP removed as per client feedback
+  ${(p) =>
+    p.backdrop &&
+    css`
+      ${Backdrop} {
+        top: 0;
+      }
+    `}// ! FOLLOWUP removed as per client feedback
   /* @media (min-width: ${(p) => p.theme.media.md.min}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);

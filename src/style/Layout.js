@@ -30,11 +30,11 @@ const StyledFooter = styled(Footer)`
   z-index: 99;
 `;
 
-const Layout = ({ background, children }) => {
+const Layout = ({ background, backdropActive, children }) => {
   return (
     <Theme>
       <GlobalStyle />
-      <StyledHeader />
+      <StyledHeader backdropActive={backdropActive} />
       <LayoutContainer>
         <Main background={background}>{children}</Main>
         <StyledFooter />
@@ -45,10 +45,12 @@ const Layout = ({ background, children }) => {
 
 Layout.defaultProps = {
   background: "white",
+  backdropActive: true,
 };
 
 Layout.propTypes = {
   background: PropTypes.oneOf(["white", "black"]),
+  backdropActive: PropTypes.bool,
 };
 
 export default Layout;
