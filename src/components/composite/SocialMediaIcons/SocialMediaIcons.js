@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 // import PropTypes from 'prop-types'
 
 // *** data, hooks & context
@@ -9,7 +9,7 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import SvgIcon from "../../single/SvgIcon/SvgIcon";
 
 // *** styled components
-const LinkWrapper = styled((props) => <Link {...props} />)``;
+const LinkWrapper = styled.a``;
 const Wrapper = styled.ul`
   justify-self: center;
   display: flex;
@@ -121,7 +121,7 @@ const SocialMediaIcons = ({ ...props }) => {
         if (node.metadata.profile_active) {
           return (
             <li key={node.id}>
-              <LinkWrapper to={node.metadata.profile_link}>
+              <LinkWrapper href={node.metadata.profile_link} target="_blank">
                 <SvgIcon viewBox={icons[node.title.toLowerCase()].viewBox}>
                   {icons[node.title.toLowerCase()].path}
                 </SvgIcon>

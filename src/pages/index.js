@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import { CSSTransition } from "react-transition-group";
 
-// import PropTypes from 'prop-types'
-
 // *** data, hooks & context
 import { mediaFormat } from "../assets/functions/mediaFormat";
+import { useScroll } from "../hooks/useScroll";
 
 // *** components
 import Layout from "../style/Layout";
@@ -27,6 +26,10 @@ import {
 const Index = ({ data }) => {
   // *** specify when page has loaded
   const [pageReady, setPageReady] = useState(false);
+
+  // *** scroll properties
+  const [backdropActive, setBackdropActive] = useState(false);
+  const { scrollY } = useScroll();
 
   // *** set page ready when page has loaded
   useEffect(() => {
@@ -49,10 +52,16 @@ const Index = ({ data }) => {
   // *** destructure site metadata
   const { title_prefix, canonical } = data.cosmicjsSiteMetadata.metadata;
 
-  // ! Removed from query
-  // backup_media {
-  //   imgix_url
-  // }
+  // ?
+  useEffect(() => {
+    let innerHeight;
+    if (window !== undefined) innerHeight = window.innerHeight;
+    if (scrollY > innerHeight * 0.9) {
+      setBackdropActive(true);
+    } else {
+      setBackdropActive(false);
+    }
+  }, [scrollY]);
 
   return (
     <>
@@ -62,13 +71,10 @@ const Index = ({ data }) => {
         description={description}
         keywords={keywords}
       />
-      <Layout>
+      <Layout backdropActive={backdropActive}>
         {/** Background Media */}
         <Background>
-          <VideoWrapper>
-            {/* {mediaFormat(hero_media.imgix_url, backup_media.imgix_url)} */}
-            {mediaFormat(hero_media.imgix_url)}
-          </VideoWrapper>
+          <VideoWrapper>{mediaFormat(hero_media.imgix_url)}</VideoWrapper>
         </Background>
         {/** Title Section */}
         <LandingSection>
@@ -99,10 +105,6 @@ const Index = ({ data }) => {
     </>
   );
 };
-
-// Index.defaultProps = {}
-
-// Index.propTypes = {}
 
 export default Index;
 
