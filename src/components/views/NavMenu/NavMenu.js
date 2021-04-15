@@ -56,12 +56,10 @@ const NavMenu = ({ active, ...props }) => {
           Ecosystem
           <Collapse>
             <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/partnerships/business">
-                Business Partnerships
-              </NavLink>
+              <NavLink to="/partnerships">Business Partnerships</NavLink>
             </ListItem>
             <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/partnerships/client">Community</NavLink>
+              <NavLink to="/community">Community</NavLink>
             </ListItem>
           </Collapse>
         </ListItem>
