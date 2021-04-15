@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   padding: 0 2rem;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 2 / 12;
+    grid-column: 3 / 11;
   }
 `;
 

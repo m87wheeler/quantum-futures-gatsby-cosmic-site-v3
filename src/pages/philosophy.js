@@ -48,7 +48,7 @@ const PhilosophyPage = ({ data }) => {
           >
             {title}
           </Typography>
-          <Introduction html={content} align="justify" />
+          <Introduction html={content} />
         </LandingWrapper>
         <Wrapper>
           {philosophies.map(({ node }, i) => (

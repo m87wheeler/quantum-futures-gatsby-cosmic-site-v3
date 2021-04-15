@@ -68,7 +68,6 @@ const PhilosophyPrinciple = ({
       <InnerHTML
         html={content}
         color={background === "black" ? "white" : "black"}
-        align="justify"
       />
     </Wrapper>
   );

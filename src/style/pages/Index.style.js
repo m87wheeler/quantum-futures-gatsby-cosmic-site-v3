@@ -14,6 +14,7 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
+  background: goldenrod;
 `;
 
 export const VideoWrapper = styled.div`
@@ -36,10 +37,10 @@ export const VideoWrapper = styled.div`
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
     video,
     img {
+      height: 100%;
       max-height: none;
       min-height: 100%;
       min-width: 100vw;
-      max-width: 110vw;
     }
   }
 `;
