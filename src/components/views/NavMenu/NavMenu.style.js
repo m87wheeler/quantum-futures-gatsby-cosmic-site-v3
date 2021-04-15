@@ -28,9 +28,9 @@ export const Collapse = styled(List)`
   transition: padding 0.2s ease-in-out, max-height 0.2s ease-in-out;
 `;
 
-export const ListItem = styled.li`
+const ListItemStyles = css`
   position: relative;
-  color: ${(p) => `rgb(${p.theme.common.white})`};
+  color: ${(p) => `rgb(${p.theme.common.black})`};
   font-size: ${(p) => p.theme.font.size.header.h4};
   font-weight: 500;
   line-height: 1.5;
@@ -65,12 +65,19 @@ export const ListItem = styled.li`
   }
 `;
 
+export const ListItem = styled.li`
+  ${ListItemStyles};
+
+  a {
+    ${ListItemStyles}
+  }
+`;
+
 export const Wrapper = styled.nav`
-  padding: 3rem 1.5rem;
-  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
+  padding: 7.5rem 1.5rem 3rem;
+  background: ${(p) => `rgba(${p.theme.common.white}, .95)`};
   backdrop-filter: blur(2px);
-  color: ${(p) => `rgb(${p.theme.common.white})`};
-  z-index: 9999;
+  z-index: 99;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     padding-right: calc(100vw / 12);

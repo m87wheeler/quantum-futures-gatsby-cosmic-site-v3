@@ -14,7 +14,7 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: goldenrod;
+  background: ${(p) => `rgb(${p.theme.common.black})`};
 `;
 
 export const VideoWrapper = styled.div`

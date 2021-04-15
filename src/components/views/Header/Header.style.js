@@ -24,36 +24,16 @@ export const StyledMainLogo = styled(QFLogo)`
 
 export const StyledHamburger = styled(Hamburger)`
   z-index: 999;
-
-  // ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    display: none;
-  } */
 `;
 
 export const StyledNavMenu = styled(NavMenu)`
   position: fixed;
-  top: 4.5rem;
+  top: 0;
   right: ${(p) => (p.active ? 0 : "-110vw")};
   width: 100%;
-  height: calc(100vh - 4.5rem);
+  height: 100vh;
   transition: right 0.3s ease-in-out;
   z-index: 9999;
-
-  // ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 3 / 13;
-    position: relative;
-    align-self: center;
-    top: 0;
-    right: 1rem;
-    height: 100%;
-    padding-left: 30%;
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    grid-column: 4 / 12;
-    right: 0;
-  } */
 `;
 
 export const Backdrop = styled.div`
@@ -87,11 +67,5 @@ export const Wrapper = styled.header`
       ${Backdrop} {
         top: 0;
       }
-    `}// ! FOLLOWUP removed as per client feedback
-  /* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 1rem;
-    gap: 1rem;
-  } */
+    `}
 `;
