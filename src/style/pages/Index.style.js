@@ -14,7 +14,7 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: goldenrod;
+  background: ${(p) => `rgb(${p.theme.common.black})`};
 `;
 
 export const VideoWrapper = styled.div`
@@ -31,16 +31,24 @@ export const VideoWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 100%;
+
+    @media (min-aspect-ratio: 16/9) {
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      width: auto;
+      height: 100%;
+    }
   }
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
     video,
     img {
-      height: 100%;
-      max-height: none;
+      /* height: 100%;
       min-height: 100%;
-      min-width: 100vw;
+      min-width: 100vw; */
     }
   }
 `;
