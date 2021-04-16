@@ -50,7 +50,11 @@ export const LandingSection = styled(Section)`
 `;
 
 export const Title = styled(Typography)`
-  font-size: 4rem !important;
+  font-size: 3rem !important;
+
+  @media (min-width: ${(p) => p.theme.media.xs.min}) {
+    font-size: 3.5rem !important;
+  }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     max-width: 52rem;
