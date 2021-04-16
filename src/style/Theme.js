@@ -63,8 +63,7 @@ const theme = {
     },
     family: {
       sans: `'Lato', sans-serif`,
-      // header: `'Josefin Sans', sans-serif`,
-      header: `'Numans', sans-serif`,
+      header: `'Josefin Sans', sans-serif`,
       serif: "serif",
     },
   },
