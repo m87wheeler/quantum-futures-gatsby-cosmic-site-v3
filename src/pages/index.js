@@ -79,28 +79,28 @@ const Index = ({ data }) => {
         </Background>
         {/** Title Section */}
         <LandingSection>
-          <Parallax>
-            <CSSTransition
-              in={pageReady}
-              timeout={appearDuration}
-              classNames={classes.hero}
-              appear
+          {/* <Parallax> */}
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
+          >
+            <Title
+              element="h2"
+              variant="h1"
+              color={text_color === "dark" ? "black" : "white"}
+              style={{
+                opacity: (
+                  (viewportHeight - scrollY * 2.5) /
+                  viewportHeight
+                ).toFixed(1),
+              }}
             >
-              <Title
-                element="h2"
-                variant="h1"
-                color={text_color === "dark" ? "black" : "white"}
-                style={{
-                  opacity: (
-                    (viewportHeight - scrollY * 2.5) /
-                    viewportHeight
-                  ).toFixed(1),
-                }}
-              >
-                {title}
-              </Title>
-            </CSSTransition>
-          </Parallax>
+              {title}
+            </Title>
+          </CSSTransition>
+          {/* </Parallax> */}
         </LandingSection>
         {/** Newsfeed Section */}
         <StyledNewsfeed
