@@ -10,7 +10,6 @@ import { useScroll } from "../hooks/useScroll";
 // *** components
 import Layout from "../style/Layout";
 import Helmet from "../components/single/Helmet/Helmet";
-import Parallax from "../components/single/Parallax/Parallax";
 
 // *** styled components
 import {
@@ -25,8 +24,9 @@ import {
 
 const Index = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
-  const [backdropActive, setBackdropActive] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(0);
+  const [backdropActive, setBackdropActive] = useState(false);
+  const [opacity, setOpacity] = useState(1);
   const { scrollY } = useScroll();
 
   // *** set page ready when page has loaded
@@ -36,6 +36,19 @@ const Index = ({ data }) => {
       setViewportHeight(window.innerHeight);
     }
   }, []);
+
+  // *** change opacity on scroll
+  useEffect(() => {
+    let innerHeight;
+    if (window !== undefined) innerHeight = window.innerHeight;
+    if (scrollY > innerHeight * 0.9) {
+      setBackdropActive(true);
+    } else {
+      setBackdropActive(false);
+    }
+
+    setOpacity(((viewportHeight - scrollY * 2.5) / viewportHeight).toFixed(2));
+  }, [scrollY, viewportHeight]);
 
   // *** destructure landing data
   const {
@@ -53,17 +66,6 @@ const Index = ({ data }) => {
   // *** destructure site metadata
   const { title_prefix, canonical } = data.cosmicjsSiteMetadata.metadata;
 
-  // ?
-  useEffect(() => {
-    let innerHeight;
-    if (window !== undefined) innerHeight = window.innerHeight;
-    if (scrollY > innerHeight * 0.9) {
-      setBackdropActive(true);
-    } else {
-      setBackdropActive(false);
-    }
-  }, [scrollY]);
-
   return (
     <>
       <Helmet
@@ -79,7 +81,6 @@ const Index = ({ data }) => {
         </Background>
         {/** Title Section */}
         <LandingSection>
-          {/* <Parallax> */}
           <CSSTransition
             in={pageReady}
             timeout={appearDuration}
@@ -91,16 +92,12 @@ const Index = ({ data }) => {
               variant="h1"
               color={text_color === "dark" ? "black" : "white"}
               style={{
-                opacity: (
-                  (viewportHeight - scrollY * 2.5) /
-                  viewportHeight
-                ).toFixed(1),
+                opacity: opacity,
               }}
             >
               {title}
             </Title>
           </CSSTransition>
-          {/* </Parallax> */}
         </LandingSection>
         {/** Newsfeed Section */}
         <StyledNewsfeed
