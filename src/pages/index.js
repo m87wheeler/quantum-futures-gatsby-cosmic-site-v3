@@ -24,16 +24,17 @@ import {
 } from "../style/pages/Index.style";
 
 const Index = ({ data }) => {
-  // *** specify when page has loaded
   const [pageReady, setPageReady] = useState(false);
-
-  // *** scroll properties
   const [backdropActive, setBackdropActive] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState(0);
   const { scrollY } = useScroll();
 
   // *** set page ready when page has loaded
   useEffect(() => {
-    if (typeof window !== undefined) setPageReady(true);
+    if (typeof window !== undefined) {
+      setPageReady(true);
+      setViewportHeight(window.innerHeight);
+    }
   }, []);
 
   // *** destructure landing data
@@ -89,7 +90,12 @@ const Index = ({ data }) => {
                 element="h2"
                 variant="h1"
                 color={text_color === "dark" ? "black" : "white"}
-                align="center"
+                style={{
+                  opacity: (
+                    (viewportHeight - scrollY * 2.5) /
+                    viewportHeight
+                  ).toFixed(1),
+                }}
               >
                 {title}
               </Title>
