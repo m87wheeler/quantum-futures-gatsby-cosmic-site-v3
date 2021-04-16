@@ -5,18 +5,20 @@ import PropTypes from "prop-types";
 // *** data, hooks & context
 
 // *** components
+import HeaderLogo from "../../composite/HeaderLogo/HeaderLogo";
 
 // *** styled components
 import {
-  StyledMainLogo,
-  LogoLink,
+  // LogoText,
+  // StyledMainLogo,
+  // LogoLink,
   StyledHamburger,
   StyledNavMenu,
   Backdrop,
   Wrapper,
 } from "./Header.style";
 
-const Header = ({ backdropActive, ...props }) => {
+const Header = ({ backdropActive, index, ...props }) => {
   const [navOpen, setNavOpen] = useState(false);
 
   // ? toggle nav status
@@ -24,9 +26,7 @@ const Header = ({ backdropActive, ...props }) => {
 
   return (
     <Wrapper backdrop={backdropActive} {...props}>
-      <LogoLink to="/" style={{ textDecoration: "none", zIndex: "999" }}>
-        <StyledMainLogo />
-      </LogoLink>
+      {index ? null : <HeaderLogo />}
       <StyledHamburger active={navOpen} onClick={toggleNav} />
       <StyledNavMenu active={navOpen} />
       <Backdrop />

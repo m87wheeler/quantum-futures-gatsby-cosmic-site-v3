@@ -196,6 +196,7 @@ export const Wrapper = styled.div`
 
     ${ImageContainer} {
       background-position: top left;
+      // TODO SCALE INSTEAD OF MOVE
     }
   }
 

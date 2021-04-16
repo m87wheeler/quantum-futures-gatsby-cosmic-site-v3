@@ -46,7 +46,7 @@ const PhilosophyPrinciple = ({
         element="h3"
         variant="h2"
         color={background === "black" ? "white" : "black"}
-        align="center"
+        align="left"
       >
         {title}
       </Typography>
@@ -57,6 +57,7 @@ const PhilosophyPrinciple = ({
       >
         {subtitle}
       </Subtitle>
+      {/** TODO add images **/}
       <CSSTransition
         in={displayIcon}
         timeout={appearDuration}

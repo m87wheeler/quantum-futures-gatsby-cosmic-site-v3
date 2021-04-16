@@ -28,6 +28,8 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
   } = pageContext;
   const { scrollDirection } = useScroll();
 
+  // TODO Richard will send newsfeed template layout idea
+
   return (
     <>
       <Helmet
@@ -62,8 +64,12 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
         <DummyAside>
           <Typography gradient color="primary" weight="900" size="xl">
             Dummy Aside Content For Screens &gt;1280px wide
+            {/** TODO 3 most recent articles relating to category **/}
+            {/** TODO prioritise quantum futures content - date ? **/}
+            {/** 2 weeks maximum **/}
           </Typography>
         </DummyAside>
+        {/** NEXT and PREV button */}
       </Layout>
     </>
   );

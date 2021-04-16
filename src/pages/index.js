@@ -16,6 +16,8 @@ import {
   appearDuration,
   classes,
   Background,
+  IndexHeaderLogo,
+  Overlay,
   VideoWrapper,
   LandingSection,
   Title,
@@ -74,9 +76,11 @@ const Index = ({ data }) => {
         description={description}
         keywords={keywords}
       />
-      <Layout backdropActive={backdropActive}>
+      <Layout backdropActive={backdropActive} index>
+        <IndexHeaderLogo index />
         {/** Background Media */}
         <Background>
+          <Overlay />
           <VideoWrapper>{mediaFormat(hero_media.imgix_url)}</VideoWrapper>
         </Background>
         {/** Title Section */}
@@ -99,6 +103,7 @@ const Index = ({ data }) => {
             </Title>
           </CSSTransition>
         </LandingSection>
+        {/** TODO Intro Text **/}
         {/** Newsfeed Section */}
         <StyledNewsfeed
           posts={data.allCosmicjsBlogPosts.edges}

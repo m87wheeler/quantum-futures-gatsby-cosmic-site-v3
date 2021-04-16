@@ -64,6 +64,10 @@ const ContactPage = ({ data }) => {
         {content ? <Text html={content} align="center" /> : null}
         <StyledContactForm endpoint={endpoint} />
       </FlexGrid>
+      {/** map iframe **/}
+      {/** uk / europe / usa / middle east telephone numbers **/}
+      {/** world clocks **/}
+      {/** GMT / CET / Eastern Time / Western Time **/}
     </Layout>
   );
 };

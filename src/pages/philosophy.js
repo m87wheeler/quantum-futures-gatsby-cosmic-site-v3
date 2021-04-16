@@ -44,7 +44,7 @@ const PhilosophyPage = ({ data }) => {
             variant="h1"
             gradient
             color="primary"
-            align="center"
+            align="left"
           >
             {title}
           </Typography>

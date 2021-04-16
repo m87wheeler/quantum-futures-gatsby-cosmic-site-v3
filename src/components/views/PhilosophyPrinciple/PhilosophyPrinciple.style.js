@@ -34,13 +34,13 @@ export const Wrapper = styled.div`
   }
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    padding-left: calc((100vw / 12) * 2);
-    padding-right: calc((100vw / 12) * 2);
+    padding-left: calc((100vw / 12));
+    padding-right: calc((100vw / 12));
   }
 
   @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    padding-left: calc((100vw / 12) * 3);
-    padding-right: calc((100vw / 12) * 3);
+    padding-left: calc((100vw / 12) * 2);
+    padding-right: calc((100vw / 12) * 2);
   }
 `;
 
@@ -90,11 +90,10 @@ export const Icon = styled.img`
 `;
 
 export const Subtitle = styled(Typography)`
-  padding: 0 10%;
   font-weight: 700;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    align-self: center;
+    align-self: flex-start;
     max-width: 75vw;
   }
 `;

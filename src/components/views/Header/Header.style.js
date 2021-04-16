@@ -1,29 +1,12 @@
 import styled, { css } from "styled-components";
-import { Link } from "gatsby";
 
 import Hamburger from "../../single/Hamburger/Hamburger";
 import NavMenu from "../NavMenu/NavMenu";
-import QFLogo from "../../../assets/svg/QFLogo";
-
-export const LogoLink = styled(Link)`
-  /* padding-left: 1rem; */
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 1 / 3;
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    grid-column: 2 / 4;
-    padding: 0;
-  }
-`;
-
-export const StyledMainLogo = styled(QFLogo)`
-  height: 3rem;
-  width: auto;
-`;
 
 export const StyledHamburger = styled(Hamburger)`
   position: relative;
+  grid-column: 2 / 3;
+  justify-self: flex-end;
   z-index: 99999;
 `;
 
@@ -52,15 +35,10 @@ export const Wrapper = styled.header`
   height: 4.5rem;
   width: 100%;
   padding: 0 1rem;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   color: ${(p) => `rgb(${p.theme.common.white})`};
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    padding: 0 calc((100vh / 12) * 2);
-  }
 
   ${(p) =>
     p.backdrop &&

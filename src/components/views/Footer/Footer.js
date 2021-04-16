@@ -170,7 +170,7 @@ const Footer = ({ ...props }) => {
           <p>&copy; 2021 Quantum Futures</p>
           <p>
             Website Designed by <a href="website">MWWDD</a> &{" "}
-            <a href="website">RW2D</a>
+            <a href="website">RWD2</a>
           </p>
           <p>
             Website Built by <a href="website">MWWDD</a>
@@ -179,8 +179,10 @@ const Footer = ({ ...props }) => {
       </FootSection>
       <FootSection style={{ gridArea: "address" }}>
         <Address>
-          <span>201 Borough High Street</span>
-          <span>London SE1 1JA</span>
+          <span>100 Alpha House</span>
+          <span>Borough High Street</span>
+          <span>London</span>
+          <span>SE1 1LB</span>
         </Address>
         <ContactDetail href="tel:12345">0203 800 1450</ContactDetail>
       </FootSection>

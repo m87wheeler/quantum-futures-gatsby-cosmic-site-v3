@@ -27,6 +27,10 @@ const Element = styled.button`
   background: transparent;
   cursor: pointer;
 
+  &:focus {
+    outline: none;
+  }
+
   span {
     position: absolute;
     left: 0;
