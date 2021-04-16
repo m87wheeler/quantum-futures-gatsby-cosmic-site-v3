@@ -6,7 +6,7 @@ import NavMenu from "../NavMenu/NavMenu";
 import QFLogo from "../../../assets/svg/QFLogo";
 
 export const LogoLink = styled(Link)`
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 1 / 3;
@@ -23,7 +23,8 @@ export const StyledMainLogo = styled(QFLogo)`
 `;
 
 export const StyledHamburger = styled(Hamburger)`
-  z-index: 999;
+  position: relative;
+  z-index: 99999;
 `;
 
 export const StyledNavMenu = styled(NavMenu)`

@@ -42,15 +42,6 @@ export const VideoWrapper = styled.div`
       height: 100%;
     }
   }
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    video,
-    img {
-      /* height: 100%;
-      min-height: 100%;
-      min-width: 100vw; */
-    }
-  }
 `;
 
 export const LandingSection = styled(Section)`
@@ -59,10 +50,16 @@ export const LandingSection = styled(Section)`
 `;
 
 export const Title = styled(Typography)`
+  font-size: 4rem !important;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    max-width: 52rem;
+    font-size: 5rem !important;
+  }
+
   @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    width: 75%;
-    margin-left: 12.5%;
-    font-size: 4.5rem !important;
+    width: 90%;
+    font-size: 6rem !important;
   }
 
   &.${classes.hero}-appear {
