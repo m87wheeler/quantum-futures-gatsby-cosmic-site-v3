@@ -12,7 +12,7 @@ const colorOption = css`
 const Element = styled.div`
   padding: 0.5rem 0.5rem 0.3rem 0.5rem;
   background: ${colorOption};
-  color: white;
+  color: ${(p) => `rgb(${p.theme.common.white})`};
   /* border: none; */
   /* border-radius: 0; */
   text-transform: uppercase;

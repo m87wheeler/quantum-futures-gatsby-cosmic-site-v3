@@ -24,7 +24,7 @@ const theme = {
   },
   common: {
     black: "17, 17, 17",
-    white: "255, 255, 255",
+    white: "242, 246, 252", // QF_Back
     danger: "220, 20, 60",
     confirm: "46, 139, 87",
     grey: {

@@ -24,6 +24,11 @@ const Wrapper = styled.div`
     max-height: 50vh;
     margin: 0 auto;
   }
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    columns: ${(p) => p.cols};
+    column-gap: 1rem;
+  }
 `;
 
 const InnerHTML = ({
@@ -32,6 +37,7 @@ const InnerHTML = ({
   lineHeight,
   font,
   color = "black",
+  cols,
   ...props
 }) => {
   return (
@@ -40,6 +46,7 @@ const InnerHTML = ({
       lineHeight={lineHeight}
       font={font}
       color={color}
+      cols={cols}
       {...props}
       dangerouslySetInnerHTML={{ __html: html }}
     />
@@ -51,6 +58,7 @@ InnerHTML.defaultProps = {
   align: "left",
   lineHeight: 1.5,
   font: "default",
+  cols: 1,
 };
 
 InnerHTML.propTypes = {
@@ -58,6 +66,7 @@ InnerHTML.propTypes = {
   align: PropTypes.oneOf(["left", "center", "right", "justify"]),
   lineHeight: PropTypes.number,
   font: PropTypes.oneOf(["default", "header", "mono"]),
+  cols: PropTypes.number,
 };
 
 export default InnerHTML;

@@ -10,6 +10,7 @@ import Typography from "../Typography/Typography";
 // *** styled components
 const sharedStyle = css`
   width: 100%;
+  background: ${(p) => `rgb(${p.theme.common.white})`};
   border: 0.125rem solid transparent;
   border-bottom: ${(p) => `.125rem solid rgb(${p.theme.common.grey[500]})`};
   border-radius: 0;

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Label = styled.label`
-  color: white;
+  color: ${(p) => `rgb(${p.theme.common.white})`};
 `;
 
 const CheckboxGroup = ({ onChange, state, options, ...props }) => {

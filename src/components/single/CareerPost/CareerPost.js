@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   padding: 3rem;
   max-width: 50%;
   background: ${(p) => `rgb(${p.theme.common.black})`};
-  color: white;
+  color: ${(p) => `rgb(${p.theme.common.white})`};
   border: 1px solid rgb(233, 22, 255);
   transition: background 0.3s ease-in-out;
   cursor: pointer;

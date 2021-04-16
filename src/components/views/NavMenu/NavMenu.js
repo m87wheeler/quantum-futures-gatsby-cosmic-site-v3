@@ -12,7 +12,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 // *** styled components
 import { Icon, List, Collapse, ListItem, Wrapper } from "./NavMenu.style";
 const NavLink = styled((props) => <Link {...props} />)`
-  color: white;
+  color: ${(p) => `rgb(${p.theme.common.white})`};
   text-decoration: none;
   font-weight: 500;
 `;

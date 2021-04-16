@@ -68,6 +68,7 @@ const PhilosophyPrinciple = ({
       <InnerHTML
         html={content}
         color={background === "black" ? "white" : "black"}
+        cols={3}
       />
     </Wrapper>
   );

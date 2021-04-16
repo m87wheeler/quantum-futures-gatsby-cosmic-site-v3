@@ -51,7 +51,7 @@ const Element = styled.button`
   justify-items: center;
   padding: 0.5rem 1rem;
   background: ${colorOption};
-  color: white;
+  color: ${(p) => `rgb(${p.theme.common.white})`};
   border: 0.1rem solid ${colorOption};
   border-radius: 0;
   box-shadow: ${(p) => (p.flat ? null : p.theme.shadow.main)};

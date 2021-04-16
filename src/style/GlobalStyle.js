@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-family: ${(p) => p.theme.font.family.sans};
-    background: white;
+    background: ${(p) => `rgb(${p.theme.common.white})`};
     color: ${(p) => `rgb(${p.theme.common.black})`};
   }
 
