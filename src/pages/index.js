@@ -23,6 +23,7 @@ import {
   Title,
   StyledNewsfeed,
 } from "../style/pages/Index.style";
+import LandingIntroduction from "../components/views/LandingIntroduction/LandingIntroduction";
 
 const Index = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -55,7 +56,7 @@ const Index = ({ data }) => {
   // *** destructure landing data
   const {
     title,
-    metadata: { hero_media, text_color },
+    metadata: { hero_media, text_color, landing_introduction },
   } = data.cosmicjsLandingPage;
 
   // *** destructure page metadata
@@ -81,7 +82,9 @@ const Index = ({ data }) => {
         {/** Background Media */}
         <Background>
           <Overlay />
-          <VideoWrapper>{mediaFormat(hero_media.imgix_url)}</VideoWrapper>
+          <VideoWrapper style={{ transform: "translateZ(-2px)" }}>
+            {mediaFormat(hero_media.imgix_url)}
+          </VideoWrapper>
         </Background>
         {/** Title Section */}
         <LandingSection>
@@ -103,7 +106,8 @@ const Index = ({ data }) => {
             </Title>
           </CSSTransition>
         </LandingSection>
-        {/** TODO Intro Text **/}
+        {/** Intro Text **/}
+        <LandingIntroduction text={landing_introduction} />
         {/** Newsfeed Section */}
         <StyledNewsfeed
           posts={data.allCosmicjsBlogPosts.edges}
@@ -142,6 +146,7 @@ export const query = graphql`
           imgix_url
         }
         text_colour
+        landing_introduction
       }
     }
     cosmicjsPageMetadata(title: { eq: "Homepage" }) {

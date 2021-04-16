@@ -42,13 +42,7 @@ export const LogoLink = styled(Link)`
       ${StyledMainLogo} {
         height: 3.75rem;
       }
-    `}/* @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 1 / 3;
-  }
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    grid-column: 2 / 4;
-    padding: 0;
-  } */
+    `}
 `;
 
 const HeaderLogo = ({ index, ...props }) => {
