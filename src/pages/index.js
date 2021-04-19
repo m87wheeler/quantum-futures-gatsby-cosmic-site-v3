@@ -29,7 +29,7 @@ const Index = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(0);
   const [backdropActive, setBackdropActive] = useState(false);
-  const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(0);
   const { scrollY } = useScroll();
 
   // *** set page ready when page has loaded
