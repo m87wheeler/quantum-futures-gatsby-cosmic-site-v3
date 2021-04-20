@@ -10,71 +10,43 @@ import Layout from "../style/Layout";
 import ContactForm from "../components/composite/ContactForm/ContactForm";
 import Typography from "../components/single/Typography/Typography";
 import InnerHTML from "../components/single/InnerHTML/InnerHTML";
+import Helmet from "../components/single/Helmet/Helmet";
+import SubscribeForm from "../components/composite/SubscribeForm/SubscribeForm";
+import SocialList from "../components/composite/SocialList/SocialList";
 
 // *** styled components
-const Title = styled(Typography)`
-  padding-top: 1rem;
-`;
-const Text = styled(InnerHTML)``;
-const StyledContactForm = styled(ContactForm)``;
-
-const FlexGrid = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  column-gap: 1rem;
-  gap: 1rem;
-  padding: 1rem;
-
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-
-    ${Title}, ${Text}, ${StyledContactForm} {
-      grid-column: 2 / 12;
-    }
-  }
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 1 / 13;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    ${Title}, ${Text}, ${StyledContactForm} {
-      grid-column: 4 / 10;
-    }
-  }
-`;
+import { LandingWrapper } from "../style/pages/About.style";
 
 const ContactPage = ({ data }) => {
   const { endpoint } = data.cosmicjsContactFormConfiguration.metadata;
   const { title, content } = data.cosmicjsContactPage;
+  const socialArr = data.allCosmicjsSocialMedia.edges;
+
+  console.log(socialArr);
 
   return (
     <Layout>
-      <FlexGrid>
-        <Title
+      <LandingWrapper style={{ gridArea: "intro", minHeight: "0" }}>
+        <Typography
           element="h2"
-          variant="h3"
+          variant="h2"
           gradient
           color="primary"
-          align="center"
+          transform="uppercase"
         >
-          {title}
-        </Title>
-        {content ? <Text html={content} align="center" /> : null}
-        <StyledContactForm endpoint={endpoint} />
-      </FlexGrid>
-      {/** map iframe **/}
-      {/** uk / europe / usa / middle east telephone numbers **/}
-      {/** world clocks **/}
-      {/** GMT / CET / Eastern Time / Western Time **/}
+          Contact Us
+        </Typography>
+        <InnerHTML html={content} />
+      </LandingWrapper>
+      <LandingWrapper style={{ gridArea: "contact-form", paddingTop: "1rem" }}>
+        <ContactForm />
+      </LandingWrapper>
+      <LandingWrapper style={{ gridArea: "social", paddingTop: "1rem" }}>
+        <SocialList socialArr={socialArr} background="white" underline />
+      </LandingWrapper>
     </Layout>
   );
 };
-
-// ContactPage.defaultProps = {}
-
-// ContactPage.propTypes = {}
 
 export default ContactPage;
 
@@ -87,6 +59,18 @@ export const query = graphql`
     cosmicjsContactFormConfiguration {
       metadata {
         endpoint
+      }
+    }
+    allCosmicjsSocialMedia {
+      edges {
+        node {
+          id
+          title
+          metadata {
+            profile_active
+            profile_link
+          }
+        }
       }
     }
   }

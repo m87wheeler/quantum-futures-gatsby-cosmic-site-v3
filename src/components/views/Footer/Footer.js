@@ -1,12 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
 
 // *** data, hooks & context
 
 // *** components
-import Input from "../../single/Input/Input";
-import Button from "../../single/Button/Button";
-import Typography from "../../single/Typography/Typography";
+import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
+import SocialList from "../../composite/SocialList/SocialList";
 
 // *** styled components
 const Wrapper = styled.footer`
@@ -43,28 +43,6 @@ const FootSection = styled.div`
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
     gap: 0.5rem;
-  }
-`;
-
-const Contact = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 0.5rem;
-
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    justify-items: flex-start;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    grid-template-columns: repeat(2, auto);
-  }
-`;
-
-const CallToAction = styled(Typography)`
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    max-width: 25vw;
-    line-height: 1.25;
-    margin: -0.5rem 0 1rem;
   }
 `;
 
@@ -113,17 +91,33 @@ const Address = styled.address`
 const ContactDetail = styled.a``;
 
 const Footer = ({ ...props }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      allCosmicjsSocialMedia {
+        edges {
+          node {
+            id
+            title
+            metadata {
+              profile_active
+              profile_link
+            }
+          }
+        }
+      }
+    }
+  `);
+  const socialArr = data.allCosmicjsSocialMedia.edges;
+
   return (
     <Wrapper {...props}>
-      <FootSection style={{ gridArea: "contact" }}>
-        <CallToAction element="p" variant="h3" color="white" family="header">
-          Subscribe to get the latest news and updates from Quantum Futures
-        </CallToAction>
-        <Contact>
-          <Input type="email" />
-          <Button>Subscribe</Button>
-        </Contact>
-      </FootSection>
+      <SubscribeForm
+        style={{ gridArea: "contact" }}
+        inputName="email"
+        inputValue={"test.email@gmail.com"}
+        onInput={(e) => console.log(e.target.value)}
+        onClick={() => alert("subscribe!")}
+      />
       <FootSection style={{ gridArea: "navigation" }}>
         <NavigationList>
           <li>
@@ -150,20 +144,7 @@ const Footer = ({ ...props }) => {
         </NavigationList>
       </FootSection>
       <FootSection style={{ gridArea: "social" }}>
-        <NavigationList>
-          <li>
-            <a href="website">LinkedIn</a>
-          </li>
-          <li>
-            <a href="website">Facebook</a>
-          </li>
-          <li>
-            <a href="website">Instagram</a>
-          </li>
-          <li>
-            <a href="website">YouTube</a>
-          </li>
-        </NavigationList>
+        <SocialList socialArr={socialArr} />
       </FootSection>
       <FootSection style={{ gridArea: "creator" }}>
         <Creators>
