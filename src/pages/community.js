@@ -9,7 +9,7 @@ import Typography from "../components/single/Typography/Typography";
 import InnerHTML from "../components/single/InnerHTML/InnerHTML";
 
 // *** styled components
-import { LandingWrapper } from "../style/pages/Philosophy.style";
+import { LandingWrapper } from "../style/pages/About.style";
 const Wrapper = styled.div`
   padding: 0 2rem;
 

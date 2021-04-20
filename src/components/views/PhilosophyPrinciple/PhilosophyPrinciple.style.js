@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   min-height: calc(100vh - 4.5rem);
   padding: 3rem 1rem;
   overflow: hidden;
-  background: ${(p) =>
+  background-color: ${(p) =>
     p.background === "black"
       ? `rgb(${p.theme.common.grey[900]})`
       : `rgb(${p.theme.common.white})`};
@@ -42,6 +42,19 @@ export const Wrapper = styled.div`
     padding-left: calc((100vw / 12) * 2);
     padding-right: calc((100vw / 12) * 2);
   }
+`;
+
+export const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: ${(p) => `url(${p.backgroundImage})`};
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  filter: saturate(0);
 `;
 
 export const Icon = styled.img`

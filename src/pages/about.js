@@ -8,11 +8,8 @@ import PhilosophyPrinciple from "../components/views/PhilosophyPrinciple/Philoso
 import Typography from "../components/single/Typography/Typography";
 
 // *** styled components
-import {
-  Wrapper,
-  LandingWrapper,
-  Introduction,
-} from "../style/pages/Philosophy.style";
+import { Wrapper, LandingWrapper } from "../style/pages/About.style";
+import InnerHTML from "../components/single/InnerHTML/InnerHTML";
 
 const PhilosophyPage = ({ data }) => {
   // *** destructure philosophy data
@@ -38,6 +35,18 @@ const PhilosophyPage = ({ data }) => {
         keywords={keywords}
       />
       <Layout>
+        <LandingWrapper style={{ minHeight: "0" }}>
+          <Typography
+            element="h2"
+            variant="h1"
+            gradient
+            color="primary"
+            align="left"
+          >
+            About
+          </Typography>
+          <InnerHTML html={data.cosmicjsAbout.content} />
+        </LandingWrapper>
         <LandingWrapper>
           <Typography
             element="h2"
@@ -48,7 +57,7 @@ const PhilosophyPage = ({ data }) => {
           >
             {title}
           </Typography>
-          <Introduction html={content} />
+          <InnerHTML html={content} />
         </LandingWrapper>
         <Wrapper>
           {philosophies.map(({ node }, i) => (
@@ -56,7 +65,7 @@ const PhilosophyPage = ({ data }) => {
               key={node.id}
               background={i % 2 === 0 ? "black" : "white"}
               title={node.title}
-              icon={node.metadata.icon.imgix_url}
+              backgroundImage={node.metadata.background_image.imgix_url}
               subtitle={node.metadata.subtitle}
               content={node.content}
             />
@@ -71,6 +80,9 @@ export default PhilosophyPage;
 
 export const query = graphql`
   query {
+    cosmicjsAbout {
+      content
+    }
     cosmicjsPhilosophy {
       title
       content
@@ -83,14 +95,14 @@ export const query = graphql`
           content
           metadata {
             subtitle
-            icon {
+            background_image {
               imgix_url
             }
           }
         }
       }
     }
-    cosmicjsPageMetadata(title: { eq: "Philosophy" }) {
+    cosmicjsPageMetadata(title: { eq: "About" }) {
       metadata {
         page_title
         canonical

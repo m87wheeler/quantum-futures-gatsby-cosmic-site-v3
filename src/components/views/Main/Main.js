@@ -16,7 +16,6 @@ const Wrapper = styled.main`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 1rem;
-    gap: 1rem;
     align-content: flex-start;
   }
 `;

@@ -30,20 +30,8 @@ const NavMenu = ({ active, ...props }) => {
         <ListItem onClick={() => toggleSub("")}>
           <NavLink to="/">Home</NavLink>
         </ListItem>
-        <ListItem
-          active={subOpen === "about"}
-          onClick={() => toggleSub("about")}
-        >
-          <Icon icon={faChevronLeft} />
-          About Us
-          <Collapse>
-            <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/philosophy">Our Philosophy</NavLink>
-            </ListItem>
-            <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/testimonials">Testimonials</NavLink>
-            </ListItem>
-          </Collapse>
+        <ListItem onClick={() => toggleSub("")}>
+          <NavLink to="/about">About Us</NavLink>
         </ListItem>
         <ListItem onClick={() => toggleSub()}>
           <NavLink to="/newsfeed">Newsfeed</NavLink>

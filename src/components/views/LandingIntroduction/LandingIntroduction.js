@@ -30,11 +30,29 @@ const Wrapper = styled.div`
     /* font-size: 2rem; */
     color: ${(p) => `rgb(${p.theme.common.white})`};
   }
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-column: 1 / span 12;
+    padding: 0 calc(100vw / 12);
+  }
 `;
 
 const SectionText = styled(Typography)`
-  opacity: 0;
   margin-top: 3rem;
+  opacity: 0;
+  font-size: 1.75rem !important;
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    font-size: 2.5rem !important;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    font-size: 2.25rem !important;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    font-size: 2.75rem !important;
+  }
 
   &.${classes.hero}-appear {
     opacity: 0;
@@ -75,7 +93,6 @@ const LandingIntroduction = ({ text, ...props }) => {
       >
         <SectionText
           element="p"
-          variant="h4"
           weight="600"
           family="header"
           transform="uppercase"

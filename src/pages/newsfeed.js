@@ -96,26 +96,22 @@ const NewsfeedPage = ({ data }) => {
       />
       <Layout>
         <DisplayToggleWrapper>
+          <Title
+            element="h2"
+            variant="h1"
+            gradient
+            color="primary"
+            align="left"
+          >
+            Newsfeed
+          </Title>
           <FilterPosts
             cats={catTypes}
             selected={catSelected}
             onChange={handleChange}
             onClick={handleClear}
-            style={{ gridArea: "filter", justifySelf: "flex-start" }}
           />
-          <Title
-            element="h2"
-            variant="h3"
-            gradient
-            color="primary"
-            align="center"
-          >
-            Newsfeed
-          </Title>
-          <ListDisplayToggle
-            onClick={handleLayout}
-            style={{ gridArea: "toggle", justifySelf: "flex-end" }}
-          />
+          <ListDisplayToggle onClick={handleLayout} />
         </DisplayToggleWrapper>
         <StyledNewsfeedList
           posts={filteredPosts.length ? filteredPosts : posts}

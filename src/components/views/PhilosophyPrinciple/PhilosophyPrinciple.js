@@ -1,10 +1,7 @@
 import * as React from "react";
-import { useState, useRef, useEffect } from "react";
-import { CSSTransition } from "react-transition-group";
 // import PropTypes from 'prop-types'
 
 // *** data, hooks & context
-import { useScroll } from "../../../hooks/useScroll";
 
 // *** components
 import InnerHTML from "../../single/InnerHTML/InnerHTML";
@@ -12,36 +9,21 @@ import Typography from "../../single/Typography/Typography";
 
 // *** styled components
 import {
-  classes,
-  appearDuration,
   Wrapper,
-  Icon,
+  BackgroundImage,
   Subtitle,
 } from "./PhilosophyPrinciple.style";
 
 const PhilosophyPrinciple = ({
   title,
-  icon,
+  background,
   subtitle,
   content,
-  background,
+  backgroundImage,
 }) => {
-  const [displayIcon, setDisplayIcon] = useState(false);
-  const containerRef = useRef(null);
-  const { scrollY } = useScroll();
-
-  // ?
-  useEffect(() => {
-    if (typeof window !== undefined && containerRef.current) {
-      let viewport = window.innerHeight / 2;
-      let container = containerRef.current.getBoundingClientRect().top;
-
-      if (container < viewport) setDisplayIcon(true);
-    }
-  }, [scrollY]);
-
   return (
-    <Wrapper background={background} ref={containerRef}>
+    <Wrapper background={background}>
+      <BackgroundImage backgroundImage={backgroundImage} />
       <Typography
         element="h3"
         variant="h2"
@@ -58,14 +40,6 @@ const PhilosophyPrinciple = ({
         {subtitle}
       </Subtitle>
       {/** TODO add images **/}
-      <CSSTransition
-        in={displayIcon}
-        timeout={appearDuration}
-        classNames={classes.card}
-        appear
-      >
-        <Icon src={icon} alt={`${title} Icon`} />
-      </CSSTransition>
       <InnerHTML
         html={content}
         color={background === "black" ? "white" : "black"}

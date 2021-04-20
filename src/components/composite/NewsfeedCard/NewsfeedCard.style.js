@@ -18,7 +18,7 @@ export const ImageContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: background-position 5s ease-in-out;
+  transition: transform 3s ease-in-out;
 
   ${(p) =>
     p.layout === "grid" &&
@@ -195,8 +195,7 @@ export const Wrapper = styled.div`
     box-shadow: ${(p) => p.theme.shadow.main};
 
     ${ImageContainer} {
-      background-position: top left;
-      // TODO SCALE INSTEAD OF MOVE
+      transform: scale(1.1);
     }
   }
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import InnerHTML from "../../components/single/InnerHTML/InnerHTML";
+import Typography from "../../components/single/Typography/Typography";
 
 export const Wrapper = styled.section`
   display: flex;
@@ -14,22 +14,14 @@ export const Wrapper = styled.section`
 
 export const LandingWrapper = styled(Wrapper)`
   padding: 3rem 1rem;
-`;
 
-export const Introduction = styled(InnerHTML)`
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     padding-left: calc(100vw / 12);
     padding-right: calc(100vw / 12);
   }
 
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    padding-top: 2rem;
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
     padding-left: calc((100vw / 12) * 2);
     padding-right: calc((100vw / 12) * 2);
-  }
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    padding-left: calc((100vw / 12) * 3);
-    padding-right: calc((100vw / 12) * 3);
   }
 `;
