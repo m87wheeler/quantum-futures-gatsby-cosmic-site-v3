@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Helmet as HelmetElement } from "react-helmet";
 
-const Helmet = ({ title, canonical, description, keywords }) => {
+const Helmet = ({ title, canonical, description, keywords, children }) => {
   return (
     <HelmetElement
       htmlAttributes={{
@@ -21,6 +21,7 @@ const Helmet = ({ title, canonical, description, keywords }) => {
         name="viewport"
         content="width=device-width, initial-scale=1.0"
       ></meta>
+      {children}
     </HelmetElement>
   );
 };
