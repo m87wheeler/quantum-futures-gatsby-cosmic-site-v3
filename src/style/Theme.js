@@ -6,21 +6,13 @@ const theme = {
     main: "0, 121, 181",
     contrast: "255, 255, 255",
     dark: "0, 81, 141",
-    gradient: `-webkit-linear-gradient(
-        30deg,
-        rgb(0, 121, 181),
-        rgb(0, 101, 161)
-      )`,
+    gradient: `linear-gradient(25deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 43%, rgba(150,63,255,1) 69%)`,
   },
   secondary: {
     main: "0, 121, 181",
     contrast: "255, 255, 255",
     dark: "0, 81, 141",
-    gradient: `-webkit-linear-gradient(
-      30deg,
-      rgb(0, 121, 181),
-      rgb(0, 101, 161)
-    )`,
+    gradient: `linear-gradient(25deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 43%, rgba(150,63,255,1) 69%)`,
   },
   common: {
     black: "17, 17, 17",

@@ -45,4 +45,10 @@ export const StyledNewsfeedList = styled(NewsfeedList)`
   }
 `;
 
-export const Title = styled(Typography)``;
+export const Title = styled(Typography)`
+  font-size: 2rem !important;
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    font-size: 3rem !important;
+  }
+`;

@@ -96,13 +96,7 @@ const NewsfeedPage = ({ data }) => {
       />
       <Layout>
         <DisplayToggleWrapper>
-          <Title
-            element="h2"
-            variant="h1"
-            gradient
-            color="primary"
-            align="left"
-          >
+          <Title element="h2" gradient color="primary" align="left">
             Newsfeed
           </Title>
           <FilterPosts

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   color: ${(p) => `rgb(${p.theme.common[p.color]})`};
 
   p {
-    margin-bottom: 1.5rem;
+    margin-bottom: ${(p) => (p.collapse ? "0" : "1.5rem")};
   }
 
   img {
@@ -38,6 +38,7 @@ const InnerHTML = ({
   font,
   color = "black",
   cols,
+  collapse = false,
   ...props
 }) => {
   return (
@@ -47,6 +48,7 @@ const InnerHTML = ({
       font={font}
       color={color}
       cols={cols}
+      collapse={collapse}
       {...props}
       dangerouslySetInnerHTML={{ __html: html }}
     />
