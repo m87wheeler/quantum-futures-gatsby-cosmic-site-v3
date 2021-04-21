@@ -17,14 +17,8 @@ const TimezoneClocks = ({ timezoneArr, ...props }) => {
         timezoneArr.map(({ node }, i) => (
           <ClockContainer
             key={node.id}
-            style={{
-              justifySelf:
-                i === 0
-                  ? "flex-start"
-                  : i === timezoneArr.length - 1
-                  ? "flex-end"
-                  : "center",
-            }}
+            index={i}
+            lastItem={timezoneArr.length - 1}
           >
             <Typography
               weight="600"
