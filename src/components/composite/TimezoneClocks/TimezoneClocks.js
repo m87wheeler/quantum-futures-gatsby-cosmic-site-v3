@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 
 // *** data, hooks & context
 
@@ -9,24 +8,24 @@ import Clock from "../../single/Clock/Clock";
 import Typography from "../../single/Typography/Typography";
 
 // *** styled components
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-`;
-
-const ClockContainer = styled.div`
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  gap: 1rem;
-  align-content: flex-end;
-`;
+import { Wrapper, ClockContainer } from "./TimezoneClocks.style";
 
 const TimezoneClocks = ({ timezoneArr, ...props }) => {
   return (
     <Wrapper {...props}>
       {timezoneArr &&
-        timezoneArr.map(({ node }) => (
-          <ClockContainer key={node.id}>
+        timezoneArr.map(({ node }, i) => (
+          <ClockContainer
+            key={node.id}
+            style={{
+              justifySelf:
+                i === 0
+                  ? "flex-start"
+                  : i === timezoneArr.length - 1
+                  ? "flex-end"
+                  : "center",
+            }}
+          >
             <Typography
               weight="600"
               color="primary"
