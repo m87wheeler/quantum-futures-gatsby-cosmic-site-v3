@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Button from "../../components/single/Button/Button";
 import InnerHTML from "../../components/single/InnerHTML/InnerHTML";
+import Typography from "../../components/single/Typography/Typography";
 
-export const Details = styled.div`
+const Details = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -10,9 +11,23 @@ export const Details = styled.div`
   padding: 1rem;
 `;
 
+export const PostDetails = styled(Details)`
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-row: 1 / 2;
+    grid-column: 2 / 12;
+    padding: 1rem 0;
+  }
+`;
+
 export const ShareDetails = styled(Details)`
   padding-top: 0;
   padding-bottom: 2rem;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-row: 4 / 5;
+    grid-column: 2 / 12;
+    padding: 1rem 0;
+  }
 `;
 
 export const CoverImageContainer = styled.div`
@@ -21,9 +36,9 @@ export const CoverImageContainer = styled.div`
   max-height: 20rem;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 1 / 7;
-    grid-row: 1 / 3;
-    padding-bottom: 1rem;
+    grid-column: 2 / 12;
+    grid-row: 3 / 4;
+    padding: 1rem 0;
   }
 `;
 
@@ -36,7 +51,7 @@ export const CoverImage = styled.div`
   background-repeat: no-repeat;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -46,9 +61,24 @@ export const CoverImage = styled.div`
   }
 `;
 
+export const Title = styled(Typography)`
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-row: 2 / 3;
+    grid-column: 2 / 12;
+    padding: 1rem 0;
+  }
+`;
+
 export const StyledInnerHTML = styled(InnerHTML)`
   padding: 1rem 2rem;
   text-align: justify;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-row: 5 / 6;
+    grid-column: 2 / 12;
+    text-align: left;
+    padding: 1rem 0;
+  }
 `;
 
 export const BackButton = styled(Button)`

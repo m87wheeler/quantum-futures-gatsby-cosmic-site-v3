@@ -11,8 +11,9 @@ import Typography from "../../components/single/Typography/Typography";
 
 // *** styled components
 import {
-  Details,
+  PostDetails,
   ShareDetails,
+  Title,
   CoverImageContainer,
   CoverImage,
   StyledInnerHTML,
@@ -38,20 +39,15 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
         keywords={keywords}
       />
       <Layout>
-        <Details>
+        <PostDetails>
           <TypeCard type={post_type} />
           <Typography size="xs">{created}</Typography>
           <Typography size="xs">|</Typography>
           <Typography size="xs">Quantum Futures</Typography>
-        </Details>
-        <Typography
-          element="h2"
-          variant="h1"
-          transform="uppercase"
-          style={{ padding: "1rem" }}
-        >
+        </PostDetails>
+        <Title element="h2" variant="h1" transform="uppercase">
           {title}
-        </Typography>
+        </Title>
         <ShareDetails>
           <Typography element="p">Share</Typography>
           <Typography size="xs">|</Typography>
