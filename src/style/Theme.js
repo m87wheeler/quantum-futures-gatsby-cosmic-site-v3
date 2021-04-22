@@ -3,16 +3,16 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   primary: {
-    main: "0, 121, 181",
+    main: "150, 63, 255",
     contrast: "255, 255, 255",
-    dark: "0, 81, 141",
-    gradient: `linear-gradient(25deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 43%, rgba(150,63,255,1) 69%)`,
+    dark: "100, 3, 205",
+    gradient: `linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 19%, rgba(150,63,255,1) 64%);`,
   },
   secondary: {
-    main: "0, 121, 181",
+    main: "150, 195, 246",
     contrast: "255, 255, 255",
-    dark: "0, 81, 141",
-    gradient: `linear-gradient(25deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 43%, rgba(150,63,255,1) 69%)`,
+    dark: "100, 145, 196",
+    gradient: `linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 19%, rgba(150,63,255,1) 64%);`,
   },
   common: {
     black: "17, 17, 17",

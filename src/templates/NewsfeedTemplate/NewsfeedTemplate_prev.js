@@ -3,20 +3,19 @@ import { graphql, Link } from "gatsby";
 import { useScroll } from "../../hooks/useScroll";
 import { Helmet } from "react-helmet";
 import { capitalizeString } from "../../assets/functions/capitalizeString";
-
-// *** components
 import Layout from "../../style/Layout";
-import TypeCard from "../../components/single/TypeCard/TypeCard";
 import Typography from "../../components/single/Typography/Typography";
 
 // *** styled components
 import {
-  Details,
-  ShareDetails,
   CoverImageContainer,
   CoverImage,
+  Title,
+  PostDetails,
   StyledInnerHTML,
   BackButton,
+  StyledTypeCard,
+  DummyAside,
 } from "./NewsfeedTemplate.style";
 
 const NewsfeedTemplate = ({ pageContext, data }) => {
@@ -38,33 +37,37 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
         keywords={keywords}
       />
       <Layout>
-        <Details>
-          <TypeCard type={post_type} />
-          <Typography size="xs">{created}</Typography>
-          <Typography size="xs">|</Typography>
-          <Typography size="xs">Quantum Futures</Typography>
-        </Details>
-        <Typography
-          element="h2"
-          variant="h1"
-          transform="uppercase"
-          style={{ padding: "1rem" }}
-        >
-          {title}
-        </Typography>
-        <ShareDetails>
-          <Typography element="p">Share</Typography>
-          <Typography size="xs">|</Typography>
-        </ShareDetails>
+        {/* * TODO change grid styling in Layout */}
         <CoverImageContainer>
           <CoverImage img={cover_image} />
         </CoverImageContainer>
+        <Title element="h2" variant="h4" color="white">
+          {title}
+        </Title>
+        <PostDetails>
+          <StyledTypeCard type={post_type} />
+          <Typography size="xs" color="white" align="right">
+            {created}
+          </Typography>
+          <Typography size="xs" color="white" align="right">
+            Quantum Futures
+          </Typography>
+        </PostDetails>
         <StyledInnerHTML html={data.cosmicjsBlogPosts.content} />
         <Link to="/newsfeed">
           <BackButton color="primary" shadow direction={scrollDirection}>
             Go Back
           </BackButton>
         </Link>
+        <DummyAside>
+          <Typography gradient color="primary" weight="900" size="xl">
+            Dummy Aside Content For Screens &gt;1280px wide
+            {/** TODO 3 most recent articles relating to category **/}
+            {/** TODO prioritise quantum futures content - date ? **/}
+            {/** 2 weeks maximum **/}
+          </Typography>
+        </DummyAside>
+        {/** NEXT and PREV button */}
       </Layout>
     </>
   );

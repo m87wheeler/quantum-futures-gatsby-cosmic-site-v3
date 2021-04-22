@@ -1,16 +1,24 @@
 import styled from "styled-components";
-import Typography from "../../components/single/Typography/Typography";
-import InnerHTML from "../../components/single/InnerHTML/InnerHTML";
 import Button from "../../components/single/Button/Button";
-import TypeCard from "../../components/single/TypeCard/TypeCard";
+import InnerHTML from "../../components/single/InnerHTML/InnerHTML";
+
+export const Details = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+`;
+
+export const ShareDetails = styled(Details)`
+  padding-top: 0;
+  padding-bottom: 2rem;
+`;
 
 export const CoverImageContainer = styled.div`
   width: 100%;
   height: 100vw;
   max-height: 20rem;
-  padding: 1.5rem 1rem 0;
-  background: ${(p) => `rgba(${p.theme.common.black})`};
-  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 1 / 7;
@@ -38,75 +46,9 @@ export const CoverImage = styled.div`
   }
 `;
 
-export const Title = styled(Typography)`
-  padding: 1rem;
-  background: ${(p) => `rgba(${p.theme.common.black})`};
-  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 7 / 13;
-    margin-left: -1rem;
-  }
-`;
-
-export const StyledTypeCard = styled(TypeCard)`
-  grid-area: type;
-  align-self: center;
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    align-self: flex-start;
-  }
-`;
-
-export const PostDetails = styled.div`
-  position: sticky;
-  top: 4.5rem;
-  left: 0;
-  grid-column: 1 / span 6;
-  padding: 0.5rem 1rem;
-  display: grid;
-  grid-template: 1fr 1fr / auto 1fr;
-  grid-template-areas:
-    "type date"
-    "type author";
-  background: ${(p) => `rgba(${p.theme.common.black})`};
-  background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
-  backdrop-filter: blur(2px);
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  box-shadow: ${(p) => p.theme.shadow.main};
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    position: relative;
-    top: 0;
-    grid-column: 7 / 13;
-    grid-row: 2 / 3;
-    margin: -1rem 0 0 -1rem;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    border-radius: 0;
-    box-shadow: none;
-  }
-`;
-
 export const StyledInnerHTML = styled(InnerHTML)`
-  padding: 2rem;
+  padding: 1rem 2rem;
   text-align: justify;
-
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    text-align: left;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 2 / 12;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    grid-column: 2 / 8;
-    padding: 1rem 0;
-  }
 `;
 
 export const BackButton = styled(Button)`
@@ -115,24 +57,4 @@ export const BackButton = styled(Button)`
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.3s ease-in-out;
-`;
-
-export const DummyAside = styled.aside`
-  display: none;
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    display: flex;
-    flex-flow: column nowrap;
-    column-gap: 1rem;
-    gap: 1rem;
-    grid-column: 9 / 12;
-    width: 100%;
-    height: calc(100vh - 4.5rem - 2rem);
-    position: sticky;
-    top: 5.5rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: ${(p) => `rgba(${p.theme.common.black})`};
-    background: ${(p) => `rgba(${p.theme.common.black}, .9)`};
-  }
 `;

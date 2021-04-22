@@ -2,6 +2,10 @@ import * as React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 
+// ***
+import Typography from "../../single/Typography/Typography";
+
+// ***
 import {
   ImageContainer,
   StyledTypeCard,
@@ -34,7 +38,14 @@ const NewfeedCard = ({
       <Wrapper layout={layout} {...props}>
         <ImageContainer layout={layout} img={image} />
         <DetailsContainer layout={layout}>
-          <h3>{title}</h3>
+          {/* <h3>{title}</h3> */}
+          <Typography
+            element="h3"
+            variant="h6"
+            style={{ textTransform: "uppercase" }}
+          >
+            {title}
+          </Typography>
           <TypeDateContainer>
             <StyledTypeCard type={type} />
             <p>{created}</p>
