@@ -11,11 +11,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  gap: 3rem;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: flex-start;
+    gap: 1rem;
 
     ${ClockContainer} {
       justify-self: center;
