@@ -9,21 +9,10 @@ import Typography from "../../single/Typography/Typography";
 import QFLogo from "../../../assets/svg/QFLogo";
 
 // *** styled components
-export const LogoText = styled(Typography)`
-  line-height: 1;
-  font-weight: 500;
-  margin-top: -0.25rem;
-  font-size: 1.25rem !important;
-
-  span {
-    display: block;
-  }
-`;
-
 export const StyledMainLogo = styled(QFLogo)`
-  height: 2.5rem;
+  height: 3.5rem;
   width: auto;
-  margin: -0.5rem -0.5rem 0 0;
+  margin: -1rem -0.5rem 0 0;
 `;
 
 export const LogoLink = styled(Link)`
@@ -35,12 +24,9 @@ export const LogoLink = styled(Link)`
   ${(p) =>
     p.index &&
     css`
-      ${LogoText} {
-        font-size: 2rem !important;
-      }
-
       ${StyledMainLogo} {
-        height: 3.75rem;
+        height: 5rem;
+        margin-top: -1.5rem;
       }
     `}
 `;
@@ -54,10 +40,9 @@ const HeaderLogo = ({ index, ...props }) => {
       {...props}
     >
       <StyledMainLogo />
-      <LogoText element="h1" color="white" variant="h3">
-        <span>QUANTUM</span>
-        <span>FUTURES</span>
-      </LogoText>
+      <h1 style={{ position: "absolute", top: "-100vh", left: "-100vw" }}>
+        Quantum Futures
+      </h1>
     </LogoLink>
   );
 };
