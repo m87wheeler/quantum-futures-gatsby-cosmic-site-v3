@@ -11,7 +11,7 @@ import Typography from "../../single/Typography/Typography";
 // *** styled components
 // import { Wrapper, ClockContainer } from "./TimezoneClocks.style";
 export const ClockContainer = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-rows: auto auto 1fr auto;
   gap: 1rem;
   align-content: flex-end;
@@ -19,17 +19,17 @@ export const ClockContainer = styled.div`
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     ${ClockContainer} {
       justify-self: ${(p) =>
-        p.index === 0
-          ? "flex-start"
-          : p.index === p.lastItem
-          ? "flex-end"
-          : "center"};
+    p.index === 0
+      ? "flex-start"
+      : p.index === p.lastItem
+      ? "flex-end"
+      : "center"};
     }
-  }
+  } */
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
+  /* display: flex;
   flex-flow: column nowrap;
   align-items: center;
 
@@ -37,7 +37,7 @@ export const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: flex-start;
-  }
+  } */
 `;
 
 const TimezoneClocks = ({ timezoneArr, ...props }) => {
