@@ -62,6 +62,8 @@ export const CoverImage = styled.div`
 `;
 
 export const Title = styled(Typography)`
+  padding: 1rem;
+
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-row: 2 / 3;
     grid-column: 2 / 12;
@@ -70,7 +72,7 @@ export const Title = styled(Typography)`
 `;
 
 export const StyledInnerHTML = styled(InnerHTML)`
-  padding: 1rem 2rem;
+  padding: 1rem;
   text-align: justify;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
