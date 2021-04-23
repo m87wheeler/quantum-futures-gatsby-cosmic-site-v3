@@ -22,6 +22,7 @@ import {
   BackButton,
   StyledArticleTrail,
 } from "./NewsfeedTemplate.style";
+import ShareToIcons from "../../components/composite/ShareToIcons/ShareToIcons";
 
 const NewsfeedTemplate = ({ pageContext, data }) => {
   const {
@@ -61,6 +62,7 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
         <ShareDetails>
           <Typography element="p">Share</Typography>
           <Typography size="xs">|</Typography>
+          <ShareToIcons />
         </ShareDetails>
         <CoverImageContainer>
           <CoverImage img={cover_image} />

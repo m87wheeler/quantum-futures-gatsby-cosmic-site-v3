@@ -969,6 +969,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.3", "@babel/runtime@^7.9.2":
+  version "7.13.17"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.17.tgz#8966d1fc9593bf848602f0662d6b4d0069e3a7ec"
+  integrity sha512-NCdgJEelPTSh+FEFylhnP1ylq848l1z9t9N0j1Lfbcw0+KXGjsTvUmkxy+voLLXB5SOKMbLLx4jxYliGrYQseA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/standalone@^7.12.6":
   version "7.13.16"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.13.16.tgz#6ff32c2eac99f8f4e2741745e08e946f3a4099ea"
@@ -5904,6 +5911,13 @@ gatsby-plugin-image@^1.0.1:
     objectFitPolyfill "^2.3.0"
     prop-types "^15.7.2"
 
+gatsby-plugin-load-script@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-load-script/-/gatsby-plugin-load-script-1.1.0.tgz#b73dc8248ad0e3565d3f848bfd1ecd64f2b7aad2"
+  integrity sha512-EoXUtWX4aBO4zD61xMHIIlQti4FNYmH0KgBkhac+kNMLI64cjzLc0iD7zPrFnzjYR454XAN/GJBa7M7N/VYSpw==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+
 gatsby-plugin-page-creator@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-3.3.0.tgz#302be6960ffdde32f4821fc55a9c2996270808f3"
@@ -5969,6 +5983,14 @@ gatsby-plugin-sitemap@^3.0.0:
     minimatch "^3.0.4"
     pify "^3.0.0"
     sitemap "^1.13.0"
+
+gatsby-plugin-social9-socialshare@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-social9-socialshare/-/gatsby-plugin-social9-socialshare-1.0.5.tgz#989d1612ca11cc2b61913ab2735741e8dfd9af66"
+  integrity sha512-vz3ZtSxG87CMqNuspmB9GrJ7LV+WODSyD6EYImXlHUUcxQL23ZNta8+QF1nhsl3Yt33PHjD5mhy7dj/WcBnUsQ==
+  dependencies:
+    "@babel/runtime" "^7.10.3"
+    minimatch "3.0.4"
 
 gatsby-plugin-styled-components@^4.0.0:
   version "4.3.0"
