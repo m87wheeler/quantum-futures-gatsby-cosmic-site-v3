@@ -9,9 +9,6 @@ import HeaderLogo from "../../composite/HeaderLogo/HeaderLogo";
 
 // *** styled components
 import {
-  // LogoText,
-  // StyledMainLogo,
-  // LogoLink,
   StyledHamburger,
   StyledNavMenu,
   Backdrop,

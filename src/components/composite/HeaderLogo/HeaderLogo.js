@@ -5,12 +5,11 @@ import styled, { css } from "styled-components";
 // *** data, hooks & context
 
 // *** components
-import Typography from "../../single/Typography/Typography";
 import QFLogo from "../../../assets/svg/QFLogo";
 
 // *** styled components
 export const StyledMainLogo = styled(QFLogo)`
-  height: 3.5rem;
+  height: 3rem;
   width: auto;
   margin: -1rem -0.5rem 0 0;
 `;
@@ -26,7 +25,6 @@ export const LogoLink = styled(Link)`
     css`
       ${StyledMainLogo} {
         height: 5rem;
-        margin-top: -1.5rem;
       }
     `}
 `;
