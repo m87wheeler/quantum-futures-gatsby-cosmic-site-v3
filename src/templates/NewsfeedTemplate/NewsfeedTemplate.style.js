@@ -102,7 +102,7 @@ export const StyledRelatedContent = styled(RelatedContent)`
   left: 0;
   margin-bottom: 1rem;
   grid-column: 9 / 12;
-  grid-row: 1 / 6;
+  grid-row: 2 / 6;
 `;
 
 export const BackButton = styled(Button)`
@@ -116,4 +116,9 @@ export const BackButton = styled(Button)`
 export const StyledArticleTrail = styled(ArticleTrail)`
   padding: 1rem;
   margin-bottom: 1rem;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-column: 2 / 12;
+    grid-row: 6 / 7;
+  }
 `;
