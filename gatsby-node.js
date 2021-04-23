@@ -20,6 +20,14 @@ exports.createPages = async ({ graphql, actions }) => {
               metadata_keywords
             }
           }
+          next {
+            slug
+            title
+          }
+          previous {
+            slug
+            title
+          }
         }
       }
       cosmicjsSiteMetadata {
@@ -30,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  result.data.allCosmicjsBlogPosts.edges.forEach(({ node }) => {
+  result.data.allCosmicjsBlogPosts.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: `/newsfeed/${node.slug}`,
       component: path.resolve(
@@ -49,6 +57,8 @@ exports.createPages = async ({ graphql, actions }) => {
           description: node.metadata.metadata_description,
           keywords: node.metadata.metadata_keywords,
         },
+        next,
+        previous,
       },
     });
   });

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import { useScroll } from "../../hooks/useScroll";
 import { Helmet } from "react-helmet";
@@ -17,7 +18,9 @@ import {
   CoverImageContainer,
   CoverImage,
   StyledInnerHTML,
+  StyledRelatedContent,
   BackButton,
+  StyledArticleTrail,
 } from "./NewsfeedTemplate.style";
 
 const NewsfeedTemplate = ({ pageContext, data }) => {
@@ -27,8 +30,15 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
     post_type,
     created,
     metadata: { title_prefix, canonical, description, keywords },
+    next,
+    previous,
   } = pageContext;
   const { scrollDirection } = useScroll();
+
+  // ? scroll to top on page load
+  useEffect(() => {
+    if (typeof window !== undefined) window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -56,11 +66,13 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
           <CoverImage img={cover_image} />
         </CoverImageContainer>
         <StyledInnerHTML html={data.cosmicjsBlogPosts.content} />
+        <StyledArticleTrail previous={previous} next={next} />
         <Link to="/newsfeed">
           <BackButton color="primary" shadow direction={scrollDirection}>
             Go Back
           </BackButton>
         </Link>
+        <StyledRelatedContent />
       </Layout>
     </>
   );

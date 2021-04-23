@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Button from "../../components/single/Button/Button";
 import InnerHTML from "../../components/single/InnerHTML/InnerHTML";
 import Typography from "../../components/single/Typography/Typography";
+import RelatedContent from "../../components/views/RelatedContent/RelatedContent";
+import ArticleTrail from "../../components/composite/ArticleTrail/ArticleTrail";
 
 const Details = styled.div`
   display: flex;
@@ -46,7 +48,7 @@ export const CoverImageContainer = styled.div`
   }
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    grid-column: 2 / 9;
+    grid-column: 2 / 8;
   }
 `;
 
@@ -74,7 +76,7 @@ export const Title = styled(Typography)`
   }
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    grid-column: 2 / 9;
+    grid-column: 2 / 8;
   }
 `;
 
@@ -90,8 +92,17 @@ export const StyledInnerHTML = styled(InnerHTML)`
   }
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    grid-column: 2 / 9;
+    grid-column: 2 / 8;
   }
+`;
+
+export const StyledRelatedContent = styled(RelatedContent)`
+  position: sticky;
+  top: 5.5rem;
+  left: 0;
+  margin-bottom: 1rem;
+  grid-column: 9 / 12;
+  grid-row: 1 / 6;
 `;
 
 export const BackButton = styled(Button)`
@@ -100,4 +111,9 @@ export const BackButton = styled(Button)`
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.3s ease-in-out;
+`;
+
+export const StyledArticleTrail = styled(ArticleTrail)`
+  padding: 1rem;
+  margin-bottom: 1rem;
 `;
