@@ -3,11 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl";
 import "./mapstyle.css";
-import { Helmet } from "react-helmet";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 // *** data, hooks & context
 
 // *** components
+import { Helmet } from "react-helmet";
 
 // *** styled components
 const Wrapper = styled.div`
@@ -69,11 +70,9 @@ const Map = ({ lng, lat, zoom, markerTitle, markerDescription, ...props }) => {
           )
           .addTo(newMap);
       });
-      // *** mount map
-
       setMap(newMap);
     }
-  }, []);
+  }, [container]);
 
   return (
     <>
