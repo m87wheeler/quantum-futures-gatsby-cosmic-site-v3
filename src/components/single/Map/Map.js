@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 
 // *** mapboxgl
 import mapboxgl from "mapbox-gl";
@@ -67,7 +66,15 @@ const Map = ({ lng, lat, zoom, markerTitle, markerDescription, ...props }) => {
           .addTo(newMap);
       });
     }
-  }, [container]);
+  }, [
+    container,
+    geojson.features,
+    lat,
+    lng,
+    markerDescription,
+    markerTitle,
+    zoom,
+  ]);
 
   return <Wrapper ref={container} {...props} />;
 };
