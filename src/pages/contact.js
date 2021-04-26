@@ -35,7 +35,7 @@ const ContactPage = ({ data }) => {
   const {
     title: mapTitle,
     content: mapContent,
-    metadata: { longitude, latitude, mapZoom, contact_number },
+    metadata: { longitude, latitude, mapzoom },
   } = data.allCosmicjsOfficeDetails.edges[0].node;
 
   // *** set page ready when page has loaded
@@ -105,9 +105,9 @@ const ContactPage = ({ data }) => {
       >
         <MapWrapper delay={0}>
           <Map
-            latitude={latitude}
-            longitude={longitude}
-            zoom={mapZoom}
+            lat={parseFloat(latitude)}
+            lng={parseFloat(longitude)}
+            zoom={parseFloat(mapzoom)}
             markerTitle={`${mapTitle} Office`}
             markerDescription={mapContent}
           />
@@ -163,7 +163,7 @@ export const query = graphql`
             timezone
             locale
             latitude
-            longitute
+            longitude
             mapzoom
           }
         }
