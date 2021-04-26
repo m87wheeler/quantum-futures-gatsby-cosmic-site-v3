@@ -36,20 +36,8 @@ const NavMenu = ({ active, ...props }) => {
         <ListItem onClick={() => toggleSub()}>
           <NavLink to="/newsfeed">Newsfeed</NavLink>
         </ListItem>
-        <ListItem
-          active={subOpen === "partnerships"}
-          onClick={() => toggleSub("partnerships")}
-        >
-          <Icon icon={faChevronLeft} />
-          Ecosystem
-          <Collapse>
-            <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/partnerships">Business Partnerships</NavLink>
-            </ListItem>
-            <ListItem onClick={() => toggleSub()}>
-              <NavLink to="/community">Community</NavLink>
-            </ListItem>
-          </Collapse>
+        <ListItem onClick={() => toggleSub("")}>
+          <NavLink to="/ecosystem">Ecosystem</NavLink>
         </ListItem>
         <ListItem onClick={() => toggleSub()}>
           <NavLink to="/contact">Contact</NavLink>

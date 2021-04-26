@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
 // *** data, hooks & context
 
@@ -121,25 +121,19 @@ const Footer = ({ ...props }) => {
       <FootSection style={{ gridArea: "navigation" }}>
         <NavigationList>
           <li>
-            <a href="a">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="a">Our Philosophy</a>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <a href="a">Testimonials</a>
+            <Link to="/newsfeed">Newsfeed</Link>
           </li>
           <li>
-            <a href="a">Newsfeed</a>
+            <Link to="/ecosystem">Ecosystem</Link>
           </li>
           <li>
-            <a href="a">Community</a>
-          </li>
-          <li>
-            <a href="a">Partnerships</a>
-          </li>
-          <li>
-            <a href="a">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </NavigationList>
       </FootSection>
