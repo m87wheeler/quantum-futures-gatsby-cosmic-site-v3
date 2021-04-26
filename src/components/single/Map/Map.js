@@ -72,7 +72,15 @@ const Map = ({ lng, lat, zoom, markerTitle, markerDescription, ...props }) => {
       });
       setMap(newMap);
     }
-  }, [container]);
+  }, [
+    container,
+    geojson.features,
+    loc.lng,
+    loc.lat,
+    loc.zoom,
+    markerDescription,
+    markerTitle,
+  ]);
 
   return (
     <>
