@@ -2,46 +2,79 @@ import * as React from "react";
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl";
+import "./mapstyle.css";
 
 // *** data, hooks & context
 
 // *** components
 
 // *** styled components
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  height: 100%;
+  min-height: 50vh;
 
-const Map = ({ ...props }) => {
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    min-height: 15rem;
+  }
+`;
+
+const Map = ({ lng, lat, zoom, markerTitle, markerDescription, ...props }) => {
   const [map, setMap] = useState(null);
   const loc = {
-    lng: -73.8242,
-    lat: 45.429166,
-    zoom: 17,
+    lng: -0.092159,
+    lat: 51.50325,
+    zoom: 16.5,
   };
   const container = useRef(null);
 
-  //   useEffect(() => {
-  //     if (typeof window !== undefined && container) {
-  //       const newMap = new mapboxgl.Map({
-  //         container: container.current,
-  //         style: "mapbox://styles/mapbox/streets-v11",
-  //         center: [loc.lng, loc.lat],
-  //         zoom: loc.zoom,
-  //       });
-  //       setMap(newMap);
-  //     }
-  //   }, []);
+  const geojson = {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        geometry: {
+          type: "point",
+          coordinates: [loc.lng, loc.lat],
+        },
+        properties: {
+          title: "London Office",
+          description: "100 Alpha House, SE1 1LB",
+        },
+      },
+    ],
+  };
 
   useEffect(() => {
-    if (typeof window !== undefined) {
-      console.log(process.env.MAPBOX_KEY);
+    mapboxgl.accessToken = process.env.GATSBY_MAPBOX_KEY;
+    if (typeof window !== undefined && container) {
+      // *** create map instance
+      const newMap = new mapboxgl.Map({
+        container: container.current,
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [loc.lng, loc.lat],
+        zoom: loc.zoom,
+      });
+      // *** create markers
+      geojson.features.forEach((marker) => {
+        const el = document.createElement("div");
+        el.className = "marker";
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }).setHTML(
+              `<h3>${markerTitle}</h3>
+               <p>${markerDescription}</p>`
+            )
+          )
+          .addTo(newMap);
+      });
+      // *** mount map
+
+      setMap(newMap);
     }
   }, []);
 
-  return (
-    <Wrapper ref={container} {...props}>
-      {map}
-    </Wrapper>
-  );
+  return <Wrapper ref={container} {...props} />;
 };
 
 export default Map;

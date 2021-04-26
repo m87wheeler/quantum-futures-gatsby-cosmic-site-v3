@@ -22,7 +22,6 @@ import {
   FormWrapper,
   SocialWrapper,
   MapWrapper,
-  TempMap,
   OfficesWrapper,
 } from "../style/pages/Contact.style";
 import Map from "../components/single/Map/Map";
@@ -33,6 +32,11 @@ const ContactPage = ({ data }) => {
   const { title, content } = data.cosmicjsContactPage;
   const socialArr = data.allCosmicjsSocialMedia.edges;
   const officeArr = data.allCosmicjsOfficeDetails.edges;
+  const {
+    title: mapTitle,
+    content: mapContent,
+    metadata: { longitude, latitude, mapZoom, contact_number },
+  } = data.allCosmicjsOfficeDetails.edges[0].node;
 
   // *** set page ready when page has loaded
   useEffect(() => {
@@ -100,8 +104,13 @@ const ContactPage = ({ data }) => {
         appear
       >
         <MapWrapper delay={0}>
-          {/* <TempMap /> */}
-          <Map />
+          <Map
+            latitude={latitude}
+            longitude={longitude}
+            zoom={mapZoom}
+            markerTitle={`${mapTitle} Office`}
+            markerDescription={mapContent}
+          />
         </MapWrapper>
       </CSSTransition>
       <CSSTransition
@@ -151,8 +160,11 @@ export const query = graphql`
           content
           metadata {
             contact_number
-            locale
             timezone
+            locale
+            latitude
+            longitute
+            mapzoom
           }
         }
       }
