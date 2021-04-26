@@ -1,5 +1,7 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
+import { CSSTransition } from "react-transition-group";
 
 // *** data, hooks & context
 import Layout from "../style/Layout";
@@ -14,46 +16,113 @@ import TimezoneClocks from "../components/composite/TimezoneClocks/TimezoneClock
 
 // *** styled components
 import {
+  appearDuration,
+  classes,
   IntroWrapper,
   FormWrapper,
   SocialWrapper,
   MapWrapper,
-  TempMap,
   OfficesWrapper,
 } from "../style/pages/Contact.style";
+import Map from "../components/single/Map/Map";
 
 const ContactPage = ({ data }) => {
+  const [pageReady, setPageReady] = useState(false);
   const { endpoint } = data.cosmicjsContactFormConfiguration.metadata;
   const { title, content } = data.cosmicjsContactPage;
   const socialArr = data.allCosmicjsSocialMedia.edges;
   const officeArr = data.allCosmicjsOfficeDetails.edges;
+  const {
+    title: mapTitle,
+    content: mapContent,
+    metadata: { longitude, latitude, mapZoom, contact_number },
+  } = data.allCosmicjsOfficeDetails.edges[0].node;
+
+  // *** set page ready when page has loaded
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setPageReady(true);
+    }
+  }, []);
 
   return (
     <Layout>
-      <IntroWrapper>
-        <Typography
-          element="h2"
-          variant="h2"
-          gradient
-          color="primary"
-          transform="uppercase"
-        >
-          {title}
-        </Typography>
-        <InnerHTML html={content} />
-      </IntroWrapper>
-      <FormWrapper>
-        <ContactForm endpoint={endpoint} />
-      </FormWrapper>
-      <SocialWrapper>
-        <SocialList socialArr={socialArr} background="white" underline />
-      </SocialWrapper>
-      <MapWrapper>
-        <TempMap />
-      </MapWrapper>
-      <OfficesWrapper>
-        <TimezoneClocks timezoneArr={officeArr} />
-      </OfficesWrapper>
+      <Helmet>
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <CSSTransition
+        in={pageReady}
+        timeout={appearDuration}
+        classNames={classes.hero}
+        appear
+      >
+        <IntroWrapper delay={0}>
+          <Typography
+            element="h2"
+            variant="h2"
+            gradient
+            color="primary"
+            transform="uppercase"
+          >
+            {title}
+          </Typography>
+          <InnerHTML html={content} />
+        </IntroWrapper>
+      </CSSTransition>
+      <CSSTransition
+        in={pageReady}
+        timeout={appearDuration}
+        classNames={classes.hero}
+        appear
+      >
+        <FormWrapper delay={0}>
+          <ContactForm endpoint={endpoint} />
+        </FormWrapper>
+      </CSSTransition>
+      <CSSTransition
+        in={pageReady}
+        timeout={appearDuration}
+        classNames={classes.hero}
+        appear
+      >
+        <SocialWrapper>
+          <SocialList
+            socialArr={socialArr}
+            background="white"
+            underline
+            delay={0}
+          />
+        </SocialWrapper>
+      </CSSTransition>
+      <CSSTransition
+        in={pageReady}
+        timeout={appearDuration}
+        classNames={classes.hero}
+        appear
+      >
+        <MapWrapper delay={0}>
+          <Map
+            latitude={latitude}
+            longitude={longitude}
+            zoom={mapZoom}
+            markerTitle={`${mapTitle} Office`}
+            markerDescription={mapContent}
+          />
+        </MapWrapper>
+      </CSSTransition>
+      <CSSTransition
+        in={pageReady}
+        timeout={appearDuration}
+        classNames={classes.hero}
+        appear
+      >
+        <OfficesWrapper>
+          <TimezoneClocks timezoneArr={officeArr} delay={0} />
+        </OfficesWrapper>
+      </CSSTransition>
     </Layout>
   );
 };
@@ -91,8 +160,11 @@ export const query = graphql`
           content
           metadata {
             contact_number
-            locale
             timezone
+            locale
+            latitude
+            longitute
+            mapzoom
           }
         }
       }
