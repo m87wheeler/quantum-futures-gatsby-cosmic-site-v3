@@ -1,20 +1,35 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
+import { CSSTransition } from "react-transition-group";
 
 // *** components
 import Layout from "../style/Layout";
 import Helmet from "../components/single/Helmet/Helmet";
 import PhilosophyPrinciple from "../components/views/PhilosophyPrinciple/PhilosophyPrinciple";
-import Typography from "../components/single/Typography/Typography";
 
 // *** styled components
-import { Wrapper, LandingWrapper } from "../style/pages/About.style";
-import InnerHTML from "../components/single/InnerHTML/InnerHTML";
+import {
+  appearDuration,
+  classes,
+  Title,
+  Content,
+  Wrapper,
+  LandingWrapper,
+} from "../style/pages/About.style";
 
 const PhilosophyPage = ({ data }) => {
+  const [pageReady, setPageReady] = useState(false);
   // *** destructure philosophy data
   const { title, content } = data.cosmicjsPhilosophy;
   const philosophies = data.allCosmicjsPhilosophyPrinciples.edges;
+
+  // *** set page ready when page has loaded
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setPageReady(true);
+    }
+  }, []);
 
   // *** destructure page metadata
   const {
@@ -36,28 +51,58 @@ const PhilosophyPage = ({ data }) => {
       />
       <Layout>
         <LandingWrapper style={{ minHeight: "0" }}>
-          <Typography
-            element="h2"
-            variant="h1"
-            gradient
-            color="primary"
-            align="left"
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
           >
-            About
-          </Typography>
-          <InnerHTML html={data.cosmicjsAbout.content} />
+            <Title
+              element="h2"
+              variant="h1"
+              gradient
+              color="primary"
+              align="left"
+              delay={0}
+            >
+              About
+            </Title>
+          </CSSTransition>
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
+          >
+            <Content html={data.cosmicjsAbout.content} delay={1} />
+          </CSSTransition>
         </LandingWrapper>
         <LandingWrapper>
-          <Typography
-            element="h2"
-            variant="h1"
-            gradient
-            color="primary"
-            align="left"
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
           >
-            {title}
-          </Typography>
-          <InnerHTML html={content} />
+            <Title
+              element="h2"
+              variant="h1"
+              gradient
+              color="primary"
+              align="left"
+              delay={2}
+            >
+              {title}
+            </Title>
+          </CSSTransition>
+          <CSSTransition
+            in={pageReady}
+            timeout={appearDuration}
+            classNames={classes.hero}
+            appear
+          >
+            <Content html={content} delay={3} />
+          </CSSTransition>
         </LandingWrapper>
         <Wrapper>
           {philosophies.map(({ node }, i) => (

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
+import { CSSTransition } from "react-transition-group";
 
 // *** components
 import Layout from "../style/Layout";
@@ -10,12 +11,15 @@ import Helmet from "../components/single/Helmet/Helmet";
 
 // *** styled components
 import {
+  appearDuration,
+  classes,
   DisplayToggleWrapper,
   StyledNewsfeedList,
   Title,
 } from "../style/pages/Newsfeed.style";
 
 const NewsfeedPage = ({ data }) => {
+  const [pageReady, setPageReady] = useState(false);
   // *** toggle between grid and list view
   const [layout, setLayout] = useState("grid");
   // *** hold the fetched post data for filtering
@@ -26,6 +30,13 @@ const NewsfeedPage = ({ data }) => {
   const [catTypes, setCatTypes] = useState([]);
   // *** select category type filter
   const [catSelected, setCatSelected] = useState([]);
+
+  // *** set page ready when page has loaded
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setPageReady(true);
+    }
+  }, []);
 
   // ? setPosts on page load
   useEffect(() => {
@@ -95,23 +106,38 @@ const NewsfeedPage = ({ data }) => {
         keywords={keywords}
       />
       <Layout>
-        <DisplayToggleWrapper>
-          <Title element="h2" gradient color="primary" align="left">
-            Newsfeed
-          </Title>
-          <FilterPosts
-            cats={catTypes}
-            selected={catSelected}
-            onChange={handleChange}
-            onClick={handleClear}
+        <CSSTransition
+          in={pageReady}
+          timeout={appearDuration}
+          classNames={classes.hero}
+          appear
+        >
+          <DisplayToggleWrapper delay={0}>
+            <Title element="h2" gradient color="primary" align="left">
+              Newsfeed
+            </Title>
+            <FilterPosts
+              cats={catTypes}
+              selected={catSelected}
+              onChange={handleChange}
+              onClick={handleClear}
+            />
+            <ListDisplayToggle onClick={handleLayout} />
+          </DisplayToggleWrapper>
+        </CSSTransition>
+        <CSSTransition
+          in={pageReady}
+          timeout={appearDuration}
+          classNames={classes.hero}
+          appear
+        >
+          <StyledNewsfeedList
+            posts={filteredPosts.length ? filteredPosts : posts}
+            layout={layout}
+            style={{ padding: "0 1rem" }}
+            delay={1}
           />
-          <ListDisplayToggle onClick={handleLayout} />
-        </DisplayToggleWrapper>
-        <StyledNewsfeedList
-          posts={filteredPosts.length ? filteredPosts : posts}
-          layout={layout}
-          style={{ padding: "0 1rem" }}
-        />
+        </CSSTransition>
       </Layout>
     </>
   );

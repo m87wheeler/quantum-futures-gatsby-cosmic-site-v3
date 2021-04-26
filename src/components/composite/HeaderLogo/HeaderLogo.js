@@ -24,7 +24,7 @@ export const LogoLink = styled(Link)`
     p.index &&
     css`
       ${StyledMainLogo} {
-        height: 5rem;
+        height: 3.5rem;
       }
     `}
 `;
