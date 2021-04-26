@@ -47,7 +47,7 @@ const Map = ({ lng, lat, zoom, markerTitle, markerDescription, ...props }) => {
       // *** create map instance
       const newMap = new mapboxgl.Map({
         container: container.current,
-        style: "mapbox://styles/mapbox/streets-v11",
+        style: "mapbox://styles/m87-wheeler/cknyyhqyb1yvp17qxpjod1rfo",
         center: [lng, lat],
         zoom: zoom,
       });
