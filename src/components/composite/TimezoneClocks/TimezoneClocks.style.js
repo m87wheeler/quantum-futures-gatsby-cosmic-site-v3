@@ -4,7 +4,7 @@ export const ClockContainer = styled.div`
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   gap: 1rem;
-  align-content: flex-end;
+  height: 100%;
 `;
 
 export const Wrapper = styled.div`

@@ -113,7 +113,13 @@ const NewsfeedPage = ({ data }) => {
           appear
         >
           <DisplayToggleWrapper delay={0}>
-            <Title element="h2" gradient color="primary" align="left">
+            <Title
+              element="h2"
+              gradient
+              color="primary"
+              align="left"
+              style={{ paddingTop: "1.5rem" }}
+            >
               Newsfeed
             </Title>
             <FilterPosts

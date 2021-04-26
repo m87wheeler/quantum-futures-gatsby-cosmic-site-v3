@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl";
 import "./mapstyle.css";
+import { Helmet } from "react-helmet";
 
 // *** data, hooks & context
 
@@ -74,7 +75,17 @@ const Map = ({ lng, lat, zoom, markerTitle, markerDescription, ...props }) => {
     }
   }, []);
 
-  return <Wrapper ref={container} {...props} />;
+  return (
+    <>
+      <Helmet>
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <Wrapper ref={container} {...props} />
+    </>
+  );
 };
 
 export default Map;
