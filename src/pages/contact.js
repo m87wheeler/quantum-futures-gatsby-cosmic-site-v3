@@ -105,7 +105,13 @@ const ContactPage = ({ data }) => {
         appear
       >
         <MapWrapper delay={0}>
-          <ReactMap latitude={latitude} longitude={longitude} zoom={mapzoom} />
+          <ReactMap
+            latitude={latitude}
+            longitude={longitude}
+            zoom={mapzoom}
+            title={`${mapTitle} Office`}
+            description={mapContent}
+          />
           {/* <Map
             lat={parseFloat(latitude)}
             lng={parseFloat(longitude)}

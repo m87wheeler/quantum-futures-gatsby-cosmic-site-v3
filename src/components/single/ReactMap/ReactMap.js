@@ -10,7 +10,7 @@ import markerImg from "../../../assets/images/QFLogoMarker.png";
 
 // *** styled components
 const Wrapper = styled.div`
-  width: 100%;
+  min-width: 100%;
   height: 60vh;
 `;
 
