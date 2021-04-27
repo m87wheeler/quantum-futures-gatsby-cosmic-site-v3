@@ -25,6 +25,7 @@ import {
   OfficesWrapper,
 } from "../style/pages/Contact.style";
 import Map from "../components/single/Map/Map";
+import ReactMap from "../components/single/ReactMap/ReactMap";
 
 const ContactPage = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -104,13 +105,14 @@ const ContactPage = ({ data }) => {
         appear
       >
         <MapWrapper delay={0}>
-          <Map
+          <ReactMap latitude={latitude} longitude={longitude} zoom={mapzoom} />
+          {/* <Map
             lat={parseFloat(latitude)}
             lng={parseFloat(longitude)}
             zoom={parseFloat(mapzoom)}
             markerTitle={`${mapTitle} Office`}
             markerDescription={mapContent}
-          />
+          /> */}
         </MapWrapper>
       </CSSTransition>
       <CSSTransition
