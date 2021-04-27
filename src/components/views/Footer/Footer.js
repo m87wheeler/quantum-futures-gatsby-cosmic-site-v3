@@ -5,10 +5,10 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 // *** data, hooks & context
 
 // *** components
-import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
+// import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
 import SocialList from "../../composite/SocialList/SocialList";
 import InnerHTML from "../../single/InnerHTML/InnerHTML";
-import Typography from "../../single/Typography/Typography";
+// import Typography from "../../single/Typography/Typography";
 
 // *** styled components
 const Wrapper = styled.footer`
