@@ -74,6 +74,7 @@ module.exports = {
           `about`,
           `testimonial-page`,
           `philosophy`,
+          `ecosystem-page`,
           `contact-page`,
           `blog-posts`,
           `testimonials`,

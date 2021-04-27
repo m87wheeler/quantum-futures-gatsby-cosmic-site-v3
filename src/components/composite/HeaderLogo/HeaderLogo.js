@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 // *** data, hooks & context
 
@@ -9,7 +9,7 @@ import QFLogo from "../../../assets/svg/QFLogo";
 
 // *** styled components
 export const StyledMainLogo = styled(QFLogo)`
-  height: 3rem;
+  height: ${(p) => (p.indexpage === "true" ? "3.5rem" : "3rem")};
   width: auto;
   margin: -1rem -0.5rem 0 0;
 `;
@@ -19,25 +19,16 @@ export const LogoLink = styled(Link)`
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
-
-  ${(p) =>
-    p.index &&
-    css`
-      ${StyledMainLogo} {
-        height: 3.5rem;
-      }
-    `}
 `;
 
 const HeaderLogo = ({ index, ...props }) => {
   return (
     <LogoLink
       to="/"
-      index={index}
       style={{ textDecoration: "none", zIndex: "999" }}
       {...props}
     >
-      <StyledMainLogo />
+      <StyledMainLogo indexpage={index ? index.toString() : undefined} />
       <h1 style={{ position: "absolute", top: "-100vh", left: "-100vw" }}>
         Quantum Futures
       </h1>

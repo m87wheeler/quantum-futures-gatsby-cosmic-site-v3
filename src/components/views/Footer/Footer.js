@@ -7,6 +7,8 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 // *** components
 import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
 import SocialList from "../../composite/SocialList/SocialList";
+import InnerHTML from "../../single/InnerHTML/InnerHTML";
+import Typography from "../../single/Typography/Typography";
 
 // *** styled components
 const Wrapper = styled.footer`
@@ -105,19 +107,35 @@ const Footer = ({ ...props }) => {
           }
         }
       }
+      cosmicjsContactPage {
+        metadata {
+          main_contact_number
+          main_contact_address
+        }
+      }
+      cosmicjsSiteMetadata {
+        metadata {
+          canonical
+        }
+      }
     }
   `);
   const socialArr = data.allCosmicjsSocialMedia.edges;
+  const {
+    main_contact_number,
+    main_contact_address,
+  } = data.cosmicjsContactPage.metadata;
+  const { canonical } = data.cosmicjsSiteMetadata.metadata;
 
   return (
     <Wrapper {...props}>
-      <SubscribeForm
+      {/* <SubscribeForm
         style={{ gridArea: "contact" }}
         inputName="email"
         inputValue={"test.email@gmail.com"}
         onInput={(e) => console.log(e.target.value)}
         onClick={() => alert("subscribe!")}
-      />
+      /> */}
       <FootSection style={{ gridArea: "navigation" }}>
         <NavigationList>
           <li>
@@ -154,16 +172,20 @@ const Footer = ({ ...props }) => {
       </FootSection>
       <FootSection style={{ gridArea: "address" }}>
         <Address>
-          <span>100 Alpha House</span>
-          <span>Borough High Street</span>
-          <span>London</span>
-          <span>SE1 1LB</span>
+          <InnerHTML
+            html={`<p>${main_contact_address.replace(/\n/g, "<br />")}</p>`}
+            color="white"
+            collapse
+            style={{ lineHeight: 1.5 }}
+          />
         </Address>
-        <ContactDetail href="tel:12345">0203 800 1450</ContactDetail>
+        <ContactDetail href={`tel:${main_contact_number}`}>
+          {main_contact_number}
+        </ContactDetail>
       </FootSection>
       <FootSection style={{ gridArea: "other" }}>
-        <a href="sitemap">Sitemap</a>
-        <a href="privacy">Privacy Policy</a>
+        <a href={`${canonical}/sitemap.xml`}>Sitemap</a>
+        {/* <a href="privacy">Privacy Policy</a> */}
       </FootSection>
     </Wrapper>
   );

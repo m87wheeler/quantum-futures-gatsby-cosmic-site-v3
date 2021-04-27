@@ -52,7 +52,7 @@ Layout.defaultProps = {
 Layout.propTypes = {
   background: PropTypes.oneOf(["white", "black"]),
   backdropActive: PropTypes.bool,
-  index: PropTypes.bool,
+  index: PropTypes.oneOf(["true", undefined]),
 };
 
 export default Layout;

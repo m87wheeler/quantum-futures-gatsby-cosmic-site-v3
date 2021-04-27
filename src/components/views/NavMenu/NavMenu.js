@@ -17,7 +17,7 @@ const NavLink = styled((props) => <Link {...props} />)`
 
 const NavMenu = ({ active, ...props }) => {
   return (
-    <Wrapper active={active} {...props}>
+    <Wrapper active={active} tabIndex={-1} {...props}>
       <List>
         <ListItem>
           <NavLink to="/">Home</NavLink>

@@ -29,6 +29,11 @@ const Ecosystem = ({ data }) => {
   }, []);
 
   const {
+    title: main_title,
+    content: intro_content,
+  } = data.cosmicjsEcosystemPage;
+
+  const {
     page_title,
     description,
     keywords,
@@ -64,7 +69,7 @@ const Ecosystem = ({ data }) => {
               transform="uppercase"
               delay={0}
             >
-              Ecosystem
+              {main_title}
             </Title>
           </CSSTransition>
           <CSSTransition
@@ -73,7 +78,7 @@ const Ecosystem = ({ data }) => {
             classNames={classes.hero}
             appear
           >
-            <Content html={`<p>Content Goes Here</p>`} delay={1} />
+            <Content html={intro_content} delay={1} />
           </CSSTransition>
         </LandingWrapper>
         <Wrapper>
@@ -95,6 +100,10 @@ export default Ecosystem;
 
 export const query = graphql`
   query {
+    cosmicjsEcosystemPage {
+      title
+      content
+    }
     allCosmicjsEcosystems {
       edges {
         node {

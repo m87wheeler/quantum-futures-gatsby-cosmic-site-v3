@@ -77,7 +77,7 @@ const Index = ({ data }) => {
         description={description}
         keywords={keywords}
       />
-      <Layout backdropActive={backdropActive} index>
+      <Layout backdropActive={backdropActive} index="true">
         <IndexHeaderLogo index />
         {/** Background Media */}
         <Background>
