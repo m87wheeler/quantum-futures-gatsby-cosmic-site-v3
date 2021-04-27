@@ -62,7 +62,7 @@ const ContactPage = ({ data }) => {
         <IntroWrapper delay={0}>
           <Typography
             element="h2"
-            variant="h2"
+            variant="h1"
             gradient
             color="primary"
             transform="uppercase"

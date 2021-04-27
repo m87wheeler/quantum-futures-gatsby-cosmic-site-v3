@@ -117,7 +117,7 @@ const NewsfeedPage = ({ data }) => {
               element="h2"
               gradient
               color="primary"
-              align="left"
+              transform="uppercase"
               style={{ paddingTop: "1.5rem" }}
             >
               Newsfeed

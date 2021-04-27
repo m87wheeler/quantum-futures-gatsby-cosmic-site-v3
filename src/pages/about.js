@@ -63,6 +63,7 @@ const PhilosophyPage = ({ data }) => {
               gradient
               color="primary"
               align="left"
+              transform="uppercase"
               delay={0}
             >
               About
@@ -90,6 +91,7 @@ const PhilosophyPage = ({ data }) => {
               gradient
               color="primary"
               align="left"
+              transform="uppercase"
               delay={2}
             >
               {title}

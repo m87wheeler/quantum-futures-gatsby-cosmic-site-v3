@@ -29,17 +29,13 @@ const PhilosophyPrinciple = ({
         variant="h2"
         color={background === "black" ? "white" : "black"}
         align="left"
+        transform="uppercase"
       >
         {title}
       </Typography>
-      <Subtitle
-        element="p"
-        color={background === "black" ? "white" : "black"}
-        align="center"
-      >
+      <Subtitle element="p" color={background === "black" ? "white" : "black"}>
         {subtitle}
       </Subtitle>
-      {/** TODO add images **/}
       <InnerHTML
         html={content}
         color={background === "black" ? "white" : "black"}
