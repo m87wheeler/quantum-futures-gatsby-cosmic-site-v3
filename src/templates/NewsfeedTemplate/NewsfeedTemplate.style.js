@@ -118,7 +118,7 @@ export const StyledArticleTrail = styled(ArticleTrail)`
   margin-bottom: 1rem;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 2 / 12;
+    grid-column: 2 / 9;
     grid-row: 6 / 7;
   }
 `;
