@@ -59,26 +59,29 @@ const ReactMap = ({
     ],
   };
 
-  return (
-    <Wrapper {...props}>
-      <ReactMapGL
-        {...viewport}
-        mapStyle="mapbox://styles/m87-wheeler/cknyyhqyb1yvp17qxpjod1rfo"
-        mapboxApiAccessToken={process.env.GATSBY_MAPBOX_KEY}
-        onViewportChange={(viewport) => setViewport(viewport)}
-      >
-        {geojson.features.map((office) => (
-          <StyledMarker
-            key={office.properties.title}
-            latitude={office.geometry.coordinates[0]}
-            longitude={office.geometry.coordinates[1]}
-          >
-            <MarkerImage src={markerImg} alt="Marker" />
-          </StyledMarker>
-        ))}
-      </ReactMapGL>
-    </Wrapper>
-  );
+  if (window !== undefined) {
+    return (
+      <Wrapper {...props}>
+        <ReactMapGL
+          {...viewport}
+          mapStyle="mapbox://styles/m87-wheeler/cknyyhqyb1yvp17qxpjod1rfo"
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_KEY}
+          onViewportChange={(viewport) => setViewport(viewport)}
+        >
+          {geojson.features.map((office) => (
+            <StyledMarker
+              key={office.properties.title}
+              latitude={office.geometry.coordinates[0]}
+              longitude={office.geometry.coordinates[1]}
+            >
+              <MarkerImage src={markerImg} alt="Marker" />
+            </StyledMarker>
+          ))}
+        </ReactMapGL>
+      </Wrapper>
+    );
+  }
+  return null;
 };
 
 export default ReactMap;
