@@ -26,6 +26,7 @@ import {
 } from "../style/pages/Contact.style";
 import Map from "../components/single/Map/Map";
 import ReactMap from "../components/single/ReactMap/ReactMap";
+import LeafletMap from "../components/single/LeafletMap/LeafletMap";
 
 const ContactPage = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -105,13 +106,20 @@ const ContactPage = ({ data }) => {
         appear
       >
         <MapWrapper delay={0}>
-          <ReactMap
+          <LeafletMap
             latitude={latitude}
             longitude={longitude}
             zoom={mapzoom}
             title={`${mapTitle} Office`}
             description={mapContent}
           />
+          {/* <ReactMap
+            latitude={latitude}
+            longitude={longitude}
+            zoom={mapzoom}
+            title={`${mapTitle} Office`}
+            description={mapContent}
+          /> */}
           {/* <Map
             lat={parseFloat(latitude)}
             lng={parseFloat(longitude)}
