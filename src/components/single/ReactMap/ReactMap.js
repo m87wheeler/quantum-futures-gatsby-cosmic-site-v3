@@ -59,7 +59,7 @@ const ReactMap = ({
     ],
   };
 
-  if (window !== undefined) {
+  if (typeof window !== undefined) {
     return (
       <Wrapper {...props}>
         <ReactMapGL
