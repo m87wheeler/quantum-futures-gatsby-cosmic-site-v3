@@ -3,9 +3,8 @@ import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 // *** mapboxgl
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 import "./mapstyle.css";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 // *** data, hooks & context
 
