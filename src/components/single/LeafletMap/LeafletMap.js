@@ -1,12 +1,12 @@
 import * as React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
+// import L from "leaflet";
 import styled from "styled-components";
 
 // *** data, hooks & context
 
 // *** components
-import markerIcon from "../../../assets/images/QFLogoMarker.png";
+// import markerIcon from "../../../assets/images/QFLogoMarker.png";
 import InnerHTML from "../InnerHTML/InnerHTML";
 import Typography from "../Typography/Typography";
 
@@ -33,10 +33,10 @@ const LeafletMap = ({
   description,
   ...props
 }) => {
-  const customMarker = new L.icon({
-    iconUrl: markerIcon,
-    iconSize: [64, 64],
-  });
+  // const customMarker = new L.icon({
+  //   iconUrl: markerIcon,
+  //   iconSize: [64, 64],
+  // });
 
   if (typeof window !== undefined) {
     return (
@@ -51,7 +51,8 @@ const LeafletMap = ({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[latitude, longitude]} icon={customMarker}>
+        {/* <Marker position={[latitude, longitude]} icon={customMarker}> */}
+        <Marker position={[latitude, longitude]}>
           <StyledPopup>
             <Typography
               element="p"
