@@ -34,10 +34,11 @@ const NotFoundPage = () => {
           color="primary"
           align="center"
           weight="600"
+          transform="uppercase"
         >
-          Hmm...Looks Like It's Just Us
+          This page doesn't exist
         </Message>
-        <BackButton color="secondary" variant="outline">
+        <BackButton color="secondary" variant="outline" flat>
           <ButtonLink to="/">Back Home</ButtonLink>
         </BackButton>
       </FlexGrid>
