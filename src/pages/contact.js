@@ -13,6 +13,7 @@ import Typography from "../components/single/Typography/Typography";
 import InnerHTML from "../components/single/InnerHTML/InnerHTML";
 import SocialList from "../components/composite/SocialList/SocialList";
 import TimezoneClocks from "../components/composite/TimezoneClocks/TimezoneClocks";
+import LeafletMap from "../components/single/LeafletMap/LeafletMap";
 
 // *** styled components
 import {
@@ -24,9 +25,6 @@ import {
   MapWrapper,
   OfficesWrapper,
 } from "../style/pages/Contact.style";
-import Map from "../components/single/Map/Map";
-import ReactMap from "../components/single/ReactMap/ReactMap";
-import LeafletMap from "../components/single/LeafletMap/LeafletMap";
 
 const ContactPage = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -113,20 +111,6 @@ const ContactPage = ({ data }) => {
             title={`${mapTitle} Office`}
             description={mapContent}
           />
-          {/* <ReactMap
-            latitude={latitude}
-            longitude={longitude}
-            zoom={mapzoom}
-            title={`${mapTitle} Office`}
-            description={mapContent}
-          /> */}
-          {/* <Map
-            lat={parseFloat(latitude)}
-            lng={parseFloat(longitude)}
-            zoom={parseFloat(mapzoom)}
-            markerTitle={`${mapTitle} Office`}
-            markerDescription={mapContent}
-          /> */}
         </MapWrapper>
       </CSSTransition>
       <CSSTransition

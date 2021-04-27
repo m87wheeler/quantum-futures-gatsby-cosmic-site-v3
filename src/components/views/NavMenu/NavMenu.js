@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 // import PropTypes from 'prop-types'
@@ -7,10 +6,9 @@ import styled from "styled-components";
 // *** data, hooks & context
 
 // *** components
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 // *** styled components
-import { Icon, List, Collapse, ListItem, Wrapper } from "./NavMenu.style";
+import { List, ListItem, Wrapper } from "./NavMenu.style";
 const NavLink = styled((props) => <Link {...props} />)`
   color: ${(p) => `rgb(${p.theme.common.white})`};
   text-decoration: none;
@@ -18,28 +16,22 @@ const NavLink = styled((props) => <Link {...props} />)`
 `;
 
 const NavMenu = ({ active, ...props }) => {
-  const [subOpen, setSubOpen] = useState("");
-
-  // ?
-  const toggleSub = (str) =>
-    setSubOpen((subOpen) => (subOpen === str ? "" : str));
-
   return (
     <Wrapper active={active} {...props}>
       <List>
-        <ListItem onClick={() => toggleSub("")}>
+        <ListItem>
           <NavLink to="/">Home</NavLink>
         </ListItem>
-        <ListItem onClick={() => toggleSub("")}>
+        <ListItem>
           <NavLink to="/about">About Us</NavLink>
         </ListItem>
-        <ListItem onClick={() => toggleSub()}>
+        <ListItem>
           <NavLink to="/newsfeed">Newsfeed</NavLink>
         </ListItem>
-        <ListItem onClick={() => toggleSub("")}>
+        <ListItem>
           <NavLink to="/ecosystem">Ecosystem</NavLink>
         </ListItem>
-        <ListItem onClick={() => toggleSub()}>
+        <ListItem>
           <NavLink to="/contact">Contact</NavLink>
         </ListItem>
       </List>

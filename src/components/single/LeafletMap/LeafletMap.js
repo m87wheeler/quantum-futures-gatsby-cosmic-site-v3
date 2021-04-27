@@ -1,15 +1,29 @@
 import * as React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import styled from "styled-components";
-import InnerHTML from "../InnerHTML/InnerHTML";
-import Typography from "../Typography/Typography";
 
 // *** data, hooks & context
 
 // *** components
+import markerIcon from "../../../assets/images/QFLogoMarker.png";
+import InnerHTML from "../InnerHTML/InnerHTML";
+import Typography from "../Typography/Typography";
 
 // *** styled components
-const Wrapper = styled.div``;
+const StyledMapContainer = styled(MapContainer)`
+  .leaflet-control-attribution,
+  .leaflet-top,
+  .leaflet-bottom {
+    z-index: 500 !important;
+  }
+`;
+
+const StyledPopup = styled(Popup)`
+  p {
+    margin: 0;
+  }
+`;
 
 const LeafletMap = ({
   latitude,
@@ -19,9 +33,14 @@ const LeafletMap = ({
   description,
   ...props
 }) => {
+  const customMarker = new L.icon({
+    iconUrl: markerIcon,
+    iconSize: [64, 64],
+  });
+
   if (typeof window !== undefined) {
     return (
-      <MapContainer
+      <StyledMapContainer
         center={[latitude, longitude]}
         zoom={zoom}
         scrollWheelZoom={false}
@@ -32,8 +51,8 @@ const LeafletMap = ({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[latitude, longitude]}>
-          <Popup>
+        <Marker position={[latitude, longitude]} icon={customMarker}>
+          <StyledPopup>
             <Typography
               element="p"
               variant="h6"
@@ -46,9 +65,9 @@ const LeafletMap = ({
               {title}
             </Typography>
             <InnerHTML html={description} collapse />
-          </Popup>
+          </StyledPopup>
         </Marker>
-      </MapContainer>
+      </StyledMapContainer>
     );
   }
   return null;

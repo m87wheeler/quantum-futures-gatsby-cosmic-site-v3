@@ -34,7 +34,7 @@ const Clock = ({ timezone, ...props }) => {
       });
     }, 100);
     return () => clearInterval(interval);
-  }, []);
+  }, [timezone]);
 
   return (
     <Container {...props}>
