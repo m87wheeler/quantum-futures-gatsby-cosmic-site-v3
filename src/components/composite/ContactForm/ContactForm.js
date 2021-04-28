@@ -57,6 +57,7 @@ const ContactForm = ({ endpoint, ...props }) => {
 
   // ? handle contact form submit
   const handleSubmit = async () => {
+    setFormStatus(initialFormStatus);
     if (!formState.name || !formState.email || !formState.message) {
       return setFormStatus((formStatus) => ({
         ...formStatus,
@@ -78,7 +79,8 @@ const ContactForm = ({ endpoint, ...props }) => {
         },
         body: JSON.stringify(formState),
       });
-      if (req.status === 200) {
+      if (consent) await addToMailchimp(subscribe);
+      if (parseInt(req.status) === 200) {
         setFormState(initialFormState);
         setFormStatus((formStatus) => ({ ...formStatus, loading: false }));
         setFormStatus((formStatus) => ({ ...formStatus, success: true }));
@@ -132,16 +134,12 @@ const ContactForm = ({ endpoint, ...props }) => {
             ? "danger"
             : formStatus.success
             ? "confirm"
-            : "white"
+            : "black"
         }
       >
-        {formStatus.loading
-          ? "Sending your message..."
-          : formStatus.success
-          ? "Message sent!"
-          : formStatus.error[0]
-          ? formStatus.error[1]
-          : ""}
+        {formStatus.loading ? "Sending your message..." : null}
+        {formStatus.error[0] ? formStatus.error[1] : null}
+        {formStatus.success ? "Message sent!" : null}
       </FormFeedback>
     </FlexStack>
   );

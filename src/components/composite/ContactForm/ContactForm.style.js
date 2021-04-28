@@ -4,8 +4,6 @@ import Typography from "../../single/Typography/Typography";
 
 export const FormFeedback = styled(Typography)`
   display: grid;
-  align-items: center;
-  justify-items: center;
   min-height: 2rem;
 `;
 
