@@ -1,12 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 
 // *** data, hooks & context
 import { GlobalStyle } from "./GlobalStyle";
 import { Theme } from "./Theme";
 
 // *** components
+import favicon from "../assets/images/QFLogoFavicon.png";
 import Header from "../components/views/Header/Header";
 import Main from "../components/views/Main/Main";
 import Footer from "../components/views/Footer/Footer";
@@ -33,6 +35,9 @@ const StyledFooter = styled(Footer)`
 const Layout = ({ index, background, backdropActive, children }) => {
   return (
     <Theme>
+      <Helmet>
+        <link rel="icon" href={favicon} />
+      </Helmet>
       <GlobalStyle />
       <StyledHeader backdropActive={backdropActive} index={index} />
       <LayoutContainer>
