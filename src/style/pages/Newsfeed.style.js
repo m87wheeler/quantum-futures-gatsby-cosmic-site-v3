@@ -40,8 +40,7 @@ export const DisplayToggleWrapper = styled.div`
   z-index: 99;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    padding-left: calc(100vw / 12);
-    padding-right: calc(100vw / 12);
+    padding: 3rem 0;
   }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {

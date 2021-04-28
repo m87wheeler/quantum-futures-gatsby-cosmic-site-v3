@@ -25,13 +25,15 @@ const Header = ({ backdropActive, index, ...props }) => {
 
   // ? useClickOutside hook
   useEffect(() => {
-    const listener = () => {
+    const listener = (e) => {
       if (!navRef.current || !hamburgerRef.current || !navOpen) return;
-      setNavOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target)) toggleNav();
     };
 
-    document.addEventListener("mousedown", listener);
-    document.addEventListener("touchstart", listener);
+    if (typeof window !== undefined) {
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+    }
 
     return () => {
       document.removeEventListener("mousedown", listener);
