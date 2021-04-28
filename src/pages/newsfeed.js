@@ -17,6 +17,7 @@ import {
   StyledNewsfeedList,
   Title,
 } from "../style/pages/Newsfeed.style";
+import { getCookie, setCookie } from "../functions/cookieFunctions";
 
 const NewsfeedPage = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -35,6 +36,8 @@ const NewsfeedPage = ({ data }) => {
   useEffect(() => {
     if (typeof window !== undefined) {
       setPageReady(true);
+      const layoutCookie = getCookie("newsfeedlayout");
+      setLayout(layoutCookie ? layoutCookie : "grid");
     }
   }, []);
 
@@ -66,7 +69,10 @@ const NewsfeedPage = ({ data }) => {
   // ? toggle page layout state
   const handleLayout = (e) => {
     let value = e.target.value;
-    if (value) setLayout(value);
+    if (value) {
+      setLayout(value);
+      setCookie("newsfeedlayout", value);
+    }
   };
 
   // ? handle filter change
@@ -125,7 +131,7 @@ const NewsfeedPage = ({ data }) => {
               onChange={handleChange}
               onClick={handleClear}
             />
-            <ListDisplayToggle onClick={handleLayout} />
+            <ListDisplayToggle onChange={handleLayout} layout={layout} />
           </DisplayToggleWrapper>
         </CSSTransition>
         <CSSTransition
