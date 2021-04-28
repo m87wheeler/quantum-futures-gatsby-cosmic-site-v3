@@ -53,6 +53,7 @@ export const BackgroundImage = styled.div`
   background-image: ${(p) => `url(${p.backgroundImage})`};
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   opacity: 0.4;
   filter: saturate(0);
 `;
