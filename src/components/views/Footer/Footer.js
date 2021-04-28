@@ -1,98 +1,33 @@
 import * as React from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import addToMailchimp from "gatsby-plugin-mailchimp";
 
 // *** data, hooks & context
 
 // *** components
-// import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
+import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
 import SocialList from "../../composite/SocialList/SocialList";
 import InnerHTML from "../../single/InnerHTML/InnerHTML";
-// import Typography from "../../single/Typography/Typography";
 
 // *** styled components
-const Wrapper = styled.footer`
-  min-height: 100vh;
-  width: 100%;
-  padding: 7.5rem 2rem 3rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(4, auto);
-  grid-template-areas:
-    "contact contact"
-    "navigation social"
-    "navigation creator"
-    "address other";
-  gap: 10vh 1rem;
-  background: ${(p) => `rgb(${p.theme.common.black})`};
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    padding: 30vh calc((100vw / 12) + 1rem) 5rem;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-      "contact navigation social"
-      "creator address other";
-    gap: 1rem;
-  }
-`;
-
-const FootSection = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  color: ${(p) => `rgb(${p.theme.common.white})`};
-  gap: 1.5rem;
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    gap: 0.5rem;
-  }
-`;
-
-const NavigationList = styled.ul`
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 0.75rem;
-  list-style-type: none;
-  font-family: ${(p) => p.theme.font.family.header};
-
-  li {
-    a {
-      font-weight: 500;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: ${(p) => `rgb(${p.theme.common.white})`};
-      transition: color 0.2s ease-in-out;
-    }
-
-    &:hover {
-      a {
-        color: ${(p) => `rgb(${p.theme.primary.main})`};
-      }
-    }
-  }
-`;
-
-const Creators = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 0.5rem;
-
-  p {
-    padding-left: 0.5rem;
-    border-left: ${(p) => `0.25rem solid rgb(${p.theme.primary.main})`};
-  }
-`;
-
-const Address = styled.address`
-  font-style: normal;
-
-  span {
-    display: block;
-  }
-`;
-const ContactDetail = styled.a``;
+import {
+  Wrapper,
+  FootSection,
+  NavigationList,
+  Creators,
+  Address,
+  ContactDetail,
+} from "./Footer.style";
 
 const Footer = ({ ...props }) => {
+  const [subscribe, setSubscribe] = useState("");
+  const [subscribeSuccess, setSubscribeSuccess] = useState({
+    result: "",
+    msg: "",
+  });
+
+  // *** data query
   const data = useStaticQuery(graphql`
     query {
       allCosmicjsSocialMedia {
@@ -127,15 +62,33 @@ const Footer = ({ ...props }) => {
   } = data.cosmicjsContactPage.metadata;
   const { canonical } = data.cosmicjsSiteMetadata.metadata;
 
+  // ? handle subscription input
+  const handleInput = (e) => {
+    setSubscribe(e.target.value);
+    setSubscribeSuccess({
+      result: "",
+      msg: "",
+    });
+  };
+
+  // ? handle subscription submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await addToMailchimp(subscribe);
+    setSubscribeSuccess(result);
+    setSubscribe("");
+  };
+
   return (
     <Wrapper {...props}>
-      {/* <SubscribeForm
+      <SubscribeForm
         style={{ gridArea: "contact" }}
         inputName="email"
-        inputValue={"test.email@gmail.com"}
-        onInput={(e) => console.log(e.target.value)}
-        onClick={() => alert("subscribe!")}
-      /> */}
+        inputValue={subscribe}
+        onInput={handleInput}
+        onClick={handleSubmit}
+        success={subscribeSuccess}
+      />
       <FootSection style={{ gridArea: "navigation" }}>
         <NavigationList>
           <li>

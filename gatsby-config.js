@@ -100,5 +100,13 @@ module.exports = {
         linkStyles: true, // (default: true) Enable/disable loading stylesheets via CDN
       },
     },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://gmail.us1.list-manage.com/subscribe/post?u=73afe87eb5c79b477bce642cb&amp;id=c5df02ccf6",
+        timeout: 3500,
+      },
+    },
   ],
 };

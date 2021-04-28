@@ -4,6 +4,7 @@ import * as React from "react";
 
 // *** components
 import Button from "../../single/Button/Button";
+import InnerHTML from "../../single/InnerHTML/InnerHTML";
 import Input from "../../single/Input/Input";
 
 // *** styled components
@@ -14,6 +15,7 @@ const SubscribeForm = ({
   onInput,
   inputName,
   inputValue,
+  success,
   text = "white",
   ...props
 }) => {
@@ -36,6 +38,12 @@ const SubscribeForm = ({
         />
         <Button onClick={onClick}>Subscribe</Button>
       </Contact>
+      <InnerHTML
+        html={success.result ? success.msg : `<div />`}
+        color="white"
+        collapse
+        style={{ minHeight: "3rem", marginBottom: "2rem" }}
+      />
     </Wrapper>
   );
 };
