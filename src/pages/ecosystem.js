@@ -88,6 +88,7 @@ const Ecosystem = ({ data }) => {
               background={i % 2 === 0 ? "black" : "white"}
               title={node.title}
               content={node.content}
+              backgroundImage={node.metadata.background_image.imgix_url}
             />
           ))}
         </Wrapper>
@@ -110,6 +111,11 @@ export const query = graphql`
           id
           title
           content
+          metadata {
+            background_image {
+              imgix_url
+            }
+          }
         }
       }
     }
