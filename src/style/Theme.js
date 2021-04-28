@@ -6,13 +6,13 @@ const theme = {
     main: "150, 63, 255",
     contrast: "255, 255, 255",
     dark: "100, 3, 205",
-    gradient: `linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 19%, rgba(150,63,255,1) 64%);`,
+    gradient: `linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 10%, rgba(150,63,255,1) 40%)`,
   },
   secondary: {
     main: "150, 195, 246",
     contrast: "255, 255, 255",
     dark: "100, 145, 196",
-    gradient: `linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 19%, rgba(150,63,255,1) 64%);`,
+    gradient: `linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(150,195,246,1) 10%, rgba(150,63,255,1) 40%)`,
   },
   common: {
     black: "17, 17, 17",

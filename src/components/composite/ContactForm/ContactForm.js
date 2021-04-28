@@ -12,6 +12,7 @@ import Typography from "../../single/Typography/Typography";
 
 // *** styled components
 import { FormFeedback, SubmitSection, SubmitButton } from "./ContactForm.style";
+import Checkbox from "../../single/Checkbox/Checkbox";
 
 const ContactForm = ({ endpoint, ...props }) => {
   const initialFormState = {
@@ -117,18 +118,12 @@ const ContactForm = ({ endpoint, ...props }) => {
         onInput={handleInput}
       />
       <SubmitSection>
-        <label>
-          <input
-            type="checkbox"
-            name="subscribeConsent"
-            checked={consent}
-            onChange={handleChange}
-          />
-          <Typography element="span">
-            {" "}
-            Subscribe to the Quantum Futures Newsletter
-          </Typography>
-        </label>
+        <Checkbox
+          label="Subscribe to the Quantum Futures Newsletter"
+          name="subscribeConsent"
+          checked={consent}
+          onChange={handleChange}
+        />
         <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
       </SubmitSection>
       <FormFeedback
