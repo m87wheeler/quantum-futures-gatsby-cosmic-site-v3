@@ -27,7 +27,8 @@ const Header = ({ backdropActive, index, ...props }) => {
   useEffect(() => {
     const listener = (e) => {
       if (!navRef.current || !hamburgerRef.current || !navOpen) return;
-      if (navRef.current && !navRef.current.contains(e.target)) toggleNav();
+      if (navRef.current && !navRef.current.contains(e.target))
+        setNavOpen(false);
     };
 
     if (typeof window !== undefined) {

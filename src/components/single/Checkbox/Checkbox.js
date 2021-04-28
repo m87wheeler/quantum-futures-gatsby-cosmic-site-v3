@@ -6,7 +6,7 @@ import Typography from "../Typography/Typography";
 // *** components
 
 // *** styled components
-import { Label, Element } from "./Checkbox.style";
+import { Label, Element, Input, CheckMark } from "./Checkbox.style";
 
 const Checkbox = ({ label, onChange, name, checked, ...props }) => {
   return (
@@ -18,6 +18,9 @@ const Checkbox = ({ label, onChange, name, checked, ...props }) => {
         onChange={onChange}
         {...props}
       />
+      <Input>
+        <CheckMark checked={checked} />
+      </Input>
       {label ? <Typography element="span">{label}</Typography> : null}
     </Label>
   );
