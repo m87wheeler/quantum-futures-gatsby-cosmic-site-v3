@@ -22,9 +22,10 @@ const IndexNewsFeed = ({ background, posts, ...props }) => {
         align="center"
         gradient
         color="primary"
+        transform="uppercase"
         style={{ paddingTop: "1rem" }}
       >
-        Latest Stories
+        Latest News
       </Typography>
       <NewsfeedList
         posts={posts}

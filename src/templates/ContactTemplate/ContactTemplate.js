@@ -9,8 +9,6 @@ import Layout from "../../style/Layout";
 // *** styled components
 
 const ContactPage = ({ pageContext }) => {
-  useEffect(() => console.log(pageContext), []);
-
   return (
     <Layout>
       <h1>Contact - Created Page</h1>

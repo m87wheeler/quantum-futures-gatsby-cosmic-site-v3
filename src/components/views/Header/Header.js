@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // *** data, hooks & context
@@ -17,15 +17,37 @@ import {
 
 const Header = ({ backdropActive, index, ...props }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const navRef = useRef(null);
+  const hamburgerRef = useRef(null);
 
   // ? toggle nav status
   const toggleNav = () => setNavOpen(!navOpen);
 
+  // ? useClickOutside hook
+  useEffect(() => {
+    const listener = () => {
+      if (!navRef.current || !hamburgerRef.current || !navOpen) return;
+      setNavOpen(false);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [navOpen]);
+
   return (
     <Wrapper backdrop={backdropActive} {...props}>
       {index ? null : <HeaderLogo />}
-      <StyledHamburger active={navOpen} onClick={toggleNav} />
-      <StyledNavMenu active={navOpen} />
+      <StyledHamburger
+        active={navOpen}
+        onClick={toggleNav}
+        ref={hamburgerRef}
+      />
+      <StyledNavMenu active={navOpen} ref={navRef} />
       <Backdrop />
     </Wrapper>
   );

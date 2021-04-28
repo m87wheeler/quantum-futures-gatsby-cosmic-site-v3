@@ -9,8 +9,6 @@ import Typography from "../../single/Typography/Typography";
 import { Wrapper, PreviousLink, NextLink } from "./ArticleTrail.style";
 
 const ArticleTrail = ({ next, previous, ...props }) => {
-  console.log(next, previous);
-
   return (
     <Wrapper {...props}>
       {previous ? (

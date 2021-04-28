@@ -43,9 +43,6 @@ const NewsfeedPage = ({ data }) => {
     if (typeof window !== undefined) setPosts(data.allCosmicjsBlogPosts.edges);
   }, [data.allCosmicjsBlogPosts.edges]);
 
-  useEffect(() => console.log("Posts: ", posts), [posts]);
-  useEffect(() => console.log("Filtered: ", filteredPosts), [filteredPosts]);
-
   // ? setCatTypes on page load
   useEffect(() => {
     if (typeof window !== undefined && posts.length) {

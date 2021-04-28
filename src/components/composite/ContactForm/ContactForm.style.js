@@ -9,6 +9,13 @@ export const FormFeedback = styled(Typography)`
   min-height: 2rem;
 `;
 
+export const SubmitSection = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: flex-end;
+`;
+
 export const SubmitButton = styled(Button)`
   align-self: stretch;
 

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { forwardRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 // import PropTypes from 'prop-types'
@@ -9,15 +10,16 @@ import styled from "styled-components";
 
 // *** styled components
 import { List, ListItem, Wrapper } from "./NavMenu.style";
+
 const NavLink = styled((props) => <Link {...props} />)`
   color: ${(p) => `rgb(${p.theme.common.white})`};
   text-decoration: none;
   font-weight: 500;
 `;
 
-const NavMenu = ({ active, ...props }) => {
+const NavMenu = ({ active, ...props }, ref) => {
   return (
-    <Wrapper active={active} tabIndex={-1} {...props}>
+    <Wrapper ref={ref} active={active} tabIndex={-1} {...props}>
       <List>
         <ListItem>
           <NavLink to="/">Home</NavLink>
@@ -39,8 +41,6 @@ const NavMenu = ({ active, ...props }) => {
   );
 };
 
-// NavMenu.defaultProps = {}
+const forwardedNav = forwardRef(NavMenu);
 
-// NavMenu.propTypes = {}
-
-export default NavMenu;
+export default forwardedNav;

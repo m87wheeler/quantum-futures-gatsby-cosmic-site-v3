@@ -1,16 +1,17 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-// import PropTypes from 'prop-types'
+import addToMailchimp from "gatsby-plugin-mailchimp";
 
 // *** data, hooks & context
+import { validateEmail } from "../../../assets/functions/validateEmail";
 
 // *** components
 import Input from "../../single/Input/Input";
 import FlexStack from "../../single/FlexStack/FlexStack";
-import { validateEmail } from "../../../assets/functions/validateEmail";
+import Typography from "../../single/Typography/Typography";
 
 // *** styled components
-import { FormFeedback, SubmitButton } from "./ContactForm.style";
+import { FormFeedback, SubmitSection, SubmitButton } from "./ContactForm.style";
 
 const ContactForm = ({ endpoint, ...props }) => {
   const initialFormState = {
@@ -26,6 +27,14 @@ const ContactForm = ({ endpoint, ...props }) => {
   const [formState, setFormState] = useState(initialFormState);
   const [formStatus, setFormStatus] = useState(initialFormStatus);
 
+  // ? mailchimp state
+  const [consent, setConsent] = useState(false);
+  const [subscribe, setSubscribe] = useState("");
+  const [subscribeSuccess, setSubscribeSuccess] = useState({
+    result: "",
+    msg: "",
+  });
+
   // ? reset state after interval
   useEffect(() => {
     setFormStatus((initialFormStatus) => ({
@@ -35,14 +44,17 @@ const ContactForm = ({ endpoint, ...props }) => {
     }));
   }, [formState]);
 
-  // ?
+  // ? handle contact form input
   const handleInput = (e) =>
     setFormState((formState) => ({
       ...formState,
       [e.target.name]: e.target.value,
     }));
 
-  // ?
+  // ? handle newsletter consent
+  const handleChange = () => setConsent(!consent);
+
+  // ? handle contact form submit
   const handleSubmit = async () => {
     if (!formState.name || !formState.email || !formState.message) {
       return setFormStatus((formStatus) => ({
@@ -104,7 +116,21 @@ const ContactForm = ({ endpoint, ...props }) => {
         value={formState.message}
         onInput={handleInput}
       />
-      <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
+      <SubmitSection>
+        <label>
+          <input
+            type="checkbox"
+            name="subscribeConsent"
+            checked={consent}
+            onChange={handleChange}
+          />
+          <Typography element="span">
+            {" "}
+            Subscribe to the Quantum Futures Newsletter
+          </Typography>
+        </label>
+        <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
+      </SubmitSection>
       <FormFeedback
         color={
           formStatus.error[0]
