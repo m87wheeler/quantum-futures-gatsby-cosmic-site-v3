@@ -8,7 +8,7 @@ const cosmicConfig = {
 module.exports = {
   siteMetadata: {
     title: "Quantum Futures",
-    siteUrl: `https://quantumfuturesgatsbycosmi81003.gatsbyjs.io`,
+    siteUrl: `https://quantum-futures.com/`,
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
@@ -27,9 +27,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://quantumfuturesgatsbycosmi81003.gatsbyjs.io",
-        sitemap:
-          "https://quantumfuturesgatsbycosmi81003.gatsbyjs.io/sitemap.xml",
+        host: "https://quantum-futures.com/",
+        sitemap: "https://quantum-futures.com/sitemap.xml",
         policy: [
           {
             userAgent: "Googlebot",
