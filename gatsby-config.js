@@ -19,6 +19,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-next-seo",
+      options: {
+        noindex: false,
+      },
+    },
+    {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://quantumfuturesgatsbycosmi81003.gatsbyjs.io",
