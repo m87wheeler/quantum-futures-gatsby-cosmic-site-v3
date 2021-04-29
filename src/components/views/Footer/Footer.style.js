@@ -45,12 +45,14 @@ export const FootSection = styled.div`
 export const NavigationList = styled.ul`
   display: flex;
   flex-flow: column nowrap;
-  gap: 0.75rem;
+  gap: 1.5rem;
   list-style-type: none;
   font-family: ${(p) => p.theme.font.family.header};
 
   li {
     a {
+      padding: 0.5rem 0;
+      font-size: 1rem;
       font-weight: 500;
       text-transform: uppercase;
       text-decoration: none;

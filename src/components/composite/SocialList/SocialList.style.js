@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.ul`
   display: flex;
   flex-flow: column nowrap;
-  gap: 0.75rem;
+  gap: 1.5rem;
   list-style-type: none;
   font-family: ${(p) => p.theme.font.family.header};
 
@@ -25,6 +25,7 @@ export const Wrapper = styled.ul`
       `}
 
     a {
+      padding: 0.5rem 0;
       font-weight: 500;
       text-transform: uppercase;
       text-decoration: none;
