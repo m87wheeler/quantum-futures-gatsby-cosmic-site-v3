@@ -111,7 +111,7 @@ const Footer = ({ ...props }) => {
       <FootSection style={{ gridArea: "social" }}>
         <SocialList socialArr={socialArr} />
       </FootSection>
-      <FootSection style={{ gridArea: "creator" }}>
+      <FootSection style={{ gridArea: "creator", justifyContent: "flex-end" }}>
         <Creators>
           <p>&copy; 2021 Quantum Futures</p>
           <p>
@@ -123,7 +123,7 @@ const Footer = ({ ...props }) => {
           </p>
         </Creators>
       </FootSection>
-      <FootSection style={{ gridArea: "address" }}>
+      <FootSection style={{ gridArea: "address", justifyContent: "flex-end" }}>
         <Address>
           <InnerHTML
             html={`<p>${main_contact_address.replace(/\n/g, "<br />")}</p>`}
@@ -136,7 +136,7 @@ const Footer = ({ ...props }) => {
           {main_contact_number}
         </ContactDetail>
       </FootSection>
-      <FootSection style={{ gridArea: "other" }}>
+      <FootSection style={{ gridArea: "other", justifyContent: "flex-end" }}>
         <a href={`${canonical}/sitemap.xml`}>Sitemap</a>
         {/* <a href="privacy">Privacy Policy</a> */}
       </FootSection>
