@@ -27,7 +27,11 @@ const Header = ({ backdropActive, index, ...props }) => {
   useEffect(() => {
     const listener = (e) => {
       if (!navRef.current || !hamburgerRef.current || !navOpen) return;
-      if (navRef.current && !navRef.current.contains(e.target))
+      if (
+        navRef.current &&
+        !navRef.current.contains(e.target) &&
+        !hamburgerRef.current.contains(e.target)
+      )
         setNavOpen(false);
     };
 

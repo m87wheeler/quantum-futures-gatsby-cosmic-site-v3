@@ -8,7 +8,6 @@ import { validateEmail } from "../../../assets/functions/validateEmail";
 // *** components
 import Input from "../../single/Input/Input";
 import FlexStack from "../../single/FlexStack/FlexStack";
-import Typography from "../../single/Typography/Typography";
 
 // *** styled components
 import { FormFeedback, SubmitSection, SubmitButton } from "./ContactForm.style";
@@ -30,11 +29,6 @@ const ContactForm = ({ endpoint, ...props }) => {
 
   // ? mailchimp state
   const [consent, setConsent] = useState(false);
-  const [subscribe, setSubscribe] = useState("");
-  const [subscribeSuccess, setSubscribeSuccess] = useState({
-    result: "",
-    msg: "",
-  });
 
   // ? reset state after interval
   useEffect(() => {
@@ -79,7 +73,7 @@ const ContactForm = ({ endpoint, ...props }) => {
         },
         body: JSON.stringify(formState),
       });
-      if (consent) await addToMailchimp(subscribe);
+      if (consent) await addToMailchimp(formState.email);
       if (parseInt(req.status) === 200) {
         setFormState(initialFormState);
         setFormStatus((formStatus) => ({ ...formStatus, loading: false }));
