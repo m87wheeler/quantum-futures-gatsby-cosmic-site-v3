@@ -28,19 +28,21 @@ const fadeInAnimation = css`
 `;
 
 export const DisplayToggleWrapper = styled.div`
-  position: sticky;
+  position: fixed;
   top: 4.5rem;
-  left: 0;
+  right: 0;
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 0.5rem;
   align-items: center;
-  padding: 3rem 1rem;
+  padding: 0 !important;
+  padding-top: 4rem !important;
+  padding-right: 1rem !important;
   background: transparent;
   z-index: 99;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    padding: 3rem 0;
+    padding-right: calc(100vw / 12) !important;
   }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
@@ -74,9 +76,12 @@ export const StyledNewsfeedList = styled(NewsfeedList)`
 `;
 
 export const Title = styled(Typography)`
+  padding: 0 1rem 3rem;
   font-size: 2rem !important;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    margin-top: 2rem;
+    padding: 0 calc(100vw / 12) 3rem;
     font-size: 3rem !important;
   }
 `;

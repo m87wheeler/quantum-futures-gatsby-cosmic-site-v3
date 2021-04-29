@@ -109,6 +109,15 @@ const NewsfeedPage = ({ data }) => {
         keywords={keywords}
       />
       <Layout>
+        <Title
+          element="h2"
+          gradient
+          color="primary"
+          transform="uppercase"
+          style={{ paddingTop: "1.5rem" }}
+        >
+          Newsfeed
+        </Title>
         <CSSTransition
           in={pageReady}
           timeout={appearDuration}
@@ -116,15 +125,6 @@ const NewsfeedPage = ({ data }) => {
           appear
         >
           <DisplayToggleWrapper delay={0}>
-            <Title
-              element="h2"
-              gradient
-              color="primary"
-              transform="uppercase"
-              style={{ paddingTop: "1.5rem" }}
-            >
-              Newsfeed
-            </Title>
             <FilterPosts
               cats={catTypes}
               selected={catSelected}
