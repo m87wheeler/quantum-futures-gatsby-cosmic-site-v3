@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import SocialList from "../../composite/SocialList/SocialList";
 
 export const Wrapper = styled.footer`
   min-height: 100vh;
@@ -23,6 +24,10 @@ export const Wrapper = styled.footer`
       "contact navigation social"
       "creator address other";
     gap: 1rem;
+  }
+
+  a {
+    color: ${(p) => `rgb(${p.theme.secondary.main})`} !important;
   }
 `;
 
@@ -49,13 +54,13 @@ export const NavigationList = styled.ul`
       font-weight: 500;
       text-transform: uppercase;
       text-decoration: none;
-      color: ${(p) => `rgb(${p.theme.common.white})`};
+      color: ${(p) => `rgb(${p.theme.common.white})`} !important;
       transition: color 0.2s ease-in-out;
     }
 
     &:hover {
       a {
-        color: ${(p) => `rgb(${p.theme.primary.main})`};
+        color: ${(p) => `rgb(${p.theme.secondary.main})`};
       }
     }
   }
@@ -68,7 +73,7 @@ export const Creators = styled.div`
 
   p {
     padding-left: 0.5rem;
-    border-left: ${(p) => `0.25rem solid rgb(${p.theme.primary.main})`};
+    border-left: ${(p) => `0.25rem solid rgb(${p.theme.secondary.main})`};
   }
 `;
 
@@ -80,3 +85,9 @@ export const Address = styled.address`
   }
 `;
 export const ContactDetail = styled.a``;
+
+export const StyledSocialList = styled(SocialList)`
+  a {
+    color: ${(p) => `rgb(${p.theme.common.white})`} !important;
+  }
+`;

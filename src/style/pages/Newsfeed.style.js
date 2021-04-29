@@ -35,13 +35,12 @@ export const DisplayToggleWrapper = styled.div`
   grid-template-columns: 1fr auto auto;
   gap: 0.5rem;
   align-items: center;
-  padding: 0 !important;
-  padding-top: 4rem !important;
-  padding-right: 1rem !important;
+  padding: 1.25rem 1rem 0 0 !important;
   background: transparent;
   z-index: 99;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    padding-top: 4.25rem !important;
     padding-right: calc(100vw / 12) !important;
   }
 

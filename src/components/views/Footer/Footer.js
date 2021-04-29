@@ -7,7 +7,6 @@ import addToMailchimp from "gatsby-plugin-mailchimp";
 
 // *** components
 import SubscribeForm from "../../composite/SubscribeForm/SubscribeForm";
-import SocialList from "../../composite/SocialList/SocialList";
 import InnerHTML from "../../single/InnerHTML/InnerHTML";
 
 // *** styled components
@@ -17,6 +16,7 @@ import {
   NavigationList,
   Creators,
   Address,
+  StyledSocialList,
   ContactDetail,
 } from "./Footer.style";
 
@@ -109,7 +109,7 @@ const Footer = ({ ...props }) => {
         </NavigationList>
       </FootSection>
       <FootSection style={{ gridArea: "social" }}>
-        <SocialList socialArr={socialArr} />
+        <StyledSocialList socialArr={socialArr} />
       </FootSection>
       <FootSection style={{ gridArea: "creator", justifyContent: "flex-end" }}>
         <Creators>
