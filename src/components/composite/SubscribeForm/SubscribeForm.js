@@ -32,6 +32,7 @@ const SubscribeForm = ({
       <Contact>
         <Input
           type="email"
+          placeholder="Email address"
           name={inputName}
           value={inputValue}
           onInput={onInput}
