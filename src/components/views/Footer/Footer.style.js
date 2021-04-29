@@ -10,8 +10,8 @@ export const Wrapper = styled.footer`
   grid-template-areas:
     "contact contact"
     "navigation social"
-    "navigation creator"
-    "address other";
+    "address other"
+    "creator creator";
   gap: 10vh 1rem;
   background: ${(p) => `rgb(${p.theme.common.black})`};
 
