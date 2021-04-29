@@ -47,12 +47,12 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet>
+      {/* <Helmet>
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
           rel="stylesheet"
         />
-      </Helmet>
+      </Helmet> */}
       <CSSTransition
         in={pageReady}
         timeout={appearDuration}
