@@ -9,7 +9,7 @@ import QFLogo from "../../../assets/svg/QFLogo";
 
 // *** styled components
 export const StyledMainLogo = styled(QFLogo)`
-  height: ${(p) => (p.indexpage === "true" ? "3.5rem" : "3rem")};
+  height: ${(p) => (p.indexpage === "true" ? "5rem" : "3rem")};
   width: auto;
   margin: -1rem -0.5rem 0 0;
 `;

@@ -20,9 +20,17 @@ export const Background = styled.div`
 
 export const IndexHeaderLogo = styled(HeaderLogo)`
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   left: 1rem;
   z-index: 999;
+
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    top: 20vh;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    left: calc(100vw / 12 + 1rem);
+  }
 `;
 
 export const Overlay = styled.div`
@@ -69,14 +77,18 @@ export const LandingSection = styled(Section)`
 
 export const Title = styled(Typography)`
   font-size: 3rem !important;
+  line-height: 1 !important;
 
   @media (min-width: ${(p) => p.theme.media.xs.min}) {
     font-size: 3.5rem !important;
   }
 
+  @media (min-width: ${(p) => p.theme.media.sm.min}) {
+    font-size: 5rem !important;
+  }
+
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     max-width: 52rem;
-    font-size: 5rem !important;
   }
 
   @media (min-width: ${(p) => p.theme.media.xl.min}) {
