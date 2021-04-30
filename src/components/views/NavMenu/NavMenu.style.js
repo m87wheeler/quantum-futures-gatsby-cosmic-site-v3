@@ -66,6 +66,7 @@ const ListItemStyles = css`
 `;
 
 export const ListItem = styled.li`
+  position: relative;
   ${ListItemStyles};
 
   a {
@@ -75,12 +76,34 @@ export const ListItem = styled.li`
 
 export const Wrapper = styled.nav`
   padding: 7.5rem 1.5rem 3rem;
-  background: ${(p) => `rgba(${p.theme.common.white}, .95)`};
-  backdrop-filter: blur(2px);
+  background: ${(p) => `rgb(${p.theme.common.white})`};
   z-index: 99;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     padding-right: calc(100vw / 12);
     clip-path: polygon(60% 0%, 100% 0, 100% 100%, 35% 100%);
   }
+
+  ${ListItem} {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: ${(p) => `rgba(${p.theme.common.white})`};
+      transition: height 1s ease-in-out 0.5s;
+    }
+  }
+
+  ${(p) =>
+    p.active &&
+    css`
+      ${ListItem} {
+        &:after {
+          height: 0;
+        }
+      }
+    `}
 `;

@@ -7,7 +7,6 @@ import { CSSTransition } from "react-transition-group";
 import Layout from "../style/Layout";
 
 // *** components
-import Helmet from "../components/single/Helmet/Helmet";
 import ContactForm from "../components/composite/ContactForm/ContactForm";
 import Typography from "../components/single/Typography/Typography";
 import InnerHTML from "../components/single/InnerHTML/InnerHTML";
@@ -47,12 +46,6 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout>
-      {/* <Helmet>
-        <link
-          href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-          rel="stylesheet"
-        />
-      </Helmet> */}
       <CSSTransition
         in={pageReady}
         timeout={appearDuration}

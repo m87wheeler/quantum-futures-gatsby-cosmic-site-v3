@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { GatsbySeo } from "gatsby-plugin-next-seo";
 import { Helmet } from "react-helmet";
 
 // *** data, hooks & context

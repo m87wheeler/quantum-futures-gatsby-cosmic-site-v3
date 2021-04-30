@@ -16,7 +16,7 @@ export const StyledNavMenu = styled(NavMenu)`
   right: ${(p) => (p.active ? 0 : "-110vw")};
   width: 100%;
   height: 100vh;
-  transition: right 0.3s ease-in-out;
+  transition: right 1s cubic-bezier(0.77, 0, 0.175, 1);
   z-index: 9999;
 `;
 
