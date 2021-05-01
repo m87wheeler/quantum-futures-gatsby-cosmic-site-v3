@@ -78,7 +78,7 @@ const PhilosophyPage = ({ data }) => {
             <Content html={data.cosmicjsAbout.content} delay={1} />
           </CSSTransition>
         </LandingWrapper>
-        <LandingWrapper>
+        <LandingWrapper style={{ paddingBottom: "3rem" }}>
           <CSSTransition
             in={pageReady}
             timeout={appearDuration}

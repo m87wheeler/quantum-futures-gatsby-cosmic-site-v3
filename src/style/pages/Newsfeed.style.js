@@ -28,29 +28,31 @@ const fadeInAnimation = css`
 `;
 
 export const DisplayToggleWrapper = styled.div`
-  position: fixed;
+  position: sticky;
   top: 4.5rem;
-  right: 0;
+  padding: 1rem;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto auto;
   gap: 0.5rem;
   align-items: center;
-  padding: 1.25rem 1rem 0 0 !important;
+  justify-content: flex-end;
   background: transparent;
   z-index: 99;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    padding-top: 4.25rem !important;
     padding-right: calc(100vw / 12) !important;
   }
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 2 / 12;
+    padding-right: 0;
+    grid-column: 1 / 13;
+    grid-row: 2 / 3;
   }
 
+  /*
   @media (min-width: ${(p) => p.theme.media.xl.min}) {
     padding: 1rem calc(100vw / 12);
-  }
+  } */
 
   ${fadeInAnimation};
 `;
@@ -75,12 +77,19 @@ export const StyledNewsfeedList = styled(NewsfeedList)`
 `;
 
 export const Title = styled(Typography)`
-  padding: 0 1rem 3rem;
-  font-size: 2rem !important;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+  font-size: 3rem !important;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     margin-top: 2rem;
-    padding: 0 calc(100vw / 12) 3rem;
+    padding-left: calc(100vw / 12);
+    padding-right: calc(100vw / 12);
     font-size: 3rem !important;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.xl.min}) {
+    padding-left: calc((100vw / 12) * 2);
+    padding-right: calc((100vw / 12) * 2);
   }
 `;

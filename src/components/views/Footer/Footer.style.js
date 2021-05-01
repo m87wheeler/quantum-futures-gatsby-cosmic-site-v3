@@ -17,7 +17,7 @@ export const Wrapper = styled.footer`
   background: ${(p) => `rgb(${p.theme.common.black})`};
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    padding: calc((100vw / 12) + 1rem);
+    padding: calc(((100vw / 12) + 1rem) / 2) calc((100vw / 12) + 1rem);
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:

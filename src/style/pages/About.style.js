@@ -14,12 +14,11 @@ export const Wrapper = styled.section`
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     grid-column: 1 / 13;
-    min-height: 50vh;
   }
 `;
 
 export const LandingWrapper = styled(Wrapper)`
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 0;
 
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     padding-left: calc(100vw / 12);

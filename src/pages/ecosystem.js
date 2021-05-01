@@ -54,7 +54,7 @@ const Ecosystem = ({ data }) => {
         keywords={keywords}
       />
       <Layout>
-        <LandingWrapper style={{ minHeight: "0" }}>
+        <LandingWrapper style={{ paddingBottom: "3rem" }}>
           <CSSTransition
             in={pageReady}
             timeout={appearDuration}
