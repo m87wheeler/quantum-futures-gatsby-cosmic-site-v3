@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Section from "../../components/single/Section/Section";
 import Typography from "../../components/single/Typography/Typography";
 import IndexNewsfeed from "../../components/views/IndexNewsfeed/IndexNewsfeed";
-import HeaderLogo from "../../components/composite/HeaderLogo/HeaderLogo";
+import QFLogo from "../../assets/svg/QFLogo";
 
 export const appearDuration = 500;
 export const classes = {
@@ -16,21 +16,6 @@ export const Background = styled.div`
   width: 100%;
   height: 100vh;
   background: ${(p) => `rgb(${p.theme.common.black})`};
-`;
-
-export const IndexHeaderLogo = styled(HeaderLogo)`
-  position: absolute;
-  top: 1.5rem;
-  left: 1rem;
-  z-index: 999;
-
-  @media (min-width: ${(p) => p.theme.media.sm.min}) {
-    top: 20vh;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.xl.min}) {
-    left: calc(100vw / 12 + 1rem);
-  }
 `;
 
 export const Overlay = styled.div`
@@ -76,6 +61,10 @@ export const LandingSection = styled(Section)`
 `;
 
 export const Title = styled(Typography)`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 3rem;
+  justify-items: flex-start;
   font-size: 3rem !important;
   line-height: 1 !important;
 
@@ -112,6 +101,17 @@ export const Title = styled(Typography)`
     transition: opacity ${appearDuration}ms ease-out,
       margin-top ${appearDuration}ms ease-in-out;
     transition-delay: 250ms;
+  }
+`;
+
+export const StyledHeaderLogo = styled(QFLogo)`
+  min-width: 18rem;
+  width: 60vw;
+  height: auto;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    min-width: 24rem;
+    width: 30vw !important;
   }
 `;
 

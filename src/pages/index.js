@@ -16,14 +16,15 @@ import {
   appearDuration,
   classes,
   Background,
-  IndexHeaderLogo,
   Overlay,
   VideoWrapper,
   LandingSection,
   Title,
   StyledNewsfeed,
+  StyledHeaderLogo,
 } from "../style/pages/Index.style";
 import LandingIntroduction from "../components/views/LandingIntroduction/LandingIntroduction";
+import HeaderLogo from "../components/composite/HeaderLogo/HeaderLogo";
 
 const Index = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -77,8 +78,7 @@ const Index = ({ data }) => {
         description={description}
         keywords={keywords}
       />
-      <Layout backdropActive={backdropActive} index="true">
-        <IndexHeaderLogo index />
+      <Layout backdropActive={backdropActive} hideLogo>
         {/** Background Media */}
         <Background>
           <Overlay />
@@ -102,6 +102,7 @@ const Index = ({ data }) => {
                 opacity: opacity,
               }}
             >
+              <StyledHeaderLogo />
               {title}
             </Title>
           </CSSTransition>

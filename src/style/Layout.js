@@ -32,14 +32,14 @@ const StyledFooter = styled(Footer)`
   z-index: 99;
 `;
 
-const Layout = ({ index, background, backdropActive, children }) => {
+const Layout = ({ hideLogo, background, backdropActive, children }) => {
   return (
     <Theme>
       <Helmet>
         <link rel="icon" href={favicon} />
       </Helmet>
       <GlobalStyle />
-      <StyledHeader backdropActive={backdropActive} index={index} />
+      <StyledHeader backdropActive={backdropActive} hideLogo={hideLogo} />
       <LayoutContainer>
         <Main background={background}>{children}</Main>
         <StyledFooter />
@@ -51,13 +51,13 @@ const Layout = ({ index, background, backdropActive, children }) => {
 Layout.defaultProps = {
   background: "white",
   backdropActive: true,
-  index: false,
+  hideLogo: false,
 };
 
 Layout.propTypes = {
   background: PropTypes.oneOf(["white", "black"]),
   backdropActive: PropTypes.bool,
-  index: PropTypes.oneOf(["true", undefined]),
+  hideLogo: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf([undefined])]),
 };
 
 export default Layout;

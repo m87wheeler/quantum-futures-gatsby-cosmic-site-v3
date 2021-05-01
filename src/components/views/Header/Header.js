@@ -15,7 +15,7 @@ import {
   Wrapper,
 } from "./Header.style";
 
-const Header = ({ backdropActive, index, ...props }) => {
+const Header = ({ backdropActive, hideLogo, ...props }) => {
   const [navOpen, setNavOpen] = useState(false);
   const navRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -48,7 +48,7 @@ const Header = ({ backdropActive, index, ...props }) => {
 
   return (
     <Wrapper backdrop={backdropActive} {...props}>
-      {index ? null : <HeaderLogo />}
+      {hideLogo ? null : <HeaderLogo />}
       <StyledHamburger
         active={navOpen}
         onClick={toggleNav}
