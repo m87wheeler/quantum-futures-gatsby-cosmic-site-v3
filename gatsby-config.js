@@ -99,6 +99,7 @@ module.exports = {
           `site-metadata`,
           `contact-form-configuration`,
           `office-details`,
+          `we-work-with`,
         ],
         apiAccess: {
           read_key: cosmicConfig.key,

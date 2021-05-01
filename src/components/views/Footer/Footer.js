@@ -116,17 +116,25 @@ const Footer = ({ ...props }) => {
           <p>&copy; {new Date().getFullYear()} Quantum Futures</p>
           <p>
             Website Designed by{" "}
-            <a href="http://martinwheelerweb.com" target="_blank">
+            <a
+              href="http://martinwheelerweb.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               MWWDD
             </a>{" "}
             &{" "}
-            <a href="http://rwd2design.co.uk/" target="_blank">
+            <a href="http://rwd2design.co.uk/" target="_blank" rel="noreferrer">
               RWD2
             </a>
           </p>
           <p>
             Website Built by{" "}
-            <a href="http://martinwheelerweb.com" target="_blank">
+            <a
+              href="http://martinwheelerweb.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               MWWDD
             </a>
           </p>

@@ -3,6 +3,7 @@ import Section from "../../components/single/Section/Section";
 import Typography from "../../components/single/Typography/Typography";
 import IndexNewsfeed from "../../components/views/IndexNewsfeed/IndexNewsfeed";
 import QFLogo from "../../assets/svg/QFLogo";
+import WorkWith from "../../components/views/WorkWith/WorkWith";
 
 export const appearDuration = 500;
 export const classes = {
@@ -115,7 +116,14 @@ export const StyledHeaderLogo = styled(QFLogo)`
   }
 `;
 
+export const StyledWorkWith = styled(WorkWith)`
+  max-width: 100vw;
+  overflow: hidden;
+`;
+
 export const StyledNewsfeed = styled(IndexNewsfeed)`
+  position: relative;
+  top: -1px;
   min-height: calc(100vh - 4.5rem);
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {

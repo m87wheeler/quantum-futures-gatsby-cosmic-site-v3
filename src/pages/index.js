@@ -22,9 +22,10 @@ import {
   Title,
   StyledNewsfeed,
   StyledHeaderLogo,
+  StyledWorkWith,
 } from "../style/pages/Index.style";
 import LandingIntroduction from "../components/views/LandingIntroduction/LandingIntroduction";
-import HeaderLogo from "../components/composite/HeaderLogo/HeaderLogo";
+import WorkWith from "../components/views/WorkWith/WorkWith";
 
 const Index = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
@@ -109,6 +110,8 @@ const Index = ({ data }) => {
         </LandingSection>
         {/** Intro Text **/}
         <LandingIntroduction text={landing_introduction} />
+        {/** We Work With */}
+        <StyledWorkWith />
         {/** Newsfeed Section */}
         <StyledNewsfeed
           posts={data.allCosmicjsBlogPosts.edges}

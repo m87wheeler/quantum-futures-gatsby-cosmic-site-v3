@@ -48,7 +48,7 @@ const LeafletMap = ({
         {...props}
       >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* <Marker position={[latitude, longitude]} icon={customMarker}> */}

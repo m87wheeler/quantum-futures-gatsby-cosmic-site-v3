@@ -121,7 +121,11 @@ const SocialMediaIcons = ({ ...props }) => {
         if (node.metadata.profile_active) {
           return (
             <li key={node.id}>
-              <LinkWrapper href={node.metadata.profile_link} target="_blank">
+              <LinkWrapper
+                href={node.metadata.profile_link}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <SvgIcon viewBox={icons[node.title.toLowerCase()].viewBox}>
                   {icons[node.title.toLowerCase()].path}
                 </SvgIcon>
