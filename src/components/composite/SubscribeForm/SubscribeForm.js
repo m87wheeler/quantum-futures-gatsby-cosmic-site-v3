@@ -43,7 +43,7 @@ const SubscribeForm = ({
         html={success.result ? success.msg : `<div />`}
         color="white"
         collapse
-        style={{ minHeight: "3rem", marginBottom: "2rem" }}
+        style={{ minHeight: "3rem" }}
       />
     </Wrapper>
   );
