@@ -119,6 +119,12 @@ export const StyledHeaderLogo = styled(QFLogo)`
 export const StyledWorkWith = styled(WorkWith)`
   max-width: 100vw;
   overflow: hidden;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-column: 1 / 13;
+    min-height: 0;
+    padding: 1rem calc(100vw / 12) 3rem;
+  }
 `;
 
 export const StyledNewsfeed = styled(IndexNewsfeed)`

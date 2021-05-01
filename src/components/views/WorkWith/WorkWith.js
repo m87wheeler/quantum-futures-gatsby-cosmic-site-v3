@@ -20,19 +20,19 @@ const Wrapper = styled.section`
   z-index: 10;
 `;
 
+const Logo = styled.img``;
+
 const CompanyContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1fr;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   gap: 1rem;
-`;
 
-const LogoContainer = styled.div`
-  align-self: center;
-
-  img {
-    width: 100%;
-    filter: saturate(0) brightness(1.5);
+  ${Logo} {
+    align-self: center;
+    max-width: 15rem;
+    width: auto;
+    height: auto;
   }
 `;
 
@@ -76,12 +76,11 @@ const WorkWith = ({ ...props }) => {
         {companies &&
           companies.length &&
           companies.map(({ node }) => (
-            <LogoContainer key={node.id}>
-              <img
-                src={node.metadata.company_pngsvg.imgix_url}
-                alt={node.title}
-              />
-            </LogoContainer>
+            <Logo
+              key={node.id}
+              src={node.metadata.company_pngsvg.imgix_url}
+              alt={node.title}
+            />
           ))}
       </CompanyContainer>
     </Wrapper>
