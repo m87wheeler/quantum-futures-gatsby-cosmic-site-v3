@@ -115,11 +115,20 @@ const Footer = ({ ...props }) => {
         <Creators>
           <p>&copy; 2021 Quantum Futures</p>
           <p>
-            Website Designed by <a href="website">MWWDD</a> &{" "}
-            <a href="website">RWD2</a>
+            Website Designed by{" "}
+            <a href="http://martinwheelerweb.com" target="_blank">
+              MWWDD
+            </a>{" "}
+            &{" "}
+            <a href="website" target="_blank">
+              RWD2
+            </a>
           </p>
           <p>
-            Website Built by <a href="website">MWWDD</a>
+            Website Built by{" "}
+            <a href="http://martinwheelerweb.com" target="_blank">
+              MWWDD
+            </a>
           </p>
         </Creators>
       </FootSection>
