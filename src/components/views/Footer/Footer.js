@@ -113,7 +113,7 @@ const Footer = ({ ...props }) => {
       </FootSection>
       <FootSection style={{ gridArea: "creator", justifyContent: "flex-end" }}>
         <Creators>
-          <p>&copy; 2021 Quantum Futures</p>
+          <p>&copy; {new Date().getFullYear()} Quantum Futures</p>
           <p>
             Website Designed by{" "}
             <a href="http://martinwheelerweb.com" target="_blank">
