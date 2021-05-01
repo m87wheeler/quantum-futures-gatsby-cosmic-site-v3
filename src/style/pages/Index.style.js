@@ -123,7 +123,8 @@ export const StyledWorkWith = styled(WorkWith)`
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     grid-column: 1 / 13;
     min-height: 0;
-    padding: 1rem calc(100vw / 12) 3rem;
+    padding-left: calc(100vw / 12);
+    padding-right: calc(100vw / 12);
   }
 `;
 
