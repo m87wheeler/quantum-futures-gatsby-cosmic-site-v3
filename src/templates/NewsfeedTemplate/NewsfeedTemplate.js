@@ -38,7 +38,13 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
 
   // ? scroll to top on page load
   useEffect(() => {
-    if (typeof window !== undefined) window.scrollTo(0, 0);
+    if (typeof window !== undefined) {
+      // scroll to top on load
+      window.scrollTo(0, 0);
+      // dynamically remove inline styles from blog images
+      let images = document.querySelectorAll("img");
+      images.forEach((img) => img.removeAttribute("style"));
+    }
   }, []);
 
   return (

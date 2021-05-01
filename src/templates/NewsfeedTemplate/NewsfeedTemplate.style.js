@@ -69,6 +69,24 @@ export const StyledInnerHTML = styled(InnerHTML)`
     padding: 1rem 0;
   }
 
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    img {
+      max-width: 65%;
+      height: auto !important;
+      margin-bottom: 1rem;
+
+      &.fr-fil {
+        float: left;
+        margin-right: 2rem;
+      }
+
+      &.fr-fir {
+        float: right;
+        margin-left: 2rem;
+      }
+    }
+  }
+
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
     grid-column: 2 / 8;
   }
@@ -86,8 +104,13 @@ export const StyledArticleTrail = styled(ArticleTrail)`
   margin-bottom: 1rem;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 2 / 9;
+    padding: 1rem 0;
+    grid-column: 2 / 12;
     grid-row: 6 / 7;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.lg.min}) {
+    grid-column: 2 / 8;
   }
 `;
 
