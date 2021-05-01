@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 
 const cosmicConfig = {
   bucket: process.env.COSMIC_BUCKET_SLUG,
@@ -50,6 +51,13 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
     `gatsby-transformer-sharp`,
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",

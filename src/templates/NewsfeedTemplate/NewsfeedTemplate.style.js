@@ -10,7 +10,6 @@ const Details = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   gap: 1rem;
-
   padding: 1rem 1rem 2rem;
 
   @media (min-width: ${(p) => p.theme.media.md.min}) {
@@ -29,10 +28,17 @@ export const PostDetails = styled(Details)`
   }
 `;
 
-export const ShareDetails = styled(Details)`
+export const Title = styled(Typography)`
+  padding: 0 1rem;
+
   @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-row: 4 / 5;
+    grid-row: 2 / 3;
     grid-column: 2 / 12;
+    padding: 1rem 0;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.lg.min}) {
+    grid-column: 2 / 8;
   }
 `;
 
@@ -52,6 +58,39 @@ export const CoverImageContainer = styled.div`
   }
 `;
 
+export const StyledInnerHTML = styled(InnerHTML)`
+  padding: 1rem;
+  text-align: justify;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-row: 4 / 5;
+    grid-column: 2 / 12;
+    text-align: left;
+    padding: 1rem 0;
+  }
+
+  @media (min-width: ${(p) => p.theme.media.lg.min}) {
+    grid-column: 2 / 8;
+  }
+`;
+
+export const ShareDetails = styled(Details)`
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-row: 5 / 6;
+    grid-column: 2 / 12;
+  }
+`;
+
+export const StyledArticleTrail = styled(ArticleTrail)`
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: ${(p) => p.theme.media.md.min}) {
+    grid-column: 2 / 9;
+    grid-row: 6 / 7;
+  }
+`;
+
 export const CoverImage = styled.div`
   width: 100%;
   height: 100%;
@@ -63,36 +102,6 @@ export const CoverImage = styled.div`
   @media (min-width: ${(p) => p.theme.media.md.min}) {
     width: 100%;
     margin: 0 auto;
-  }
-`;
-
-export const Title = styled(Typography)`
-  padding: 0 1rem;
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-row: 2 / 3;
-    grid-column: 2 / 12;
-    padding: 1rem 0;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    grid-column: 2 / 8;
-  }
-`;
-
-export const StyledInnerHTML = styled(InnerHTML)`
-  padding: 1rem;
-  text-align: justify;
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-row: 5 / 6;
-    grid-column: 2 / 12;
-    text-align: left;
-    padding: 1rem 0;
-  }
-
-  @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    grid-column: 2 / 8;
   }
 `;
 
@@ -111,14 +120,4 @@ export const BackButton = styled(Button)`
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.3s ease-in-out;
-`;
-
-export const StyledArticleTrail = styled(ArticleTrail)`
-  padding: 1rem;
-  margin-bottom: 1rem;
-
-  @media (min-width: ${(p) => p.theme.media.md.min}) {
-    grid-column: 2 / 9;
-    grid-row: 6 / 7;
-  }
 `;

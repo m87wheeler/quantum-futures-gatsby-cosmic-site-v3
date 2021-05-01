@@ -9,6 +9,7 @@ import { capitalizeString } from "../../assets/functions/capitalizeString";
 import Layout from "../../style/Layout";
 import TypeCard from "../../components/single/TypeCard/TypeCard";
 import Typography from "../../components/single/Typography/Typography";
+import ShareToIcons from "../../components/composite/ShareToIcons/ShareToIcons";
 
 // *** styled components
 import {
@@ -22,7 +23,6 @@ import {
   BackButton,
   StyledArticleTrail,
 } from "./NewsfeedTemplate.style";
-import ShareToIcons from "../../components/composite/ShareToIcons/ShareToIcons";
 
 const NewsfeedTemplate = ({ pageContext, data }) => {
   const {
@@ -50,24 +50,30 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
         keywords={keywords}
       />
       <Layout>
+        {/** grid-row: 1 / 2 */}
         <PostDetails>
           <TypeCard type={post_type} />
           <Typography size="xs">{created}</Typography>
           <Typography size="xs">|</Typography>
           <Typography size="xs">Quantum Futures</Typography>
         </PostDetails>
+        {/** grid-row: 2 / 3 */}
         <Title element="h2" variant="h1" transform="uppercase">
           {title}
         </Title>
+        {/** grid-row: 3 / 4 */}
+        <CoverImageContainer>
+          <CoverImage img={cover_image} />
+        </CoverImageContainer>
+        {/** grid-row: 4 / 5 */}
+        <StyledInnerHTML html={data.cosmicjsBlogPosts.content} />
+        {/** grid-row: 5 / 6 */}
         <ShareDetails>
           <Typography element="p">Share</Typography>
           <Typography size="xs">|</Typography>
           <ShareToIcons />
         </ShareDetails>
-        <CoverImageContainer>
-          <CoverImage img={cover_image} />
-        </CoverImageContainer>
-        <StyledInnerHTML html={data.cosmicjsBlogPosts.content} />
+        {/** grid-row: 6 / 7 */}
         <StyledArticleTrail previous={previous} next={next} />
         <Link to="/newsfeed">
           <BackButton color="primary" shadow direction={scrollDirection}>
