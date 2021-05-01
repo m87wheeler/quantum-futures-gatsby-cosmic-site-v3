@@ -2,9 +2,9 @@ import styled from "styled-components";
 import SocialList from "../../composite/SocialList/SocialList";
 
 export const Wrapper = styled.footer`
-  min-height: 100vh;
+  height: auto;
   width: 100%;
-  padding: 7.5rem 2rem 3rem;
+  padding: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(4, auto);
@@ -13,13 +13,13 @@ export const Wrapper = styled.footer`
     "navigation social"
     "address other"
     "creator creator";
-  gap: 10vh 1rem;
+  gap: 3rem;
   background: ${(p) => `rgb(${p.theme.common.black})`};
 
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
-    padding: 30vh calc((100vw / 12) + 1rem) 5rem;
+    padding: calc((100vw / 12) + 1rem);
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
     grid-template-areas:
       "contact navigation social"
       "creator address other";

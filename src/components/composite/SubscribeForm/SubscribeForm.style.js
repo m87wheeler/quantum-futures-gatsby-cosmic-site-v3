@@ -27,9 +27,10 @@ export const Contact = styled.div`
 `;
 
 export const CallToAction = styled(Typography)`
+  line-height: 1.2 !important;
+
   @media (min-width: ${(p) => p.theme.media.lg.min}) {
     max-width: 25vw;
-    line-height: 1.25;
-    margin: -0.5rem 0 1rem;
+    margin-top: -0.5rem;
   }
 `;

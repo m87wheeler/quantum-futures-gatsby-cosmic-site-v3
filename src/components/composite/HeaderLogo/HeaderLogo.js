@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // *** data, hooks & context
 
@@ -9,9 +9,19 @@ import QFLogo from "../../../assets/svg/QFLogo";
 
 // *** styled components
 export const StyledMainLogo = styled(QFLogo)`
-  height: ${(p) => (p.indexpage === "true" ? "5rem" : "3rem")};
+  height: 2.5rem;
   width: auto;
   margin: -1rem -0.5rem 0 0;
+
+  ${(p) =>
+    p.index &&
+    css`
+      height: 4rem;
+
+      @media (min-width: ${(p) => p.theme.media.md.min}) {
+        height: 5rem;
+      }
+    `}
 `;
 
 export const LogoLink = styled(Link)`
