@@ -22,6 +22,7 @@ export const Input = styled.div`
   width: 1.5rem;
   height: 1.5rem;
   border: ${(p) => `.15rem solid rgb(${p.theme.primary.main})`};
+  cursor: pointer;
 `;
 
 export const CheckMark = styled.div`
