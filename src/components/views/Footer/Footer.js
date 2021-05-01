@@ -120,7 +120,7 @@ const Footer = ({ ...props }) => {
               MWWDD
             </a>{" "}
             &{" "}
-            <a href="website" target="_blank">
+            <a href="http://rwd2design.co.uk/" target="_blank">
               RWD2
             </a>
           </p>
