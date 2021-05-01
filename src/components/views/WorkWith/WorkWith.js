@@ -1,42 +1,32 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
-import Typography from "../../single/Typography/Typography";
+import { CSSTransition } from "react-transition-group";
 
 // *** data, hooks & context
+import { useScroll } from "../../../hooks/useScroll";
 
 // *** components
+import Typography from "../../single/Typography/Typography";
 
 // *** styled components
-const Wrapper = styled.section`
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding: 3rem 2rem;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  background: ${(p) => `rgb(${p.theme.common.white})`};
-  z-index: 10;
-`;
-
-const Logo = styled.img``;
-
-const CompanyContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 1rem;
-
-  ${Logo} {
-    align-self: center;
-    max-width: 15rem;
-    width: auto;
-    height: auto;
-  }
-`;
+import {
+  appearDuration,
+  classes,
+  Wrapper,
+  Logo,
+  CompanyContainer,
+} from "./WorkWith.style";
 
 const WorkWith = ({ ...props }) => {
+  const [fadeIn, setFadeIn] = useState(false);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    if (typeof window === undefined) return;
+    if (scrollY > window.innerHeight * 0.75) setFadeIn(true);
+  }, [scrollY]);
+
   const data = useStaticQuery(graphql`
     query {
       allCosmicjsWeWorkWith {
@@ -54,7 +44,6 @@ const WorkWith = ({ ...props }) => {
       }
     }
   `);
-
   const companies = data.allCosmicjsWeWorkWith.edges;
 
   return (
@@ -75,12 +64,20 @@ const WorkWith = ({ ...props }) => {
       <CompanyContainer>
         {companies &&
           companies.length &&
-          companies.map(({ node }) => (
-            <Logo
+          companies.map(({ node }, i) => (
+            <CSSTransition
               key={node.id}
-              src={node.metadata.company_pngsvg.imgix_url}
-              alt={node.title}
-            />
+              in={fadeIn}
+              timeout={appearDuration}
+              classNames={classes.hero}
+              appear
+            >
+              <Logo
+                delay={i}
+                src={node.metadata.company_pngsvg.imgix_url}
+                alt={node.title}
+              />
+            </CSSTransition>
           ))}
       </CompanyContainer>
     </Wrapper>

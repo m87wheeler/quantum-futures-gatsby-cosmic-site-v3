@@ -25,7 +25,6 @@ import {
   StyledWorkWith,
 } from "../style/pages/Index.style";
 import LandingIntroduction from "../components/views/LandingIntroduction/LandingIntroduction";
-import WorkWith from "../components/views/WorkWith/WorkWith";
 
 const Index = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
