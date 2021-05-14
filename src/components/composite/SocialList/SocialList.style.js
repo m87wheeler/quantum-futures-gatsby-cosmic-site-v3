@@ -38,7 +38,7 @@ export const Wrapper = styled.ul`
 
     &:hover {
       a {
-        color: ${(p) => `rgb(${p.theme.primary.main})`};
+        color: ${(p) => `rgb(${p.theme.primary.main})`} !important;
       }
     }
   }

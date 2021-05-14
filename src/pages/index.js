@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
-import { CSSTransition } from "react-transition-group";
 
 // *** data, hooks & context
 import { mediaFormat } from "../assets/functions/mediaFormat";
@@ -10,35 +9,25 @@ import { useScroll } from "../hooks/useScroll";
 // *** components
 import Layout from "../style/Layout";
 import Helmet from "../components/single/Helmet/Helmet";
+import LandingIntroduction from "../components/views/LandingIntroduction/LandingIntroduction";
+import LandingSection from "../components/views/LandingSection/LandingSection";
 
 // *** styled components
 import {
-  appearDuration,
-  classes,
   Background,
-  Overlay,
   VideoWrapper,
-  LandingSection,
-  Title,
   StyledNewsfeed,
-  StyledHeaderLogo,
   StyledWorkWith,
 } from "../style/pages/Index.style";
-import LandingIntroduction from "../components/views/LandingIntroduction/LandingIntroduction";
 
 const Index = ({ data }) => {
-  const [pageReady, setPageReady] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(0);
   const [backdropActive, setBackdropActive] = useState(false);
-  const [opacity, setOpacity] = useState(0);
   const { scrollY } = useScroll();
 
   // *** set page ready when page has loaded
   useEffect(() => {
-    if (typeof window !== undefined) {
-      setPageReady(true);
-      setViewportHeight(window.innerHeight);
-    }
+    if (typeof window !== undefined) setViewportHeight(window.innerHeight);
   }, []);
 
   // *** change opacity on scroll
@@ -50,14 +39,11 @@ const Index = ({ data }) => {
     } else {
       setBackdropActive(false);
     }
-
-    setOpacity(((viewportHeight - scrollY * 2.5) / viewportHeight).toFixed(2));
   }, [scrollY, viewportHeight]);
 
   // *** destructure landing data
   const {
-    title,
-    metadata: { hero_media, text_color, landing_introduction },
+    metadata: { hero_media, landing_introduction },
   } = data.cosmicjsLandingPage;
 
   // *** destructure page metadata
@@ -79,39 +65,14 @@ const Index = ({ data }) => {
         keywords={keywords}
       />
       <Layout backdropActive={backdropActive} hideLogo>
-        {/** Background Media */}
         <Background>
-          <Overlay />
           <VideoWrapper style={{ transform: "translateZ(-2px)" }}>
             {mediaFormat(hero_media.imgix_url)}
           </VideoWrapper>
         </Background>
-        {/** Title Section */}
-        <LandingSection>
-          <CSSTransition
-            in={pageReady}
-            timeout={appearDuration}
-            classNames={classes.hero}
-            appear
-          >
-            <Title
-              element="h2"
-              variant="h1"
-              color={text_color === "dark" ? "black" : "white"}
-              style={{
-                opacity: opacity,
-              }}
-            >
-              <StyledHeaderLogo />
-              {title}
-            </Title>
-          </CSSTransition>
-        </LandingSection>
-        {/** Intro Text **/}
+        <LandingSection />
         <LandingIntroduction text={landing_introduction} />
-        {/** We Work With */}
         <StyledWorkWith />
-        {/** Newsfeed Section */}
         <StyledNewsfeed
           posts={data.allCosmicjsBlogPosts.edges}
           background="black"

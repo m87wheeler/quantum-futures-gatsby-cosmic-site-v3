@@ -62,7 +62,7 @@ export const NavigationList = styled.ul`
 
     &:hover {
       a {
-        color: ${(p) => `rgb(${p.theme.secondary.main})`};
+        color: ${(p) => `rgb(${p.theme.primary.main})`} !important;
       }
     }
   }
@@ -91,5 +91,11 @@ export const ContactDetail = styled.a``;
 export const StyledSocialList = styled(SocialList)`
   a {
     color: ${(p) => `rgb(${p.theme.common.white})`} !important;
+
+    &:hover {
+      a {
+        color: ${(p) => `rgb(${p.theme.primary.main})`} !important;
+      }
+    }
   }
 `;
