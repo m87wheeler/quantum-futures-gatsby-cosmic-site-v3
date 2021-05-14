@@ -24,7 +24,7 @@ export const TitleOne = styled.h1`
   top: 50%;
   left: calc(100vw / 12);
   transform: translateY(calc(-50% - 4.5rem));
-  font-size: 9vw;
+  font-size: 9.5vw;
   color: #fff;
   z-index: 3;
 
