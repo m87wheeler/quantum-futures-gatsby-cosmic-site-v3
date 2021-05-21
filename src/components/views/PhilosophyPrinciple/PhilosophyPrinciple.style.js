@@ -54,8 +54,6 @@ export const BackgroundImage = styled.div`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  opacity: 0.4;
-  /* filter: saturate(0); */
 `;
 
 export const Icon = styled.img`

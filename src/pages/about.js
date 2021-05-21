@@ -134,13 +134,16 @@ export const query = graphql`
       title
       content
     }
-    allCosmicjsPhilosophyPrinciples {
+    allCosmicjsPhilosophyPrinciples(
+      sort: { fields: metadata___order, order: ASC }
+    ) {
       edges {
         node {
           id
           title
           content
           metadata {
+            order
             subtitle
             background_image {
               imgix_url

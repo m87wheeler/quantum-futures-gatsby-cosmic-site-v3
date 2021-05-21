@@ -14,13 +14,10 @@ const RssPage = ({ ...props }) => {
     const websiteUrl = `https://thequantumdaily.com/feed/`;
     const fetchRSS = async () => {
       try {
-        const req = await fetch(websiteUrl, {
-          headers: {
-            mode: "no-cors",
-          },
-        });
-        const res = req.text();
-        console.log(res);
+        const req = await fetch(websiteUrl, { mode: "no-cors" });
+        const res = await req.text();
+        const data = new window.DOMParser().parseFromString(res, "text/xml");
+        console.log(data);
       } catch (error) {
         console.log(error.message);
       }
