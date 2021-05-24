@@ -63,6 +63,10 @@ export const Author = styled.sub``;
 export const HTMLContent = styled.div`
   display: none;
 
+  img {
+    display: none !important;
+  }
+
   @media (min-width: ${(p) => p.theme.media.media}) {
     display: block;
   }

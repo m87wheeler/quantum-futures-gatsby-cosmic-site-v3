@@ -27,6 +27,7 @@ const NewfeedCard = ({
   author,
   content,
   children,
+  href,
   prefix,
   ...props
 }) => {
