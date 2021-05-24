@@ -15,12 +15,11 @@ import Typography from "../../components/single/Typography/Typography";
 // *** styled components
 import {
   PostDetails,
-  ShareDetails,
   Title,
   CoverImageContainer,
   CoverImage,
   StyledInnerHTML,
-  StyledRelatedContent,
+  // StyledRelatedContent,
   BackButton,
   StyledArticleTrail,
 } from "../NewsfeedTemplate/NewsfeedTemplate.style";

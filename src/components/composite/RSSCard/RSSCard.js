@@ -3,6 +3,9 @@ import { Link } from "gatsby";
 import { useEffect, useState } from "react";
 
 // ***
+import { stringToHTML } from "../../../assets/functions/stringToHtml";
+
+// ***
 import Typography from "../../single/Typography/Typography";
 
 // ***
@@ -32,13 +35,6 @@ const RSSCard = ({
     img: null,
     text: null,
   });
-
-  // ?
-  const stringToHTML = (str) => {
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(str, "text/html");
-    return doc.body;
-  };
 
   useEffect(() => {
     if (typeof window === undefined) return;
