@@ -43,7 +43,6 @@ const RSSCard = ({
   useEffect(() => {
     if (typeof window === undefined) return;
     const html = stringToHTML(content);
-    console.log(html);
     const image = Array.from(html.children)[0].attributes.src.nodeValue;
     setCardContent((cardContent) => ({
       ...cardContent,
@@ -52,7 +51,7 @@ const RSSCard = ({
   }, [content]);
 
   return (
-    <Link to={`newsfeed/${title}`} style={{ textDecoration: "none" }}>
+    <Link to={`/newsfeed/${title}`} style={{ textDecoration: "none" }}>
       <Wrapper layout={layout} {...props}>
         <ImageContainer layout={layout} img={cardContent.img} />
         <DetailsContainer layout={layout}>
