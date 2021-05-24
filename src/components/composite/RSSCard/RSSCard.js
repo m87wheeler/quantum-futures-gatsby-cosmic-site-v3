@@ -49,7 +49,7 @@ const RSSCard = ({
       ...cardContent,
       img: image,
     }));
-  }, []);
+  }, [content]);
 
   return (
     <Link to={`newsfeed/${title}`} style={{ textDecoration: "none" }}>
