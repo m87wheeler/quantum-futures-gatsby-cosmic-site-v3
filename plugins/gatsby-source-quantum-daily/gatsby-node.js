@@ -13,7 +13,7 @@
  */
 require("dotenv").config();
 const fetch = require("node-fetch");
-exports.onPreInit = () => console.log("Loaded gatsby-starter-plugin");
+exports.onPreInit = () => console.log("Loaded gatsby-source-quantum-daily");
 
 exports.sourceNodes = async ({
   actions,

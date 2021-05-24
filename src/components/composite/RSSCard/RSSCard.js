@@ -19,7 +19,7 @@ import {
 
 const RSSCard = ({
   layout = "grid",
-  prefix,
+  id,
   title,
   created,
   type,
@@ -51,7 +51,7 @@ const RSSCard = ({
   }, [content]);
 
   return (
-    <Link to={`/newsfeed/${title}`} style={{ textDecoration: "none" }}>
+    <Link to={`/newsfeed/${id}`} style={{ textDecoration: "none" }}>
       <Wrapper layout={layout} {...props}>
         <ImageContainer layout={layout} img={cardContent.img} />
         <DetailsContainer layout={layout}>

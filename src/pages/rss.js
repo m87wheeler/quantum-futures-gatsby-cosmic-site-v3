@@ -24,6 +24,7 @@ const RSSPage = ({ data }) => {
         {data.allQuantumDailyPost.edges.map(({ node }) => (
           <RSSCard
             key={node.id}
+            id={node.id}
             href={node.link[0]}
             title={node.title[0]}
             created={node.pubDate[0]}
