@@ -41,27 +41,10 @@ const NewsfeedPage = ({ data }) => {
     }
   }, []);
 
-  // TODO add merge of post types
   // ? setPosts on page load
   useEffect(() => {
-    if (typeof window === undefined) return;
-    const qfPosts = data.allCosmicjsBlogPosts.edges;
-    const tqdPosts = data.allQuantumDailyPost.edges;
-    const allPosts = [...qfPosts, ...tqdPosts]
-      .map(({ node }) => ({
-        ...node,
-        type: node.slug ? "CosmicJS" : "TQD",
-        created: new Date(node.created ? node.created : node.pubDate[0]),
-      }))
-      .sort((a, b) => a.created - b.created);
-    setPosts(allPosts);
-    console.error(
-      "LEFT OFF HERE - combining posts from different sources and sorting by date - currently a Runtime Error in NewsfeedCard"
-    );
-  }, []);
-  // useEffect(() => {
-  //   if (typeof window !== undefined) setPosts(data.allCosmicjsBlogPosts.edges);
-  // }, [data.allCosmicjsBlogPosts.edges]);
+    if (typeof window !== undefined) setPosts(data.allCosmicjsBlogPosts.edges);
+  }, [data.allCosmicjsBlogPosts.edges]);
 
   // ? setCatTypes on page load
   useEffect(() => {
@@ -178,7 +161,7 @@ export const query = graphql`
       edges {
         node {
           id
-          created
+          created(formatString: "Do MMMM YYYY")
           slug
           title
           content
