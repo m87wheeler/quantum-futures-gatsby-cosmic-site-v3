@@ -188,18 +188,5 @@ export const query = graphql`
         canonical
       }
     }
-    allQuantumDailyPost(sort: { order: DESC, fields: pubDate }) {
-      edges {
-        node {
-          id
-          title
-          link
-          dc_creator
-          pubDate
-          category
-          description
-        }
-      }
-    }
   }
 `;

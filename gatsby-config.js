@@ -12,7 +12,6 @@ module.exports = {
     siteUrl: `https://quantum-futures.com/`,
   },
   plugins: [
-    require.resolve(`${__dirname}/plugins/gatsby-source-quantum-daily`),
     `gatsby-plugin-gatsby-cloud`,
     {
       resolve: `gatsby-plugin-sitemap`,

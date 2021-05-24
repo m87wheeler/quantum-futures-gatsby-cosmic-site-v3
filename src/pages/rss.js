@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { graphql } from "gatsby";
 
 // ***
 
@@ -9,7 +8,27 @@ import RSSCard from "../components/composite/RSSCard/RSSCard";
 
 // ***
 
-const RSSPage = ({ data }) => {
+const RSSPage = () => {
+  const [rssFeed, setRssFeed] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === undefined) return;
+    const fetchRSS = async () => {
+      const url = `http://localhost:3001?api_key=AzcC1mkNrMYGqXXEoJyUtZF0EBKSeVVxmzkCbNPc7qy00Uy8yk10Jr6eyfPf2exi0Z5ssUWqNHa17RlT0ng`;
+      const req = await fetch(url);
+      const res = await req.json();
+      if (!res.success) {
+        alert("Unsuccessful fetch!");
+      } else {
+        const data = JSON.parse(res.data);
+        setRssFeed(data);
+      }
+      setIsLoading(false);
+    };
+    fetchRSS();
+  }, []);
+
   return (
     <Layout>
       <div
@@ -21,38 +40,24 @@ const RSSPage = ({ data }) => {
         }}
       >
         <h1>RSS Feed</h1>
-        {data.allQuantumDailyPost.edges.map(({ node }) => (
-          <RSSCard
-            key={node.id}
-            href={node.link[0]}
-            title={node.title[0]}
-            created={node.pubDate[0]}
-            type={node.category[0]}
-            author={node.dc_creator}
-            content={node.description[0]}
-          />
-        ))}
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          rssFeed.rss.channel[0].item.map((item) => (
+            <RSSCard
+              key={item.guid[0]["_"]}
+              href={item.link[0]}
+              title={item.title}
+              created={item.pubDate[0]}
+              type={item.category[0]}
+              author={item["dc:creator"]}
+              content={item.description[0]}
+            />
+          ))
+        )}
       </div>
     </Layout>
   );
 };
 
 export default RSSPage;
-
-export const query = graphql`
-  query {
-    allQuantumDailyPost {
-      edges {
-        node {
-          id
-          title
-          link
-          dc_creator
-          pubDate
-          category
-          description
-        }
-      }
-    }
-  }
-`;
