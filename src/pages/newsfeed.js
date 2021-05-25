@@ -27,6 +27,7 @@ const ButtonContainer = styled.div`
   padding: 1rem;
   align-items: center;
   justify-items: center;
+  grid-column: 5 / span 4;
 `;
 
 const NewsfeedPage = ({ data }) => {
@@ -36,7 +37,7 @@ const NewsfeedPage = ({ data }) => {
   const [pageNavigate, setPageNavigate] = useState({
     current: 1,
     total: null,
-    maxPerPage: 10,
+    maxPerPage: 9,
   });
 
   // *** set page ready when page has loaded
@@ -126,7 +127,7 @@ const NewsfeedPage = ({ data }) => {
           gradient
           color="primary"
           transform="uppercase"
-          style={{ paddingTop: "1.5rem" }}
+          style={{ paddingTop: "1.5rem", gridColumn: "1 / span 12" }}
         >
           Newsfeed
         </Title>
@@ -148,8 +149,9 @@ const NewsfeedPage = ({ data }) => {
         >
           <StyledNewsfeedList
             posts={posts.slice(
-              (pageNavigate.current - 1) * 10,
-              (pageNavigate.current - 1) * 10 + 10
+              (pageNavigate.current - 1) * pageNavigate.maxPerPage,
+              (pageNavigate.current - 1) * pageNavigate.maxPerPage +
+                pageNavigate.maxPerPage
             )}
             layout={layout}
             style={{ padding: "0 1rem" }}
