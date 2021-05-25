@@ -51,11 +51,7 @@ const RSSCard = ({
       <Wrapper layout={layout} {...props}>
         <ImageContainer layout={layout} img={cardContent.img} />
         <DetailsContainer layout={layout}>
-          <Typography
-            element="h3"
-            variant="h6"
-            style={{ textTransform: "uppercase" }}
-          >
+          <Typography element="h3" variant="h6">
             {title}
           </Typography>
           <TypeDateContainer>

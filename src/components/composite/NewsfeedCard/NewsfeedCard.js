@@ -40,11 +40,7 @@ const NewfeedCard = ({
         <ImageContainer layout={layout} img={image} />
         <DetailsContainer layout={layout}>
           {/* <h3>{title}</h3> */}
-          <Typography
-            element="h3"
-            variant="h6"
-            style={{ textTransform: "uppercase" }}
-          >
+          <Typography element="h3" variant="h6">
             {title}
           </Typography>
           <TypeDateContainer>

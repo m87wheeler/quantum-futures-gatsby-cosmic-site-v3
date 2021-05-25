@@ -14,6 +14,7 @@ export const StyledTypeCard = styled(TypeCard)``;
 
 // ***
 export const ImageContainer = styled.div`
+  min-height: 12rem;
   background-image: ${(p) => `url(${p.img})`};
   background-size: cover;
   background-position: center;
@@ -114,11 +115,13 @@ export const DetailsContainer = styled.div`
   ${(p) =>
     p.layout === "list" &&
     css`
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: flex-start;
-      justify-content: space-between;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 1fr auto auto;
+      align-content: flex-start;
       padding: 1rem;
+      gap: 0.5rem;
+      padding-right: 0;
       text-align: left;
 
       h3 {
@@ -186,9 +189,10 @@ export const Wrapper = styled.div`
     p.layout === "list" &&
     css`
       width: 100%;
-      height: 8rem;
+      height: 12rem;
       display: grid;
       grid-template-columns: auto 1fr;
+      align-items: center;
 
       ${GradientMask} {
         display: none;
