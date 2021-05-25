@@ -1,4 +1,5 @@
 import * as React from "react";
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import { CSSTransition } from "react-transition-group";
@@ -6,7 +7,6 @@ import { CSSTransition } from "react-transition-group";
 // *** components
 import Layout from "../style/Layout";
 import ListDisplayToggle from "../components/single/ListDisplayToggle/ListDisplayToggle";
-import FilterPosts from "../components/composite/FilterPosts/FilterPosts";
 import Helmet from "../components/single/Helmet/Helmet";
 
 // *** styled components
@@ -18,30 +18,45 @@ import {
   Title,
 } from "../style/pages/Newsfeed.style";
 import { getCookie, setCookie } from "../functions/cookieFunctions";
+import Button from "../components/single/Button/Button";
+import Typography from "../components/single/Typography/Typography";
+const ButtonContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-items: center;
+`;
 
 const NewsfeedPage = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
-  // *** toggle between grid and list view
   const [layout, setLayout] = useState("grid");
-  // *** hold the fetched post data for filtering
   const [posts, setPosts] = useState([]);
-  // *** hold filtered posts
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  // *** set post category types
-  const [catTypes, setCatTypes] = useState([]);
-  // *** select category type filter
-  const [catSelected, setCatSelected] = useState([]);
+  const [pageNavigate, setPageNavigate] = useState({
+    current: 1,
+    total: null,
+    maxPerPage: 10,
+  });
 
   // *** set page ready when page has loaded
   useEffect(() => {
     if (typeof window !== undefined) {
       setPageReady(true);
+      window.scrollTo(0, 0);
       const layoutCookie = getCookie("newsfeedlayout");
       setLayout(layoutCookie ? layoutCookie : "grid");
     }
   }, []);
 
-  // TODO add merge of post types
+  // ?
+  useEffect(() => {
+    setPageNavigate((pageNavigate) => ({
+      ...pageNavigate,
+      total: Math.ceil(posts.length / pageNavigate.maxPerPage),
+    }));
+  }, [posts]);
+
   // ? setPosts on page load
   useEffect(() => {
     if (typeof window === undefined) return;
@@ -53,31 +68,9 @@ const NewsfeedPage = ({ data }) => {
         type: node.slug ? "CosmicJS" : "TQD",
         created: new Date(node.created ? node.created : node.pubDate[0]),
       }))
-      .sort((a, b) => a.created - b.created);
+      .sort((a, b) => b.created - a.created);
     setPosts(allPosts);
   }, []);
-
-  // ? setCatTypes on page load
-  // useEffect(() => {
-  //   if (typeof window !== undefined && posts.length) {
-  //     let catArr = posts
-  //       .filter((entry) => entry.node.metadata)
-  //       .map((entry) => entry.node.metadata.post_type);
-  //     let unique = Array.from(new Set(catArr));
-  //     setCatTypes(unique);
-  //   }
-  // }, [posts]);
-
-  // ? filter and update posts based on user selection
-  useEffect(() => {
-    let filtered = [];
-    if (catSelected.length && posts.length) {
-      filtered = posts.filter(({ node }) =>
-        catSelected.includes(node.metadata.post_type)
-      );
-    }
-    setFilteredPosts(filtered);
-  }, [catSelected, posts]);
 
   // ? toggle page layout state
   const handleLayout = (e) => {
@@ -88,20 +81,26 @@ const NewsfeedPage = ({ data }) => {
     }
   };
 
-  // ? handle filter change
-  const handleChange = (e) => {
-    let cat = e.target.value;
-    let updatedArr = [];
-    if (catSelected.includes(cat)) {
-      updatedArr = catSelected.filter((entry) => entry !== cat);
+  // ? iterate through newfeed items
+  const iteratePage = (val) => {
+    if (val > 0 && pageNavigate.current === pageNavigate.total) {
+      setPageNavigate((pageNavigate) => ({
+        ...pageNavigate,
+        current: 1,
+      }));
+    } else if (val < 0 && pageNavigate.current === 1) {
+      setPageNavigate((pageNavigate) => ({
+        ...pageNavigate,
+        current: pageNavigate.total,
+      }));
     } else {
-      updatedArr = [...catSelected, cat];
+      setPageNavigate((pageNavigate) => ({
+        ...pageNavigate,
+        current: pageNavigate.current + val,
+      }));
     }
-    setCatSelected(updatedArr);
+    window.scrollTo(0, 0);
   };
-
-  // ? handle filter clear
-  const handleClear = () => setCatSelected([]);
 
   // *** destructure metadata
   const {
@@ -138,12 +137,6 @@ const NewsfeedPage = ({ data }) => {
           appear
         >
           <DisplayToggleWrapper delay={0}>
-            <FilterPosts
-              cats={catTypes}
-              selected={catSelected}
-              onChange={handleChange}
-              onClick={handleClear}
-            />
             <ListDisplayToggle onChange={handleLayout} layout={layout} />
           </DisplayToggleWrapper>
         </CSSTransition>
@@ -154,12 +147,22 @@ const NewsfeedPage = ({ data }) => {
           appear
         >
           <StyledNewsfeedList
-            posts={filteredPosts.length ? filteredPosts : posts}
+            posts={posts.slice(
+              (pageNavigate.current - 1) * 10,
+              (pageNavigate.current - 1) * 10 + 10
+            )}
             layout={layout}
             style={{ padding: "0 1rem" }}
             delay={1}
           />
         </CSSTransition>
+        <ButtonContainer>
+          <Button onClick={() => iteratePage(-1)}>-</Button>
+          <Typography weight={500}>
+            Page {pageNavigate.current} of {pageNavigate.total}
+          </Typography>
+          <Button onClick={() => iteratePage(1)}>+</Button>
+        </ButtonContainer>
       </Layout>
     </>
   );

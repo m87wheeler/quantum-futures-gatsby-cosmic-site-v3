@@ -56,7 +56,7 @@ const RSSCard = ({
           </Typography>
           <TypeDateContainer>
             <StyledTypeCard type={type} />
-            <p>{new Date(created).toLocaleDateString()}</p>
+            <p>{created}</p>
           </TypeDateContainer>
           <Author>Written by {author}</Author>
           <HTMLContent dangerouslySetInnerHTML={{ __html: content }} />

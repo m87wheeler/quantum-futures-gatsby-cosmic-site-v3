@@ -10,7 +10,6 @@ import RSSCard from "../../composite/RSSCard/RSSCard";
 // *** styled components
 
 const NewsfeedList = ({ posts, layout, prefix, ...props }) => {
-  console.log(posts);
   return (
     <ListContainer layout={layout} {...props}>
       {posts.length && posts ? (
