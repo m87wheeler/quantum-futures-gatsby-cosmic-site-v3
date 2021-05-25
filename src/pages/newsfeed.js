@@ -55,22 +55,18 @@ const NewsfeedPage = ({ data }) => {
       }))
       .sort((a, b) => a.created - b.created);
     setPosts(allPosts);
-    console.error(
-      "LEFT OFF HERE - combining posts from different sources and sorting by date - currently a Runtime Error in NewsfeedCard"
-    );
   }, []);
-  // useEffect(() => {
-  //   if (typeof window !== undefined) setPosts(data.allCosmicjsBlogPosts.edges);
-  // }, [data.allCosmicjsBlogPosts.edges]);
 
   // ? setCatTypes on page load
-  useEffect(() => {
-    if (typeof window !== undefined && posts.length) {
-      let catArr = posts.map((entry) => entry.node.metadata.post_type);
-      let unique = Array.from(new Set(catArr));
-      setCatTypes(unique);
-    }
-  }, [posts]);
+  // useEffect(() => {
+  //   if (typeof window !== undefined && posts.length) {
+  //     let catArr = posts
+  //       .filter((entry) => entry.node.metadata)
+  //       .map((entry) => entry.node.metadata.post_type);
+  //     let unique = Array.from(new Set(catArr));
+  //     setCatTypes(unique);
+  //   }
+  // }, [posts]);
 
   // ? filter and update posts based on user selection
   useEffect(() => {
