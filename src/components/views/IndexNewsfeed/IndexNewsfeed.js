@@ -1,5 +1,4 @@
 import * as React from "react";
-// import PropTypes from 'prop-types'
 
 // *** data, hooks & context
 import { useBrowserResize } from "../../../hooks/useBrowserResize";
@@ -35,9 +34,5 @@ const IndexNewsFeed = ({ background, posts, ...props }) => {
     </Section>
   );
 };
-
-// IndexNewsFeed.defaultProps = {}
-
-// IndexNewsFeed.propTypes = {}
 
 export default IndexNewsFeed;

@@ -22,7 +22,7 @@ exports.sourceNodes = async ({
 }) => {
   const NODE_TYPE = "QuantumDailyPost";
 
-  const url = `http://localhost:3001?api_key=${process.env.GATSBY_QUANTUM_DAILY_API}`;
+  const url = `https://quantum-futures-tqd-rss.herokuapp.com?api_key=${process.env.GATSBY_QUANTUM_DAILY_API}`;
   const req = await fetch(url);
   const res = await req.json();
   const data = JSON.parse(res.data);

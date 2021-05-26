@@ -71,7 +71,7 @@ const NewsfeedPage = ({ data }) => {
       }))
       .sort((a, b) => b.created - a.created);
     setPosts(allPosts);
-  }, []);
+  }, [data.allCosmicjsBlogPosts.edges, data.allQuantumDailyPost.edges]);
 
   // ? toggle page layout state
   const handleLayout = (e) => {

@@ -14,20 +14,7 @@ const NewsfeedList = ({ posts, layout, prefix, ...props }) => {
     <ListContainer layout={layout} {...props}>
       {posts.length && posts ? (
         posts.map((post) =>
-          post.type === "CosmicJS" ? (
-            <NewsfeedCard
-              key={post.id}
-              layout={layout}
-              slug={post.slug}
-              image={post.metadata.cover_image.imgix_url}
-              title={post.title}
-              created={new Date(post.created).toLocaleDateString()}
-              type={post.metadata.post_type}
-              author="Quantum Futures"
-              content={post.content}
-              prefix={prefix}
-            />
-          ) : (
+          post.type === "TQD" ? (
             <RSSCard
               key={post.id}
               layout={layout}
@@ -38,6 +25,29 @@ const NewsfeedList = ({ posts, layout, prefix, ...props }) => {
               author={post.dc_creator}
               content={post.description[0]}
               href={post.link[0]}
+            />
+          ) : (
+            <NewsfeedCard
+              key={post.node ? post.node.id : post.id}
+              layout={layout}
+              slug={post.node ? post.node.slug : post.slug}
+              image={
+                post.node
+                  ? post.node.metadata.cover_image.imgix_url
+                  : post.metadata.cover_image.imgix_url
+              }
+              title={post.node ? post.node.title : post.title}
+              created={new Date(
+                post.node ? post.node.created : post.created
+              ).toLocaleDateString()}
+              type={
+                post.node
+                  ? post.node.metadata.post_type
+                  : post.metadata.post_type
+              }
+              author="Quantum Futures"
+              content={post.node ? post.node.content : post.content}
+              prefix={prefix}
             />
           )
         )
