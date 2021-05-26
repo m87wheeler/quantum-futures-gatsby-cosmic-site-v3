@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import { CSSTransition } from "react-transition-group";
@@ -7,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 // *** components
 import Layout from "../style/Layout";
 import ListDisplayToggle from "../components/single/ListDisplayToggle/ListDisplayToggle";
+// import FilterPosts from "../components/composite/FilterPosts/FilterPosts";
 import Helmet from "../components/single/Helmet/Helmet";
 
 // *** styled components
@@ -18,33 +18,30 @@ import {
   Title,
 } from "../style/pages/Newsfeed.style";
 import { getCookie, setCookie } from "../functions/cookieFunctions";
-import Button from "../components/single/Button/Button";
-import Typography from "../components/single/Typography/Typography";
-const ButtonContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1rem;
-  padding: 1rem;
-  align-items: center;
-  justify-items: center;
-  grid-column: 5 / span 4;
-`;
 
 const NewsfeedPage = ({ data }) => {
   const [pageReady, setPageReady] = useState(false);
+  // *** toggle between grid and list view
   const [layout, setLayout] = useState("grid");
+  // *** hold the fetched post data for filtering
   const [posts, setPosts] = useState([]);
+  // *** hold filtered posts
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  // *** set post category types
+  // const [catTypes, setCatTypes] = useState([]);
+  // *** select category type filter
+  const [catSelected, setCatSelected] = useState([]);
+  // *** iterate through pages and set max per page
   const [pageNavigate, setPageNavigate] = useState({
     current: 1,
     total: null,
-    maxPerPage: 9,
+    maxPerPage: 10,
   });
 
   // *** set page ready when page has loaded
   useEffect(() => {
     if (typeof window !== undefined) {
       setPageReady(true);
-      window.scrollTo(0, 0);
       const layoutCookie = getCookie("newsfeedlayout");
       setLayout(layoutCookie ? layoutCookie : "grid");
     }
@@ -71,7 +68,30 @@ const NewsfeedPage = ({ data }) => {
       }))
       .sort((a, b) => b.created - a.created);
     setPosts(allPosts);
-  }, [data.allCosmicjsBlogPosts.edges, data.allQuantumDailyPost.edges]);
+  }, []);
+
+  // ? setCatTypes on page load
+  // TODO Filters not working with TQD RSS
+  // useEffect(() => {
+  //   if (typeof window !== undefined && posts.length) {
+  //     let catArr = posts
+  //       .filter((entry) => entry.node.metadata)
+  //       .map((entry) => entry.node.metadata.post_type);
+  //     let unique = Array.from(new Set(catArr));
+  //     setCatTypes(unique);
+  //   }
+  // }, [posts]);
+
+  // ? filter and update posts based on user selection
+  useEffect(() => {
+    let filtered = [];
+    if (catSelected.length && posts.length) {
+      filtered = posts.filter(({ node }) =>
+        catSelected.includes(node.metadata.post_type)
+      );
+    }
+    setFilteredPosts(filtered);
+  }, [catSelected, posts]);
 
   // ? toggle page layout state
   const handleLayout = (e) => {
@@ -82,25 +102,39 @@ const NewsfeedPage = ({ data }) => {
     }
   };
 
-  // ? iterate through newfeed items
-  const iteratePage = (val) => {
-    if (val > 0 && pageNavigate.current === pageNavigate.total) {
-      setPageNavigate((pageNavigate) => ({
-        ...pageNavigate,
-        current: 1,
-      }));
-    } else if (val < 0 && pageNavigate.current === 1) {
-      setPageNavigate((pageNavigate) => ({
-        ...pageNavigate,
-        current: pageNavigate.total,
-      }));
-    } else {
-      setPageNavigate((pageNavigate) => ({
-        ...pageNavigate,
-        current: pageNavigate.current + val,
-      }));
-    }
-    window.scrollTo(0, 0);
+  // ? handle filter change
+  // TODO Filters not working with TQD RSS
+  // const handleChange = (e) => {
+  //   let cat = e.target.value;
+  //   let updatedArr = [];
+  //   if (catSelected.includes(cat)) {
+  //     updatedArr = catSelected.filter((entry) => entry !== cat);
+  //   } else {
+  //     updatedArr = [...catSelected, cat];
+  //   }
+  //   setCatSelected(updatedArr);
+  // };
+
+  // ? handle filter clear
+  // TODO Filters not working with TQD RSS
+  // const handleClear = () => setCatSelected([]);
+
+  // ? iterate through pages
+  // const iteratePage = (val) => {
+  //   console.log(posts.length % pageNavigate.total);
+  //   if (val < 0 && pageNavigate.page === 1) {
+  //     // set page to highest number
+  //   } else if (val > 0 && pageNavigate.page === 10) {
+  //     // set page to 0
+  //   } else {
+  //     setPageNavigate((pageNavigate) => ({
+  //       ...pageNavigate,
+  //       page: pageNavigate.page + val,
+  //     }));
+  //   }
+  // };
+  const iteratePage = () => {
+    console.log("Total Pages: ", Math.ceil(posts.length / pageNavigate.total));
   };
 
   // *** destructure metadata
@@ -127,7 +161,7 @@ const NewsfeedPage = ({ data }) => {
           gradient
           color="primary"
           transform="uppercase"
-          style={{ paddingTop: "1.5rem", gridColumn: "1 / span 12" }}
+          style={{ paddingTop: "1.5rem" }}
         >
           Newsfeed
         </Title>
@@ -138,6 +172,14 @@ const NewsfeedPage = ({ data }) => {
           appear
         >
           <DisplayToggleWrapper delay={0}>
+            {/* 
+            // TODO Filters not working with TQD RSS
+            <FilterPosts
+              cats={catTypes}
+              selected={catSelected}
+              onChange={handleChange}
+              onClick={handleClear}
+            /> */}
             <ListDisplayToggle onChange={handleLayout} layout={layout} />
           </DisplayToggleWrapper>
         </CSSTransition>
@@ -148,23 +190,19 @@ const NewsfeedPage = ({ data }) => {
           appear
         >
           <StyledNewsfeedList
-            posts={posts.slice(
-              (pageNavigate.current - 1) * pageNavigate.maxPerPage,
-              (pageNavigate.current - 1) * pageNavigate.maxPerPage +
-                pageNavigate.maxPerPage
-            )}
+            posts={filteredPosts.length ? filteredPosts : posts}
             layout={layout}
             style={{ padding: "0 1rem" }}
             delay={1}
           />
         </CSSTransition>
-        <ButtonContainer>
-          <Button onClick={() => iteratePage(-1)}>-</Button>
-          <Typography weight={500}>
+        <div>
+          <button onClick={() => iteratePage(-1)}>Prev</button>
+          <p>
             Page {pageNavigate.current} of {pageNavigate.total}
-          </Typography>
-          <Button onClick={() => iteratePage(1)}>+</Button>
-        </ButtonContainer>
+          </p>
+          <button onClick={() => iteratePage(1)}>Next</button>
+        </div>
       </Layout>
     </>
   );

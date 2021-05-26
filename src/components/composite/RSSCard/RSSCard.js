@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+
+// ***
+import { stringToHTML } from "../../../assets/functions/stringToHtml";
 
 // ***
 import Typography from "../../single/Typography/Typography";
@@ -15,31 +18,39 @@ import {
   HTMLContent,
   GradientMask,
   Wrapper,
-} from "./NewsfeedCard.style";
+} from "../NewsfeedCard/NewsfeedCard.style";
 
-const NewfeedCard = ({
+const RSSCard = ({
   layout = "grid",
-  slug,
-  image,
+  id,
   title,
   created,
   type,
   author,
   content,
-  children,
   href,
-  prefix,
   ...props
 }) => {
+  const [cardContent, setCardContent] = useState({
+    img: null,
+    text: null,
+  });
+
+  useEffect(() => {
+    if (typeof window === undefined) return;
+    const html = stringToHTML(content);
+    const image = Array.from(html.children)[0].attributes.src.nodeValue;
+    setCardContent((cardContent) => ({
+      ...cardContent,
+      img: image,
+    }));
+  }, [content]);
+
   return (
-    <Link
-      to={prefix ? `${prefix}/${slug}` : slug}
-      style={{ textDecoration: "none" }}
-    >
+    <Link to={`/newsfeed/${id}`} style={{ textDecoration: "none" }}>
       <Wrapper layout={layout} {...props}>
-        <ImageContainer layout={layout} img={image} />
+        <ImageContainer layout={layout} img={cardContent.img} />
         <DetailsContainer layout={layout}>
-          {/* <h3>{title}</h3> */}
           <Typography element="h3" variant="h6">
             {title}
           </Typography>
@@ -48,11 +59,7 @@ const NewfeedCard = ({
             <p>{created}</p>
           </TypeDateContainer>
           <Author>Written by {author}</Author>
-          <HTMLContent
-            dangerouslySetInnerHTML={{
-              __html: `${content.substr(0, 100)}<span>...</span>`,
-            }}
-          />
+          <HTMLContent dangerouslySetInnerHTML={{ __html: content }} />
         </DetailsContainer>
         <GradientMask />
       </Wrapper>
@@ -60,8 +67,4 @@ const NewfeedCard = ({
   );
 };
 
-NewfeedCard.propTypes = {
-  children: PropTypes.node,
-};
-
-export default NewfeedCard;
+export default RSSCard;

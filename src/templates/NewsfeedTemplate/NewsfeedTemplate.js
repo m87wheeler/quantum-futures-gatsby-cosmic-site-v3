@@ -64,7 +64,7 @@ const NewsfeedTemplate = ({ pageContext, data }) => {
           <Typography size="xs">Quantum Futures</Typography>
         </PostDetails>
         {/** grid-row: 2 / 3 */}
-        <Title element="h2" variant="h1" transform="uppercase">
+        <Title element="h2" variant="h3" transform="uppercase">
           {title}
         </Title>
         {/** grid-row: 3 / 4 */}

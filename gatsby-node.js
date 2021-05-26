@@ -30,6 +30,27 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allQuantumDailyPost {
+        edges {
+          node {
+            id
+            title
+            link
+            dc_creator
+            pubDate
+            category
+            description
+          }
+          next {
+            id
+            title
+          }
+          previous {
+            id
+            title
+          }
+        }
+      }
       cosmicjsSiteMetadata {
         metadata {
           title_prefix
@@ -46,6 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ),
       context: {
         id: node.id,
+        type: "CosmicJS",
         slug: node.slug,
         title: node.title,
         created: node.created,
@@ -57,6 +79,25 @@ exports.createPages = async ({ graphql, actions }) => {
           description: node.metadata.metadata_description,
           keywords: node.metadata.metadata_keywords,
         },
+        next,
+        previous,
+      },
+    });
+  });
+  result.data.allQuantumDailyPost.edges.forEach(({ node, next, previous }) => {
+    createPage({
+      path: `/newsfeed/${node.id}`,
+      component: path.resolve(`src/templates/RSSTemplate/RSSTemplate.js`),
+      context: {
+        id: node.id,
+        type: "QuantumDaily",
+        title: node.title[0],
+        created: node.pubDate[0],
+        author: node.dc_creator[0],
+        post_type: node.category[0],
+        cover_image: node.description[0],
+        content: node.description,
+        link: node.link[0],
         next,
         previous,
       },
