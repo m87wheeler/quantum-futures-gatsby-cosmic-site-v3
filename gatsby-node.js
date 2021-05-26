@@ -3,10 +3,6 @@ const path = require("path");
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 
-  createRedirect({
-    fromPath: "/*",
-    toPath: "/under-construction",
-  });
   const result = await graphql(`
     query {
       allCosmicjsBlogPosts {
