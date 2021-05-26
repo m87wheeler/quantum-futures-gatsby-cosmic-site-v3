@@ -3,7 +3,7 @@ import * as React from "react";
 // *** data, hooks & context
 
 // *** components
-import InnerHTML from "../../single/InnerHTML/InnerHTML";
+// import InnerHTML from "../../single/InnerHTML/InnerHTML";
 import Clock from "../../single/Clock/Clock";
 import Typography from "../../single/Typography/Typography";
 
@@ -22,13 +22,13 @@ const TimezoneClocks = ({ timezoneArr, ...props }) => {
               family="header"
               transform="uppercase"
             >
-              {node.title} Office
+              {node.title}
             </Typography>
             <Clock
               locale={node.metadata.locale}
               timezone={node.metadata.timezone}
             />
-            <InnerHTML html={node.content} collapse />
+            {/* <InnerHTML html={node.content} collapse /> */}
             <Typography>
               <a href={`tel:${node.metadata.contact_number}`}>
                 {node.metadata.contact_number}

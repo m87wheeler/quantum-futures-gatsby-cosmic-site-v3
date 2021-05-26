@@ -13,10 +13,13 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 3rem;
 
+  * {
+    text-align: center;
+  }
+
   @media (min-width: ${(p) => p.theme.media.sm.min}) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    align-items: flex-start;
     gap: 1rem;
 
     ${ClockContainer} {
