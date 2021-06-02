@@ -11,6 +11,7 @@ module.exports = {
     title: "Quantum Futures",
     siteUrl: `https://quantum-futures.com/`,
   },
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   plugins: [
     require.resolve(`${__dirname}/plugins/gatsby-source-quantum-daily`),
     `gatsby-plugin-gatsby-cloud`,
