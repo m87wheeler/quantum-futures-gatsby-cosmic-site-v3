@@ -37,7 +37,6 @@ const Layout = ({ hideLogo, background, backdropActive, children }) => {
     <Theme>
       <Helmet>
         <link rel="icon" href={favicon} />
-        <meta http-equiv="refresh" content="0;url=/under-construction" />
       </Helmet>
       <GlobalStyle />
       <StyledHeader backdropActive={backdropActive} hideLogo={hideLogo} />
