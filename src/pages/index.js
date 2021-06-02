@@ -47,11 +47,8 @@ const Index = ({ data }) => {
   } = data.cosmicjsLandingPage;
 
   // *** destructure page metadata
-  const {
-    page_title,
-    description,
-    keywords,
-  } = data.cosmicjsPageMetadata.metadata;
+  const { page_title, description, keywords } =
+    data.cosmicjsPageMetadata.metadata;
 
   // *** destructure site metadata
   const { title_prefix, canonical } = data.cosmicjsSiteMetadata.metadata;
@@ -92,7 +89,7 @@ export const query = graphql`
           id
           slug
           title
-          created(formatString: "Do MMMM YYYY")
+          created
           content
           metadata {
             cover_image {
