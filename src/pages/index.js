@@ -23,6 +23,7 @@ import {
 const Index = ({ data }) => {
   const [viewportHeight, setViewportHeight] = useState(0);
   const [backdropActive, setBackdropActive] = useState(false);
+  const [latestPosts, setLatestPosts] = useState([]);
   const { scrollY } = useScroll();
 
   // *** set page ready when page has loaded
@@ -40,6 +41,29 @@ const Index = ({ data }) => {
       setBackdropActive(false);
     }
   }, [scrollY, viewportHeight]);
+
+  // *** set latest posts
+  useEffect(() => {
+    let localPosts = data.allCosmicjsBlogPosts.edges;
+    let rssPosts = data.allQuantumDailyPost.edges;
+    let allPosts = [...localPosts, ...rssPosts];
+
+    // normalise published date and limit return to 4
+    let normalisedPosts = allPosts
+      .map(({ node }) => ({
+        ...node,
+        normalisedDate: new Date(
+          node.pubDate ? node.pubDate : node.created
+        ).getTime(),
+      }))
+      .sort((a, b) => (a.normalisedDate > b.normalisedDate ? -1 : 1))
+      .map((post) => ({
+        ...post,
+        type: post.slug ? "CosmicJS" : "TQD",
+        created: new Date(post.created ? post.created : post.pubDate[0]),
+      }));
+    setLatestPosts(normalisedPosts.splice(0, 6));
+  }, []);
 
   // *** destructure landing data
   const {
@@ -70,10 +94,7 @@ const Index = ({ data }) => {
         <LandingSection />
         <LandingIntroduction text={landing_introduction} />
         <StyledWorkWith />
-        <StyledNewsfeed
-          posts={data.allCosmicjsBlogPosts.edges}
-          background="black"
-        />
+        <StyledNewsfeed posts={latestPosts} background="black" />
       </Layout>
     </>
   );
@@ -83,7 +104,7 @@ export default Index;
 
 export const query = graphql`
   query {
-    allCosmicjsBlogPosts(limit: 4) {
+    allCosmicjsBlogPosts(limit: 6, sort: { order: DESC, fields: created }) {
       edges {
         node {
           id
@@ -97,6 +118,19 @@ export const query = graphql`
             }
             post_type
           }
+        }
+      }
+    }
+    allQuantumDailyPost(limit: 6, sort: { order: DESC, fields: pubDate }) {
+      edges {
+        node {
+          id
+          title
+          link
+          dc_creator
+          pubDate
+          category
+          description
         }
       }
     }
