@@ -63,7 +63,7 @@ const Index = ({ data }) => {
         created: new Date(post.created ? post.created : post.pubDate[0]),
       }));
     setLatestPosts(normalisedPosts.splice(0, 6));
-  }, []);
+  }, [data.allCosmicjsBlogPosts.edges, data.allQuantumDailyPost.edges]);
 
   // *** destructure landing data
   const {
